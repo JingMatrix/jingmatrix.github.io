@@ -1,0 +1,1 @@
+__NUXT_JSONP__("private/chaac", {data:[{name:"Chaac",components:["cookie","music","qixi"],cloudtext:void 0,headsplash:"wait",head:["在这里遇见你，真美好","我们之间总有说不完的话，过了那么久也还没有腻","我不在身边的时候，烦请你每天都要开心哦！"]}],fetch:[],mutations:[]});

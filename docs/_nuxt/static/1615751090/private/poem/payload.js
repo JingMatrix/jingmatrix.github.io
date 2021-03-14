@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/private/poem", {data:[{}],fetch:[],mutations:[]});

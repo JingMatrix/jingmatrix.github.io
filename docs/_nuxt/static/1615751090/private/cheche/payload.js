@@ -1,0 +1,1 @@
+__NUXT_JSONP__("private/cheche", {data:[{name:"刘扯扯",components:["cookie","music","qixi"],cloudtext:void 0,headsplash:"wait",head:["在这里遇见你，真美好","要不要给我留言写点什么呢？点击下面的留言历史吧","我不在身边的时候，烦请你每天都要开心哦！"]}],fetch:[],mutations:[]});

@@ -1,0 +1,1 @@
+__NUXT_JSONP__("private/kangjun", {data:[{name:"June",components:["cookie","music","birthday"],cloudtext:void 0,headsplash:"book",head:["哈哈，你又来逛了呀！","要不要给我留言写点什么呢？点击下面的留言历史吧","我不在身边的时候，烦请你每天都要开心哦！"]}],fetch:[],mutations:[]});
