@@ -1,9 +1,10 @@
 // @ts-check
 
-/** @type {import('vitepress').UserConfig} */
-export default {
+import { defineConfig } from "vitepress";
+
+export default defineConfig({
+  cleanUrls: "with-subfolders",
   themeConfig: {
-    repo: "JingMatrix/viteblog",
     logo: "/img/logo.svg",
     siteTitle: false,
   },
@@ -66,4 +67,4 @@ export default {
       },
     },
   },
-};
+});
