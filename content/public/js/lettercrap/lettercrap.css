@@ -1,0 +1,10 @@
+[data-letter-crap] {
+  white-space: pre;
+  overflow: hidden;
+  font-size: 10px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 10px;
+  font-family: monospace;
+  padding: 0;
+}
