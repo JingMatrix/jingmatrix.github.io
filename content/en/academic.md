@@ -1,5 +1,6 @@
 ---
 title: 'Reports'
+layout: 'doc'
 ---
 
 # Works on mathematics
