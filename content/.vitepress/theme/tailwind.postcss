@@ -3,7 +3,28 @@
 @tailwind utilities;
 
 .cards {
-  @apply rounded flex-shrink-0 max-w-xs mt-10;
+	@apply rounded flex-shrink-0 max-w-xs mt-10;
+}
+
+
+@layer components {
+	.markdown.blog-zh {
+		@apply prose-headings:font-['STKaiti'];
+	}
+	.markdown {
+		@apply prose prose-zinc md:prose-lg lg:prose-xl
+		dark:prose-invert
+		prose-a:font-medium
+		prose-a:text-sky-400
+		prose-a:underline
+		prose-a:decoration-2
+		prose-a:underline-offset-4
+		prose-p:indent-[2em]
+		prose-p:font-sans;
+		.header-anchor {
+			@apply text-green-200;
+		}
+	}
 }
 
 /* vim: set ft=css: */
