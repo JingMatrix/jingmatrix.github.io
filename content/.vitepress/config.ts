@@ -12,10 +12,10 @@ const katex_tags = ['math', 'annotation', 'semantics', 'mtext', 'mn', 'mo', 'mi'
 export default defineConfigWithTheme<ThemeConfig>({
 	cleanUrls: "with-subfolders",
 	head: [
-		['script', {
-			src: "https://kit.fontawesome.com/f3afb9c2d5.js",
-			crossorigin: "anonymous"
-		}]
+		// ['script', {
+		// 	src: "https://kit.fontawesome.com/f3afb9c2d5.js",
+		// 	crossorigin: "anonymous"
+		// }]
 	],
 	themeConfig: {
 		// pageLayout: "Blog",
