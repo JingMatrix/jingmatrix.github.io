@@ -3,6 +3,7 @@ import theme from "vitepress/theme";
 import { DefaultTheme } from "vitepress";
 // import type { Post } from "./../../../server/posts";
 // @ts-ignore
+import Layout from "../../../components/layouts/extendLayout.vue";
 // import Blog from "../../../components/layouts/blog.vue";
 
 interface ThemeConfig extends DefaultTheme.Config {
@@ -13,6 +14,7 @@ export type { ThemeConfig };
 
 export default {
 	...theme,
+	Layout,
 	enhanceApp({ }) {
 		// app.component('Blog', Blog)
 	},

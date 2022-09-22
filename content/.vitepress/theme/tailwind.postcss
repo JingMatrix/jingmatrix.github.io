@@ -3,28 +3,33 @@
 @tailwind utilities;
 
 .cards {
-	@apply rounded flex-shrink-0 max-w-xs mt-10;
+  @apply rounded flex-shrink-0 max-w-xs mt-10;
 }
 
+html[lang="zh"] body #app {
+  font-family: Noto Sans, Noto Sans CJK SC;
+}
 
 @layer components {
-	.markdown.blog-zh {
-		@apply prose-headings:font-['STKaiti'];
-	}
-	.markdown {
-		@apply prose prose-zinc md:prose-lg lg:prose-xl
+  #app .content .content-container .main div[class*="_zh_blog"] {
+    @apply prose-headings:font-[STKaiti,楷体];
+  }
+  #app .content .content-container .main .vp-doc div {
+    @apply prose prose-stone lg:prose-lg
 		dark:prose-invert
-		prose-a:font-medium
-		prose-a:text-sky-400
+		prose-a:text-green-400
+		prose-a:dark:text-sky-200
 		prose-a:underline
 		prose-a:decoration-2
 		prose-a:underline-offset-4
-		prose-p:indent-[2em]
-		prose-p:font-sans;
-		.header-anchor {
-			@apply text-green-200;
-		}
-	}
+		prose-p:indent-[2em];
+    .header-anchor {
+      @apply text-green-200;
+    };
+	a {
+		@apply hover:text-blue-700
+	};
+  }
 }
 
 /* vim: set ft=css: */

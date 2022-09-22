@@ -9,6 +9,12 @@ import essaiList from '../../server/data/essai.json'
 
 export default defineConfigWithTheme<ThemeConfig>({
 	cleanUrls: "with-subfolders",
+	head: [
+		['script', {
+			src: "https://kit.fontawesome.com/f3afb9c2d5.js",
+			crossorigin: "anonymous"
+		}]
+	],
 	themeConfig: {
 		// pageLayout: "Blog",
 		logo: "/img/logo.svg",
@@ -16,6 +22,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 		outline: 'deep',
 	},
 	markdown: {
+		theme: {dark: 'dark-plus', light: 'nord'},
 		config: (md) => {
 			md.use(markdownHook)
 		}
@@ -26,6 +33,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 			lang: "en",
 			label: "English",
 			themeConfig: {
+				sidebarMenuLabel: 'All Blogs',
 				sidebar: [
 					{
 						text: "All Blogs",
@@ -57,6 +65,8 @@ export default defineConfigWithTheme<ThemeConfig>({
 			label: "简体中文",
 			lang: "zh",
 			themeConfig: {
+				returnToTopLabel: "回到顶部",
+				sidebarMenuLabel: "文章列表",
 				sidebar: [
 					{
 						text: "文章列表",
@@ -79,6 +89,10 @@ export default defineConfigWithTheme<ThemeConfig>({
 				editLink: {
 					pattern: 'https://github.com/JingMatrix/viteblog/edit/master/content/:path',
 					text: '纠正文章错误'
+				},
+				docFooter: {
+					prev: "上一篇",
+					next: "下一篇",
 				}
 			},
 		},
@@ -87,6 +101,8 @@ export default defineConfigWithTheme<ThemeConfig>({
 			label: "Français",
 			lang: "fr",
 			themeConfig: {
+				returnToTopLabel: "Retourez au haut",
+				sidebarMenuLabel: "Mes Essais",
 				sidebar: [
 					{
 						text: "Mes Essais",
@@ -110,6 +126,10 @@ export default defineConfigWithTheme<ThemeConfig>({
 				editLink: {
 					pattern: 'https://github.com/JingMatrix/viteblog/edit/master/content/:path',
 					text: 'Corrigez moi'
+				},
+				docFooter: {
+					prev: "Page Avant",
+					next: "Page Suivant",
 				}
 			},
 		},

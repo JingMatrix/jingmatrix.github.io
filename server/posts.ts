@@ -1,19 +1,49 @@
-import matter = require("gray-matter");
+import matter from "gray-matter";
 import fs = require("fs");
 import type { PathLike } from "fs";
+import type { Post, dataPost, Frontmatter } from "./types";
+import authors from './data/author.json'
 
-export type Post = {
-	frontMatter: {
-		date?: Date;
-		title?: string;
-		tags?: string[];
-		description?: string;
-	};
-	regularPath: string;
-};
+export function hookFrontmatter(f: Frontmatter, filename: string): Frontmatter {
+	if (isNaN(Date.parse(filename.slice(0, 10)))) {
+		f.header = false;
+	} else {
+		f.header = true;
+		if (!f.title) {
+			f.title = filename.slice(11).replace(/-/g, ' ').slice(0, -3);
+		};
+		if (f.created) {
+			f.date = new Date(f.created)
+		} else if (f.date) {
+			f.date = new Date(f.date);
+		} else {
+			f.date = new Date(filename.slice(0, 10));
+		}
+		if (f.date == null) {
+			console.log(`Post $path have no valide date indicated`)
+			f.date = new Date()
+		}
+		if (f.author != null &&
+			typeof f.author == "string") {
+			f.author = authors[f.author]
+		}
+		f.tags = f.tags || []
+		if (f.math) {
+			f.head = f.head || [];
+			f.head.push(
+				['link', {
+					rel: "stylesheet",
+					href: "https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css",
+					integrity: "sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X",
+					crossorigin: "anonymous"
+				}]);
+		}
+	}
+	return f
+}
 
-function initTags(post: Post[]) {
-	const data: any = {};
+function initTags(post: Post[]): dataPost {
+	const data: dataPost = {};
 	for (let i = 0; i < post.length; i++) {
 		const element = post[i];
 		const tags = element.frontMatter.tags;
@@ -31,24 +61,13 @@ function initTags(post: Post[]) {
 
 function getPosts(dir: PathLike): Post[] {
 	let paths = fs.readdirSync(dir);
-	const posts = paths.map((item: String) => {
-		// item = dir + "/" + item;
-		const content = fs.readFileSync(<PathLike>dir + "/" + item);
+	const posts = paths.map((filename: string) => {
+		const content = fs.readFileSync(<PathLike>dir + "/" + filename);
 		const { data } = matter(content);
-		if (data.created) {
-			data.date = new Date(data.created)
-		} else if (data.date) {
-			data.date = new Date(data.date);
-		} else {
-			data.date = new Date(item.slice(0, 10));
-		}
-		if (data.date == null) {
-			console.log(`Post $item in $dir have no data indicated`)
-			data.date = new Date()
-		}
+		hookFrontmatter(data, filename);
 		return {
 			frontMatter: data,
-			regularPath: dir.toString().slice(7) + '/' + item.slice(0, -3) + ".html",
+			regularPath: dir.toString().slice(7) + '/' + encodeURI(filename.slice(0, -3))
 		};
 	});
 	posts.reverse();
@@ -56,10 +75,14 @@ function getPosts(dir: PathLike): Post[] {
 }
 
 export default function() {
+	const posts = [];
 	["fr/essai", "zh/blog", "en/writing"].forEach(dir => {
 		fs.writeFileSync(`server/data/${dir.slice(3)}.json`, JSON.stringify(getPosts(
-			'content/' + dir).map(
+			'content/' + dir).filter(
+			(p: Post) => p.frontMatter.hidden !== true)
+			.map(
 				(p: Post) => {
+					posts.push(p);
 					return {
 						text: p.frontMatter.title,
 						link: p.regularPath
@@ -68,5 +91,15 @@ export default function() {
 			))
 		)
 	}
-	)
+	);
+	let md = '';
+	for (const [tag, ps] of Object.entries(initTags(posts)).sort()) {
+		md += "## " + tag + "\n\n";
+		ps.forEach((p: Post) => {
+			md += "- [" + p.frontMatter.title + "](" + p.regularPath + ") \n";
+		}
+		);
+		md += "\n";
+	}
+	fs.writeFileSync(`content/tags.md`, md)
 }
