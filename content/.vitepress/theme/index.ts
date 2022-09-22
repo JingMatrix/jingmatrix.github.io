@@ -4,6 +4,8 @@ import { DefaultTheme } from "vitepress";
 // import type { Post } from "./../../../server/posts";
 // @ts-ignore
 import Layout from "../../../components/layouts/extendLayout.vue";
+// @ts-ignore
+import NotFound from "../../../components/layouts/404.vue";
 // import Blog from "../../../components/layouts/blog.vue";
 //
 /* import the fontawesome core */
@@ -15,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons */
 import { faBlog } from '@fortawesome/free-solid-svg-icons'
 import { faFilePdf } from '@fortawesome/free-regular-svg-icons'
-import { faWikipediaW  } from '@fortawesome/free-brands-svg-icons'
+import { faWikipediaW } from '@fortawesome/free-brands-svg-icons'
 
 /* add icons to the library */
 library.add(faBlog)
@@ -30,6 +32,7 @@ export type { ThemeConfig };
 
 export default {
 	...theme,
+	NotFound,
 	Layout,
 	enhanceApp({ app }) {
 		// app.component('Blog', Blog)

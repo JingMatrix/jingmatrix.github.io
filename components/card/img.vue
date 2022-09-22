@@ -22,5 +22,5 @@
 </template>
 <script lang="ts" setup>
 import Base from "./base.vue";
-defineProps({ features: Array })
+defineProps({ features: Object })
 </script>

@@ -22,7 +22,7 @@ function formatDateByLocale(date, lang) {
       <div class="relative mb-16" v-if="frontmatter.header">
         <h1 class="text-3xl text-center pb-16">{{ frontmatter.title }}</h1>
         <div class="text-sm mb-2 text-cyan-500 hover:text-black">
-          <a v-for="tag in frontmatter.tags" class="mr-4 p-1 rounded-md border-solid border-2"
+          <a v-for="tag in frontmatter.tags" class="mr-4 p-1 rounded-md border-solid border-2 dark:border-gray-600 dark:hover:text-cyan-300"
 		  :href='"/tags#" + tag.toLowerCase()'>
             {{ tag }}
           </a>
