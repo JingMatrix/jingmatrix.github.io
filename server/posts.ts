@@ -31,8 +31,6 @@ function initTags(post: Post[]) {
 
 function getPosts(dir: PathLike): Post[] {
 	let paths = fs.readdirSync(dir);
-	// remove the index.md
-	paths.pop()
 	const posts = paths.map((item: String) => {
 		// item = dir + "/" + item;
 		const content = fs.readFileSync(<PathLike>dir + "/" + item);
@@ -58,10 +56,17 @@ function getPosts(dir: PathLike): Post[] {
 }
 
 export default function() {
-	const postDir = ["fr/essai", "zh/blog", "en/writing"]
-	for (const dir of postDir) {
+	["fr/essai", "zh/blog", "en/writing"].forEach(dir => {
 		fs.writeFileSync(`server/data/${dir.slice(3)}.json`, JSON.stringify(getPosts(
-			'content/' + dir))
+			'content/' + dir).map(
+				(p: Post) => {
+					return {
+						text: p.frontMatter.title,
+						link: p.regularPath
+					}
+				}
+			))
 		)
 	}
+	)
 }
