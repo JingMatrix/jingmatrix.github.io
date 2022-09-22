@@ -1,6 +1,6 @@
 ---
-title: 'Reports'
-layout: 'doc'
+sidebar: false
+title: 'Academic'
 ---
 
 # Works on mathematics

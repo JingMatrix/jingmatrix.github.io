@@ -1,4 +1,6 @@
 ---
+title: 主页
+sidebar: false
 layout: page
 ---
 

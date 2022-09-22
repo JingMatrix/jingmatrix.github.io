@@ -1,5 +1,6 @@
 ---
 title: Homepage
+sidebar: false
 layout: page
 ---
 
