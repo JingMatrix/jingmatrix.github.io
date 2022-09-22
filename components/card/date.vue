@@ -11,7 +11,7 @@
 		</div>
 		<div class="pl-6 relative">
 			<h2 class="tracking-widest text-xs title-font font-medium text-indigo-500 dark:text-cyan-400 mb-1">
-				<a :href='"/tags#" + feature.tag'>{{ feature.tag }}</a>
+				<a :href='"/tags#" + feature.tag.toLowerCase().replace("è", "e")'>{{ feature.tag }}</a>
 			</h2>
 			<h1 class="title-font text-xl font-medium mb-3 hover:underline underline-offset-8">
 				<a :href='feature.link'>{{ feature.title }}</a>
