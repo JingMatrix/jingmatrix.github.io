@@ -37,6 +37,11 @@
 
 - [Combination of functionals](/en/writing/2019-12-03-Combination-of-functionals) 
 
+## Poème
+
+- [Pourquoi tu es triste?](/fr/essai/2022-01-26-pourquoi-triste) 
+- [À ma grand-mère](/fr/essai/2022-01-10-grand-m%C3%A8re) 
+
 ## Proposition
 
 - [Intersection de l'espace tangent](/fr/essai/2019-08-12-Intersection-of-tangent-space) 

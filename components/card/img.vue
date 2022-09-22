@@ -4,7 +4,7 @@
 		<img :src="feature.img" :alt="feature.alt || feature.title" />
 		<div class="px-2 py-4">
 			<a :href="feature.link" download=""
-				class="no-underline flex items-baseline hover:underline font-medium text-xl mb-2">
+				class="no-underline flex items-baseline hover:underline font-medium text-xl mb-2 underline-offset-8">
 				<font-awesome-icon icon="fa-regular fa-file-pdf" class="pr-2 text-sm" />
 				{{ feature.title }}
 			</a>
