@@ -17,15 +17,15 @@ export default {
         "I like the idea that mathematics is the art of giving the same name to different things. When exploring new concepts there, I feel that I am finding connections between mysteries.",
       content: [
         {
-          title: "M1 Internship Report",
-          description: "My M1 & undergraduate design",
-          img: "/img/wiener_process.png",
-          link: "/pdf/probability M1_stage.pdf",
-          tags: ["Quantum mechanics"],
+          title: "M2 Internship Report",
+          description: "Barycenter of two countries in the image above",
+          img: "/img/barycenter.png",
+          link: "https://drive.google.com/file/d/1DgcO-M13q4x_sCYsJTPjR9Wx154C0tnh/view",
+          tags: ["Riemannian Geometry"],
         },
         {
           title: "M1 Topology Homework",
-          description: "A homework about algebraic topology",
+          description: "A homework of algebraic topology",
           img: "/img/function_with_hole.png",
           link: "/pdf/DM_topology_Jianyu_MA.pdf",
           tags: ["Latex Draw", "Topology"],
