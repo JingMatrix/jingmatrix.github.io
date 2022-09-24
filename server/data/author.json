@@ -1,0 +1,93 @@
+﻿{
+  "莫言": {
+    "name": "莫言",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/MoYan_Hamburg_2008.jpg/440px-MoYan_Hamburg_2008.jpg",
+    "links": [
+      {
+        "label": "Wikipedia",
+        "icon": "fab fa-wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Mo_Yan"
+      }
+    ]
+  },
+  "Michael Atiyah": {
+    "name": "Michael Atiyah",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/a/af/Michael_Francis_Atiyah.jpg",
+    "links": [
+      {
+        "label": "Wikipedia",
+        "icon": "fab fa-wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Michael_Atiyah"
+      }
+    ]
+  },
+  "Paul R. Haimos": {
+    "name": "Paul R. Haimos",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Paul_Halmos.jpeg",
+    "links": [
+      {
+        "label": "Wikipedia",
+        "icon": "fab fa-wikipedia-w",
+        "url": "https://fr.wikipedia.org/wiki/Paul_Halmos"
+      }
+    ]
+  },
+  "周立伟": {
+    "name": "周立伟"
+  },
+  "李小玉": {
+    "name": "李小玉"
+  },
+  "剩余价值": {
+    "name": "剩余价值SurplusValue",
+    "avatar": "/img/profile/surplusvalue.png",
+    "links": [
+      {
+        "label": "Website",
+        "icon": "fas fa-blog",
+        "url": "https://www.surplusvalue.club/about"
+      }
+    ]
+  },
+  "高行健": {
+    "name": "高行健",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Gao_Xingjian_%282012%2C_cropped%29.jpg/440px-Gao_Xingjian_%282012%2C_cropped%29.jpg",
+    "links": [
+      {
+        "label": "Wikipedia",
+        "icon": "fab fa-wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Gao_Xingjian"
+      }
+    ]
+  },
+  "Fernando Pessoa": {
+    "name": "Fernando Pessoa",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Pessoa_chapeu.jpg/644px-Pessoa_chapeu.jpg",
+    "links": [
+      {
+        "label": "Wikipedia",
+        "icon": "fab fa-wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Fernando_Pessoa"
+      }
+    ]
+  },
+  "Friedrich Nietzsche": {
+    "name": "Friedrich Nietzsche",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Nietzsche187a.jpg",
+    "links": [
+      {
+        "label": "Wikipedia",
+        "icon": "fab fa-wikipedia-w",
+        "url": "https://en.wikipedia.org/wiki/Friedrich_Nietzsche"
+      }
+    ]
+  },
+  "Chaac": {
+    "name": "Chaac",
+    "avatar": "/img/profile/chaac.jpg"
+  },
+  "Jianyu MA": {
+    "name": "马健宇",
+    "avatar": "/img/profile/jm_profile_bw.jpg"
+  }
+}

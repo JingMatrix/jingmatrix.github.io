@@ -1,2 +1,4 @@
 dist
-server/data
+server/data/blog.json
+server/data/writing.json
+server/data/essai.json
