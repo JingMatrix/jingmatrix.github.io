@@ -58,7 +58,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 						text: "About Me",
 						items: [
 							{ text: "Curriculum Vitae", link: "/pdf/cv.pdf" },
-							{ text: "Educations", link: "/cv" },
+							{ text: "Educations", link: "/cv/" },
 							{ text: "Contact Online", link: "/en/contact" },
 						],
 					},
@@ -90,8 +90,8 @@ export default defineConfigWithTheme<ThemeConfig>({
 						text: "关于我",
 						items: [
 							{ text: "个人简历", link: "/pdf/cv.pdf" },
-							{ text: "教育背景", link: "/cv" },
-							{ text: "在线聊天", link: "/zh/contact" },
+							{ text: "教育背景", link: "/cv/" },
+							// { text: "在线聊天", link: "/zh/contact" },
 						],
 					},
 				],
@@ -127,8 +127,8 @@ export default defineConfigWithTheme<ThemeConfig>({
 						text: "Sur Moi",
 						items: [
 							{ text: "Curriculum Vitae", link: "/pdf/cv.pdf" },
-							{ text: "Formations", link: "/cv" },
-							{ text: "Contactez en ligne", link: "/fr/contact" },
+							{ text: "Formations", link: "/cv/" },
+							// { text: "Contactez en ligne", link: "/fr/contact" },
 						],
 					},
 				],
