@@ -10,7 +10,7 @@ import essaiList from '../../server/data/essai.json'
 const katex_tags = ['math', 'annotation', 'semantics', 'mtext', 'mn', 'mo', 'mi', 'mspace', 'mover', 'munder', 'munderover', 'msup', 'msub', 'msubsup', 'mfrac', 'mroot', 'msqrt', 'mtable', 'mtr', 'mtd', 'mlabeledtr', 'mrow', 'menclose', 'mstyle', 'mpadded', 'mphantom', 'mglyph', 'svg', 'line', 'path', 'eq', 'eqn'];
 
 export default defineConfigWithTheme<ThemeConfig>({
-	cleanUrls: "with-subfolders",
+	cleanUrls: "without-subfolders",
 	head: [
 		// ['script', {
 		// 	src: "https://kit.fontawesome.com/f3afb9c2d5.js",
