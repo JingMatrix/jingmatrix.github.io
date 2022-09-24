@@ -7,6 +7,8 @@ import blogList from '../../server/data/blog.json'
 import writingList from '../../server/data/writing.json'
 import essaiList from '../../server/data/essai.json'
 
+const katex_tags = ['math', 'annotation', 'semantics', 'mtext', 'mn', 'mo', 'mi', 'mspace', 'mover', 'munder', 'munderover', 'msup', 'msub', 'msubsup', 'mfrac', 'mroot', 'msqrt', 'mtable', 'mtr', 'mtd', 'mlabeledtr', 'mrow', 'menclose', 'mstyle', 'mpadded', 'mphantom', 'mglyph', 'svg', 'line', 'path', 'eq', 'eqn'];
+
 export default defineConfigWithTheme<ThemeConfig>({
 	cleanUrls: "with-subfolders",
 	head: [
@@ -21,8 +23,16 @@ export default defineConfigWithTheme<ThemeConfig>({
 		siteTitle: false,
 		outline: 'deep',
 	},
+	vue: {
+		"template": {
+			compilerOptions: {
+				isCustomElement:
+					(tag) => katex_tags.includes(tag)
+			}
+		}
+	},
 	markdown: {
-		theme: {dark: 'dark-plus', light: 'nord'},
+		theme: { dark: 'dark-plus', light: 'nord' },
 		config: (md) => {
 			md.use(markdownHook)
 		}
