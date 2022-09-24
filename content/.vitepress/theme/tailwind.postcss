@@ -26,16 +26,26 @@ html[lang="zh"] body #app {
 		prose-p:indent-[2em];
     .header-anchor {
       @apply text-green-200;
+    }
+    code::before {
+      display: none;
+    }
+    code::after {
+      display: none;
+    }
+    a {
+      @apply hover:text-blue-500 hover:decoration-4 dark:hover:text-indigo-300;
+    }
+  }
+
+  #chat-room .render-html {
+    @apply prose prose-zinc dark:prose-invert prose-p:my-0;
+    a[href^="#"] {
+      @apply text-sm dark:text-gray-600 text-gray-200;
     };
-	code::before {
-		display: none;
+	p + blockquote {
+		@apply my-2
 	}
-	code::after {
-		display: none;
-	}
-	a {
-		@apply hover:text-blue-500 hover:decoration-4 dark:hover:text-indigo-300 
-	};
   }
 }
 

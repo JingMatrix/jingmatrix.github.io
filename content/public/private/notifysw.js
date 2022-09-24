@@ -26,7 +26,7 @@
 // const applicationServerPublicKey = 'BG832LshtIE1SHABBXdtdhie4nPgveN_PkQl-y1eQv9y6N5Fp_KsZKrxiGV0oiVUjGAPkYsSIs2vZFDwW31xEiE';
 
 /* eslint-enable max-len */
-const url = "https://jingmatrix.github.io/private/chat";
+const url = /^https:\/\/jingmatrix.github.io/;
 
 // function urlB64ToUint8Array(base64String) {
 //     const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -46,58 +46,58 @@ self.addEventListener('install', event => event.waitUntil(self.skipWaiting()));
 
 self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
 
-self.addEventListener('push', function (event) {
-    console.log('[Service Worker] Push Received.');
-    console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
-    const msgItem = JSON.parse(event.data.text())
-    let title = msgItem.msg;
-    const options = {
-        body: `${msgItem.name} @ ${msgItem.room}`,
-        icon: 'https://jingmatrix.github.io/favicon.ico',
-        badge: 'https://jingmatrix.github.io/favicon.ico'
-    };
-    clients.matchAll({
-        includeUncontrolled: true,
-        type: "window",
-    }).then(function (clientList) {
-        console.log("Clients number: ", clientList.length)
-        if (clientList.length === 0) {
-            title = "get new message, please open Chat Room for this time";
-            options.body = "I will work normally next time";
-            event.waitUntil(self.registration.showNotification(title, options));
-        }
-        for (let i = 0; i < clientList.length; i++) {
-            const client = clientList[i];
-            if (client.focused) {
-                console.log("Use is chatting, no need for notification")
-                break;
-            }
-            if (client.url === url) {
-                client.focus();
-            } else {
-                clients.openWindow(url);
-            }
-            event.waitUntil(self.registration.showNotification(title, options));
-        }
-    });
+self.addEventListener('push', function(event) {
+	console.log('[Service Worker] Push Received.');
+	console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
+	const msgItem = JSON.parse(event.data.text())
+	let title = msgItem.msg;
+	const options = {
+		body: `${msgItem.name} @ ${msgItem.room}`,
+		icon: 'https://jingmatrix.github.io/favicon.ico',
+		badge: 'https://jingmatrix.github.io/favicon.ico'
+	};
+	clients.matchAll({
+		includeUncontrolled: true,
+		type: "window",
+	}).then(function(clientList) {
+		console.log("Clients number: ", clientList.length)
+		if (clientList.length === 0) {
+			title = "get new message, please open Chat Room for this time";
+			options.body = "I will work normally next time";
+			event.waitUntil(self.registration.showNotification(title, options));
+		}
+		for (let i = 0; i < clientList.length; i++) {
+			const client = clientList[i];
+			if (client.focused) {
+				console.log("Use is chatting, no need for notification")
+				break;
+			}
+			if (client.url.match(url)) {
+				client.focus();
+			} else {
+				clients.openWindow(url);
+			}
+			event.waitUntil(self.registration.showNotification(title, options));
+		}
+	});
 });
 
-self.addEventListener('notificationclick', function (event) {
-    console.log('On notification click: ', event.notification.tag);
-    event.notification.close();
+self.addEventListener('notificationclick', function(event) {
+	console.log('On notification click: ', event.notification.tag);
+	event.notification.close();
 
-    // This looks to see if the current is already open and
-    // focuses if it is
-    event.waitUntil(clients.matchAll({
-        includeUncontrolled: true,
-        type: "window",
-    }).then(function (clientList) {
-        for (let i = 0; i < clientList.length; i++) {
-            const client = clientList[i];
-            if (client.url === url)
-                return client.focus();
-        }
-        if (clients.openWindow)
-            return clients.openWindow(url);
-    }));
+	// This looks to see if the current is already open and
+	// focuses if it is
+	event.waitUntil(clients.matchAll({
+		includeUncontrolled: true,
+		type: "window",
+	}).then(function(clientList) {
+		for (let i = 0; i < clientList.length; i++) {
+			const client = clientList[i];
+			if (client.url.match(url))
+				return client.focus();
+		}
+		if (client.openWindow)
+			return clients.openWindow(url);
+	}));
 })

@@ -18,6 +18,7 @@
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^18.7.18",
     "autoprefixer": "^10.4.11",
+    "cssnano": "^5.1.13",
     "gray-matter": "^4.0.3",
     "katex": "^0.16.2",
     "markdown-it-footnote": "^3.0.3",
@@ -30,6 +31,8 @@
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
-    "@fortawesome/free-solid-svg-icons": "^6.2.0"
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "markdown-it": "^13.0.1",
+    "socket.io-client": "^4.5.2"
   }
 }

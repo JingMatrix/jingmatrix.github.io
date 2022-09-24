@@ -15,14 +15,12 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faBlog } from '@fortawesome/free-solid-svg-icons'
-import { faFilePdf } from '@fortawesome/free-regular-svg-icons'
+import { faBlog, faBars, faVideo, faSpinner} from '@fortawesome/free-solid-svg-icons'
+import { faFilePdf, faCircleXmark,  faPaperPlane } from '@fortawesome/free-regular-svg-icons'
 import { faWikipediaW } from '@fortawesome/free-brands-svg-icons'
 
 /* add icons to the library */
-library.add(faBlog)
-library.add(faFilePdf)
-library.add(faWikipediaW)
+[faBlog, faBars, faFilePdf, faCircleXmark, faVideo, faPaperPlane, faWikipediaW, faSpinner].forEach((fa) => library.add(fa));
 
 interface ThemeConfig extends DefaultTheme.Config {
 	// posts?: Post[];
