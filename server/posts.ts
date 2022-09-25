@@ -85,7 +85,8 @@ export default function() {
 					posts.push(p);
 					return {
 						text: p.frontMatter.title,
-						link: p.regularPath
+						link: p.regularPath,
+						...p.frontMatter
 					}
 				}
 			))

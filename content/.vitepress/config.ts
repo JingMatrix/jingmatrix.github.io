@@ -2,20 +2,19 @@
 
 import { defineConfigWithTheme } from 'vitepress'
 import { ThemeConfig } from './theme'
-import markdownHook from '../../server/markdownHook'
-import blogList from '../../server/data/blog.json'
-import writingList from '../../server/data/writing.json'
-import essaiList from '../../server/data/essai.json'
+import { blogList, writingList, essaiList, vue, vite, markdown } from './plugin'
 
-const katex_tags = ['math', 'annotation', 'semantics', 'mtext', 'mn', 'mo', 'mi', 'mspace', 'mover', 'munder', 'munderover', 'msup', 'msub', 'msubsup', 'mfrac', 'mroot', 'msqrt', 'mtable', 'mtr', 'mtd', 'mlabeledtr', 'mrow', 'menclose', 'mstyle', 'mpadded', 'mphantom', 'mglyph', 'svg', 'line', 'path', 'eq', 'eqn'];
+const rssIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416c0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96C14.3 96 0 81.7 0 64zM128 416c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288c0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>'
 
 export default defineConfigWithTheme<ThemeConfig>({
+	vue, vite, markdown,
 	cleanUrls: "without-subfolders",
 	head: [
-		// ['script', {
-		// 	src: "https://kit.fontawesome.com/f3afb9c2d5.js",
-		// 	crossorigin: "anonymous"
-		// }]
+		['meta', { name: 'theme-color', content: '#ffffff' }],
+		['link', { rel: 'icon', href: '/favicon.png', type: 'image/png', sizes: "32x32" }],
+		['link', { rel: 'mask-icon', href: '/img/logo.svg', color: '#ffffff' }],
+		['meta', { name: 'author', content: 'Jianyu MA' }],
+		['link', { rel: 'apple-touch-icon', href: '/img/icon-180.png', sizes: '180x180' }],
 	],
 	themeConfig: {
 		// pageLayout: "Blog",
@@ -23,26 +22,16 @@ export default defineConfigWithTheme<ThemeConfig>({
 		siteTitle: false,
 		outline: 'deep',
 	},
-	vue: {
-		"template": {
-			compilerOptions: {
-				isCustomElement:
-					(tag) => katex_tags.includes(tag)
-			}
-		}
-	},
-	markdown: {
-		theme: { dark: 'dark-plus', light: 'nord' },
-		config: (md) => {
-			md.use(markdownHook)
-		}
-	},
 	locales: {
 		en: {
 			title: "Jianyu MA",
 			lang: "en",
 			label: "English",
 			themeConfig: {
+				socialLinks: [
+					{ icon: 'github', link: 'https://github.com/JingMatrix' },
+					{ icon: { svg: rssIcon }, link: "/feed-en.xml" }
+				],
 				sidebarMenuLabel: 'All Blogs',
 				sidebar: [
 					{
@@ -75,6 +64,10 @@ export default defineConfigWithTheme<ThemeConfig>({
 			label: "简体中文",
 			lang: "zh",
 			themeConfig: {
+				socialLinks: [
+					{ icon: 'github', link: 'https://github.com/JingMatrix' },
+					{ icon: { svg: rssIcon }, link: "/feed-zh.xml" }
+				],
 				returnToTopLabel: "回到顶部",
 				sidebarMenuLabel: "文章列表",
 				sidebar: [
@@ -111,6 +104,10 @@ export default defineConfigWithTheme<ThemeConfig>({
 			label: "Français",
 			lang: "fr",
 			themeConfig: {
+				socialLinks: [
+					{ icon: 'instagram', link: 'https://www.instagram.com/jingmatrix/' },
+					{ icon: { svg: rssIcon }, link: "/feed-fr.xml" }
+				],
 				returnToTopLabel: "Retourez au haut",
 				sidebarMenuLabel: "Mes Essais",
 				sidebar: [
