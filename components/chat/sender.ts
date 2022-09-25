@@ -1,10 +1,10 @@
-function getTime(seconds) {
-	const date = new Date(seconds * 1000);
-	return date.toLocaleString();
-}
+import type { Socket } from 'socket.io-client'
+import type { UserMsg, ChatData } from './type'
 
-export function send_message(socket, msg, replyMsg) {
-	const time = new Date().getTime();
+export function send_message(socket: Socket, msg: string, chatData: ChatData) {
+	const replyMsg: UserMsg = chatData.replyMsg
+	chatData.replyMsg = null
+	const time = Math.floor(new Date().getTime() / 1000);
 	if (msg === "") {
 		document.querySelector('#sys').scrollIntoView()
 		setTimeout(() => {
@@ -22,14 +22,15 @@ export function send_message(socket, msg, replyMsg) {
 				"\n> "
 			)} \n \n` + msg;
 	}
-	const msgItem = {
+	const msgItem: UserMsg = {
 		msg,
 		time,
-		namecolor: localStorage.getItem("namecolor"),
-		msgcolor: localStorage.getItem("msgcolor"),
-		uid: localStorage.getItem("uid"),
-		name: localStorage.getItem("name"),
+		...chatData
 	};
 	socket.send(msgItem);
+	["namecolor", "msgcolor", "uid"].forEach((d) => {
+		localStorage.setItem(d, chatData[d])
+	})
+
 }
 

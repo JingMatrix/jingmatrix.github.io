@@ -1,5 +1,5 @@
 import matter from "gray-matter";
-import fs = require("fs");
+import fs from 'fs';
 import type { PathLike } from "fs";
 import type { Post, dataPost, Frontmatter } from "./types";
 import authors from './data/author.json'

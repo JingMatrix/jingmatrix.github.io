@@ -11,7 +11,7 @@ const vue = {
 	"template": {
 		compilerOptions: {
 			isCustomElement:
-				(tag) => katex_tags.includes(tag)
+				(tag: string) => katex_tags.includes(tag)
 		}
 	}
 }
@@ -43,8 +43,7 @@ const pwa = () => {
 	})
 }
 
-function rss(blog) {
-	blog.title = blog.text;
+function rss(blog: { text?: string, title: string, link: string }) {
 	blog.link = 'https://jingmatrix.github.io' + blog.link;
 	delete blog.text;
 	return blog;

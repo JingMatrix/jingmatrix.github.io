@@ -1,7 +1,10 @@
+import { Socket } from "socket.io-client";
+import { SubscriptionData } from './type'
+
 const applicationServerPublicKey =
 	"BG832LshtIE1SHABBXdtdhie4nPgveN_PkQl-y1eQv9y6N5Fp_KsZKrxiGV0oiVUjGAPkYsSIs2vZFDwW31xEiE";
 
-function urlB64ToUint8Array(base64String) {
+function urlB64ToUint8Array(base64String: string) {
 	const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
 	const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
 
@@ -14,7 +17,7 @@ function urlB64ToUint8Array(base64String) {
 	return outputArray;
 }
 
-export function configSubscription(socket, subscriptionData) {
+export function configSubscription(socket: Socket, subscriptionData: SubscriptionData) {
 	if ("serviceWorker" in navigator && "PushManager" in window) {
 		// console.log('Service Worker and Push is supported')
 		navigator.serviceWorker
@@ -43,7 +46,7 @@ export function configSubscription(socket, subscriptionData) {
 	}
 }
 
-function updateSubscriptionOnServer(subscription, socket) {
+function updateSubscriptionOnServer(subscription: string | PushSubscription, socket: Socket) {
 	if (subscription == null) {
 		return;
 	}
@@ -55,7 +58,7 @@ function updateSubscriptionOnServer(subscription, socket) {
 }
 
 
-export function subscribe_usr(subscriptionData, socket) {
+export function subscribe_usr(subscriptionData: SubscriptionData, socket: Socket) {
 	if (subscriptionData.state == "no") {
 		const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
 		subscriptionData.swRegistration.pushManager

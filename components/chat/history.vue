@@ -1,9 +1,8 @@
 <template>
 	<div class="fixed overflow-y-scroll mt-12 w-full" style="height: calc(100% - 10rem)">
-		<div v-for="message in messageList" :id="message.time" :key="message.time" class="w-full max-w-2xl mx-auto"
-			@dblclick="$emit('reply-msg', message)">
-			<div class="flex px-5 justify-between"
-				:class="[name == message.name ? 'flex-row-reverse' : 'flex-row']">
+		<div v-for="message in messageList" :id="message.time.toString()" :key="message.time"
+			class="w-full max-w-2xl mx-auto" @dblclick="$emit('reply-msg', message)">
+			<div class="flex px-5 justify-between" :class="[name == message.name ? 'flex-row-reverse' : 'flex-row']">
 				<span :style="{ color: message.namecolor }" class="basis-1/4"
 					:class="[name == message.name ? 'text-right' : 'text-left']">
 					{{ message.name }} </span>
@@ -23,16 +22,17 @@
 </template>
 
 <script setup lang="ts">
-import Markdown from 'markdown-it'
 import ScrollHack from './jumptomsg'
 import { onMounted } from 'vue'
+import { UserMsg } from './type'
+import Markdown from 'markdown-it'
 const md = new Markdown()
-defineProps({ messageList: Array, systemMsg: String, name: String })
-const render = (p) => {
+defineProps<{ messageList: UserMsg[], systemMsg: string, name: string }>()
+const render = (p: string) => {
 	return md.render(p.replace(/&gt;+/g, '>'))
 }
 defineEmits(['reply-msg'])
-function getTime(seconds) {
+function getTime(seconds: number) {
 	if (seconds < 10000000000) {
 		seconds *= 1000
 	}

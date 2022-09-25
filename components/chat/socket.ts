@@ -1,12 +1,16 @@
-import io from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 import { configSubscription } from "./subscription"
+import type { SystemMsg, UserMsg, UserInfo, UserList, ChatData, SubscriptionData } from "./type"
+import type { Ref } from 'vue'
+import { watch } from 'vue'
 
-function exit() {
-	document.location.href = "./contact";
+type HandShake = {
+	uid?: string,
+	name: string,
+	room: string
 }
 
-
-export default function(loading, chat, socket, frontmatter, subscriptionData) {
+export function initializeSocket(loading: Ref<boolean>, chat: ChatData, socket: Ref<Socket>, translation: Record<string, any>, subscriptionData: SubscriptionData) {
 	let server =
 		process.env.NODE_ENV === "production"
 			? "https://jing-chat.herokuapp.com"
@@ -16,72 +20,60 @@ export default function(loading, chat, socket, frontmatter, subscriptionData) {
 		server = "http://localhost:4000";
 	}
 
-	const roomInfo = {
-		roomId: localStorage.getItem("roomId"),
-	};
-	roomInfo.roomId || exit();
-
-
-	const handshake = roomInfo;
-	["name", "uid"].forEach((info) => {
-		if (localStorage.getItem(info)) {
-			handshake[info] = localStorage.getItem(info);
-		}
-	})
-
-	handshake.hasOwnProperty('name') || exit;
-
-	fetch(`${server}/room/@${roomInfo.roomId}/record?limit=50`)
+	let query = <HandShake>chat
+	query.uid || delete query.uid
+	fetch(`${server}/room/@${chat.room}/record?limit=50`)
 		.then((res) => res.json())
 		.then((res) => {
-			chat.messageList = res.sort((a, b) => a.time - b.time);
+			chat.messageList = res.sort((a: UserMsg, b: UserMsg) => a.time - b.time);
 			loading.value = false;
-			socket.value = io(server, { query: roomInfo, });
-			configSocket(socket.value, chat, frontmatter.value);
+			socket.value = io(server, { query });
+			configSocket(socket.value, chat, translation);
 			configSubscription(socket.value, subscriptionData);
 		})
 		.catch((err) => console.log(err));
 
 }
 
-function configSocket(socket, chat, translation) {
+function configSocket(socket: Socket, chat: ChatData, translation: Record<string, any>) {
+
+	watch(() => chat.name,
+		(name) => {
+			socket.emit('change-name', name)
+			localStorage.setItem('name', name)
+		})
+
 	socket.on("connect", () => {
 		chat.systemMsg = translation.welcome;
 	});
 
-	socket.on("online", function(userList) {
-		chat.userList = userList.map((info) => info.name);
+	socket.on("online", function(userList: UserList) {
+		chat.userList = userList.map((info: UserInfo) => info.name);
 	});
 
-	socket.on("init", (user) => {
+	socket.on("init", (user: UserInfo) => {
 		if (chat.uid && chat.name) return;
-		if (user.name) {
-			localStorage.setItem("name", user.name);
+		if (user.name && !chat.name) {
 			chat.name = user.name;
 		}
-		if (user.uid) {
-			localStorage.setItem("uid", user.uid);
+		if (user.uid && !chat.uid) {
 			chat.uid = user.uid;
 		}
 	});
 
-	socket.on("msg", (msgItem) => {
+	socket.on("msg", (msgItem: UserMsg) => {
 		chat.messageList.push(msgItem);
-		setTimeout(() => {
-			document.querySelector('#sys').scrollIntoView()
-			document.querySelector("textarea").focus();
-		});
+		document.querySelector('#sys').scrollIntoView()
+		document.querySelector("textarea").focus();
 	});
 
-	socket.on("sys", (data) => {
+	socket.on("sys", (data: SystemMsg) => {
 		chat.systemMsg = (data.name || data.uid) + translation[data.type];
 		document.querySelector('#sys').scrollIntoView()
-		setTimeout(() => {
-			document.querySelector("textarea").focus();
-		});
+		document.querySelector("textarea").focus();
 	});
 
-	socket.on("rename", (info) => {
+	socket.on("rename", (info: UserInfo) => {
 		if (info.uid === chat.uid) {
 			chat.name = info.name;
 		}

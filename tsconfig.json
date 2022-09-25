@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
-    "jsx": "preserve",
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+	"jsx": "preserve",
+	"module": "nodenext",
+    "target": "es6",
+	"moduleResolution": "node",
+	"resolveJsonModule": true,
+	"isolatedModules": true,
+	"esModuleInterop": true
   }
 }
