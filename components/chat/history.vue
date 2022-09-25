@@ -3,21 +3,22 @@
 		<div v-for="message in messageList" :id="message.time" :key="message.time" class="w-full max-w-2xl mx-auto"
 			@dblclick="$emit('reply-msg', message)">
 			<div class="flex px-5 justify-between"
-				:class="[nickname == message.name ? 'flex-row-reverse' : 'flex-row']">
+				:class="[name == message.name ? 'flex-row-reverse' : 'flex-row']">
 				<span :style="{ color: message.namecolor }" class="basis-1/4"
-				:class="[nickname == message.name ? 'text-right' : 'text-left']">
-				 {{ message.name }} </span>
-				<span class="text-xs dark:text-gray-600 text-gray-400 basis-1/2 text-center -mb-4"> {{ getTime(message.time) }}</span> 
+					:class="[name == message.name ? 'text-right' : 'text-left']">
+					{{ message.name }} </span>
+				<span class="text-xs dark:text-gray-600 text-gray-400 basis-1/2 text-center -mb-4"> {{
+				getTime(message.time) }}</span>
 				<span class="text-gray-100 dark:text-gray-800 text-sm basis-1/4">
 					{{ " @ " + message.uid }}
 				</span>
 			</div>
 			<div :style="{ color: message.msgcolor }" class="mx-12 flex my-2 flex-col render-html" :class="[
-			nickname == message.name ? 'items-end' : '']" v-html="render(message.msg)"></div>
+			name == message.name ? 'items-end' : '']" v-html="render(message.msg)"></div>
 		</div>
-		<a id="sys" href="#sys" class="text-center text-sm block text-green-300 px-8 dark:text-cyan-700">
+		<span id="sys" class="text-center text-sm block text-green-300 px-8 dark:text-cyan-700">
 			{{ systemMsg }}
-		</a>
+		</span>
 	</div>
 </template>
 
@@ -26,7 +27,7 @@ import Markdown from 'markdown-it'
 import ScrollHack from './jumptomsg'
 import { onMounted } from 'vue'
 const md = new Markdown()
-defineProps({ messageList: Array, systemMsg: String, nickname: String })
+defineProps({ messageList: Array, systemMsg: String, name: String })
 const render = (p) => {
 	return md.render(p.replace(/&gt;+/g, '>'))
 }

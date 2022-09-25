@@ -25,10 +25,10 @@ export function send_message(socket, msg, replyMsg) {
 	const msgItem = {
 		msg,
 		time,
-		namecolor: this.namecolor,
-		msgcolor: this.msgcolor,
-		uid: this.uid,
-		name: this.nickname,
+		namecolor: localStorage.getItem("namecolor"),
+		msgcolor: localStorage.getItem("msgcolor"),
+		uid: localStorage.getItem("uid"),
+		name: localStorage.getItem("name"),
 	};
 	socket.send(msgItem);
 }
