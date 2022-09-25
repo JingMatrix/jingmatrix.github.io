@@ -1,7 +1,7 @@
 ---
 layout: "page"
 title: "Glad to chat with you!"
-input: "To start chatting with me, input your name below\nand then click the start button!\nI will be nofitied even if I am not online for this moment."
+input: "To start chatting with me, input your name below\nand then click the start button!\nI will be nofitied even if I am not online for this moment.\nMaybe you could check it some time later, I shall reply all messages!"
 connect: "Start!"
 whytitle: "Why write a chat application by myself?"
 why: "To keep myself away from those big\nbut useless social media platforms."
