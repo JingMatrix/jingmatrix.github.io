@@ -1,6 +1,7 @@
 ---
 layout: false
 title: Jianyu MA's website
+description: "Hope you can find something interesting here about me"
 titleTemplate: English, Français, 中文
 head:
  - - script

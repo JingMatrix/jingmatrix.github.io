@@ -27,6 +27,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 			title: "Jianyu MA",
 			lang: "en",
 			label: "English",
+			description: "Hope you can find something interesting here about me",
 			themeConfig: {
 				socialLinks: [
 					{ icon: 'github', link: 'https://github.com/JingMatrix' },
@@ -63,6 +64,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 			title: "马健宇",
 			label: "简体中文",
 			lang: "zh",
+			description: "希望你觉得我算是一个有趣的人吧",
 			themeConfig: {
 				socialLinks: [
 					{ icon: 'github', link: 'https://github.com/JingMatrix' },
@@ -103,6 +105,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 			title: "Jianyu MA",
 			label: "Français",
 			lang: "fr",
+			description: "J'espère que vous trouverez ici quelque chose d'intéressant sur moi",
 			themeConfig: {
 				socialLinks: [
 					{ icon: 'instagram', link: 'https://www.instagram.com/jingmatrix/' },
