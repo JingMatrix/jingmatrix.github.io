@@ -45,6 +45,9 @@ onMounted(() => {
 	if (roomId && !name) {
 		name.value = roomId;
 	}
+	if (window.location.origin === "https://jingmatrix.github.io") {
+		fetch("https://jing-chat.onrender.com")
+	}
 })
 
 function savename() {

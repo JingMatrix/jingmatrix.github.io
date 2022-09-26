@@ -15,7 +15,7 @@ type HandShake = {
 export function initializeSocket(loading: Ref<boolean>, chat: ChatData, socket: Ref<Socket>, translation: Record<string, any>, subscriptionData: SubscriptionData) {
 	let server =
 		process.env.NODE_ENV === "production"
-			? "https://jing-chat.herokuapp.com"
+			? "https://jing-chat.onrender.com"
 			: "http://192.168.12.1:4000";
 
 	if (window.location.origin.match(/^http:\/\/localhost:/)) {
