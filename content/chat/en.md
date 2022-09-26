@@ -1,5 +1,6 @@
 ---
 title: "Chatroom"
+titleTemplate: "Jianyu MA"
 lang: "en"
 layout: false
 welcome: "Welcome to my chatroom!"

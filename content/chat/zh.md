@@ -1,5 +1,6 @@
 ---
 title: "聊天室"
+titleTemplate: "马健宇"
 lang: "zh"
 layout: false
 welcome: "欢迎您来到这个聊天室！"

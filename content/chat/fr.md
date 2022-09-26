@@ -1,5 +1,6 @@
 ---
 title: "Salon de discussion"
+titleTemplate: "Jianyu MA"
 lang: "fr"
 layout: false
 welcome: "Bienvenue sur mon salon de discussion!"
