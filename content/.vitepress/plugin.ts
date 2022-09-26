@@ -15,6 +15,9 @@ const vue = {
 		}
 	}
 }
+const blog = blogList.map((p) => { return { text: p.text, link: p.link } })
+const essai = essaiList.map((p) => { return { text: p.text, link: p.link } })
+const writing = writingList.map((p) => { return { text: p.text, link: p.link } })
 
 const pwa = () => {
 	return VitePWA({
@@ -93,4 +96,4 @@ const markdown = {
 	}
 }
 
-export { blogList, writingList, essaiList, vue, vite, markdown }
+export { blog, writing, essai, vue, vite, markdown }

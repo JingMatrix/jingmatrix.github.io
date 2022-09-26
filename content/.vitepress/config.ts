@@ -2,7 +2,7 @@
 
 import { defineConfigWithTheme } from 'vitepress'
 import { ThemeConfig } from './theme'
-import { blogList, writingList, essaiList, vue, vite, markdown } from './plugin'
+import { blog, writing, essai, vue, vite, markdown } from './plugin'
 
 const rssIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416c0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96C14.3 96 0 81.7 0 64zM128 416c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288c0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>'
 
@@ -37,13 +37,13 @@ export default defineConfigWithTheme<ThemeConfig>({
 				sidebar: [
 					{
 						text: "All Blogs",
-						items: writingList,
+						items: writing,
 						collapsible: true,
 					}
 				],
 				nav: [
 					{ text: "Academic", link: "/en/academic" },
-					{ text: "Writing", link: writingList[0].link },
+					{ text: "Writing", link: writing[0].link },
 					{ text: "Contact Online", link: "/en/contact" },
 					{
 						text: "About Me",
@@ -75,12 +75,12 @@ export default defineConfigWithTheme<ThemeConfig>({
 				sidebar: [
 					{
 						text: "文章列表",
-						items: blogList,
+						items: blog,
 						collapsible: true,
 					}
 				],
 				nav: [
-					{ text: "博客", link: blogList[0].link },
+					{ text: "博客", link: blog[0].link },
 					{ text: "在线聊天", link: "/zh/contact" },
 					{
 						text: "关于我",
@@ -116,13 +116,13 @@ export default defineConfigWithTheme<ThemeConfig>({
 				sidebar: [
 					{
 						text: "Mes Essais",
-						items: essaiList,
+						items: essai,
 						collapsible: true,
 					}
 				],
 				nav: [
 					{ text: "Enseignement", link: "/fr/enseignement" },
-					{ text: "Essai", link: essaiList[0].link },
+					{ text: "Essai", link: essai[0].link },
 					{ text: "Contactez en ligne", link: "/fr/contact" },
 					{
 						text: "Sur Moi",
