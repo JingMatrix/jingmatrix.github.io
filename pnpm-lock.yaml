@@ -24,6 +24,7 @@ specifiers:
   vite-plugin-rss: ^0.0.6
   vitepress: link:../vitepress
   vue: ^3.2.39
+  vue-utterances: ^0.3.4
 
 dependencies:
   '@fortawesome/free-brands-svg-icons': 6.2.0
@@ -51,6 +52,7 @@ devDependencies:
   vite-plugin-rss: 0.0.6
   vitepress: link:../vitepress
   vue: 3.2.39
+  vue-utterances: 0.3.4_vue@3.2.39
 
 packages:
 
@@ -3632,6 +3634,15 @@ packages:
     resolution: {integrity: sha512-Fb7kdqiuty3Ajq+kK7kUQo/5kppBL0uO8LYHyd/51Wy/rhbegnh9k07mb1JERWQr1BmCoal6WZ1UAlK0RpFTqg==}
     dependencies:
       xml-js: 1.6.11
+    dev: true
+
+  /vue-utterances/0.3.4_vue@3.2.39:
+    resolution: {integrity: sha512-905JBbKQFTx8TCjIHtirDvOXpwNyrKIGgy/vVmQDXTkodFhpvzbQPC5tMfJeIeIeWBfV9uJZT6RsM4WGMxzjwg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: ^3.0.5
+    dependencies:
+      vue: 3.2.39
     dev: true
 
   /vue/3.2.39:

@@ -28,7 +28,8 @@
     "vite-plugin-pwa": "^0.13.1",
     "vite-plugin-rss": "^0.0.6",
     "vitepress": "link:../vitepress",
-    "vue": "^3.2.39"
+    "vue": "^3.2.39",
+    "vue-utterances": "^0.3.4"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.2.0",
