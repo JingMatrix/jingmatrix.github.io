@@ -61,7 +61,7 @@ function configSocket(socket: Socket, chat: ChatData, translation: Record<string
 		if (user.uid && !chat.uid) {
 			chat.uid = user.uid;
 		}
-		console.log(chat)
+		// console.log(chat)
 	});
 
 	socket.on("msg", (msgItem: UserMsg) => {

@@ -19,7 +19,7 @@ function urlB64ToUint8Array(base64String: string) {
 
 export function configSubscription(socket: Socket, subscriptionData: SubscriptionData) {
 	if ("serviceWorker" in navigator && "PushManager" in window) {
-		console.log('Service Worker and Push is supported')
+		// console.log('Service Worker and Push is supported')
 		navigator.serviceWorker
 			.register("/chat/chat-notify-sw.js")
 			.then(function(swReg) {
@@ -28,20 +28,20 @@ export function configSubscription(socket: Socket, subscriptionData: Subscriptio
 				swReg.pushManager.getSubscription().then(function(subscription) {
 					if (subscription === null) {
 						subscriptionData.state = 'no';
-						console.log('User is NOT subscribed.')
+						// console.log('User is NOT subscribed.')
 					} else {
 						subscriptionData.state = 'yes';
-						console.log('User IS subscribed.')
+						// console.log('User IS subscribed.')
 					}
 					updateSubscriptionOnServer(subscription, socket);
 				});
 
 			})
-			.catch(function(error) {
-				console.error("Service Worker Error", error);
-			});
+			// .catch(function(error) {
+				// console.error("Service Worker Error", error);
+			// });
 	} else {
-		console.warn("Push messaging is not supported");
+		// console.warn("Push messaging is not supported");
 		subscriptionData.state = "disabled";
 	}
 }
@@ -66,13 +66,13 @@ export function subscribe_usr(subscriptionData: SubscriptionData, socket: Socket
 				applicationServerKey,
 			})
 			.then(function(subscription) {
-				console.log('User is subscribed.')
+				// console.log('User is subscribed.')
 				updateSubscriptionOnServer(subscription, socket);
 				subscriptionData.state = 'yes';
 			})
-			.catch(function(err) {
-				console.log("Failed to subscribe the user: ", err);
-			});
+			// .catch(function(err) {
+				// console.log("Failed to subscribe the user: ", err);
+			// });
 	} else {
 		subscriptionData.swRegistration.pushManager
 			.getSubscription()
@@ -81,12 +81,12 @@ export function subscribe_usr(subscriptionData: SubscriptionData, socket: Socket
 					return subscription.unsubscribe();
 				}
 			})
-			.catch(function(error) {
-				console.log("Error unsubscribing", error);
-			})
+			// .catch(function(error) {
+				// console.log("Error unsubscribing", error);
+			// })
 			.then(function() {
 				updateSubscriptionOnServer("delete", socket);
-				console.log('User is unsubscribed.')
+				// console.log('User is unsubscribed.')
 				subscriptionData.state = 'no';
 			});
 	}
