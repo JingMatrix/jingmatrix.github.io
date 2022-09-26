@@ -1,5 +1,5 @@
 import { Socket } from "socket.io-client";
-import { SubscriptionData } from './type'
+import { SubscriptionData } from './types'
 
 const applicationServerPublicKey =
 	"BG832LshtIE1SHABBXdtdhie4nPgveN_PkQl-y1eQv9y6N5Fp_KsZKrxiGV0oiVUjGAPkYsSIs2vZFDwW31xEiE";
@@ -65,7 +65,7 @@ export function subscribe_usr(subscriptionData: SubscriptionData, socket: Socket
 				userVisibleOnly: true,
 				applicationServerKey,
 			})
-			.then(function(subscription) {
+			.then(function(subscription: PushSubscription) {
 				// console.log('User is subscribed.')
 				updateSubscriptionOnServer(subscription, socket);
 				subscriptionData.state = 'yes';
@@ -76,7 +76,7 @@ export function subscribe_usr(subscriptionData: SubscriptionData, socket: Socket
 	} else {
 		subscriptionData.swRegistration.pushManager
 			.getSubscription()
-			.then(function(subscription) {
+			.then(function(subscription: PushSubscription) {
 				if (subscription) {
 					return subscription.unsubscribe();
 				}

@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { UserMsg } from './type'
+import { UserMsg } from './types'
 import { useData } from 'vitepress'
 const translation = useData().frontmatter.value
 

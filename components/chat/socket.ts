@@ -1,16 +1,10 @@
 import { io, Socket } from "socket.io-client";
 import { configSubscription } from "./subscription"
-import type { SystemMsg, UserMsg, UserInfo, UserList, ChatData, SubscriptionData } from "./type"
+import type { SystemMsg, SocketQuery, UserMsg, UserInfo, UserList, ChatData, SubscriptionData } from "./types"
 import type { Ref } from 'vue'
 import { watch } from 'vue'
 
 const message_scroll_timeout = 100
-
-type HandShake = {
-	uid?: string,
-	name: string,
-	room: string
-}
 
 export function initializeSocket(loading: Ref<boolean>, chat: ChatData, socket: Ref<Socket>, translation: Record<string, any>, subscriptionData: SubscriptionData) {
 	let server =
@@ -22,7 +16,7 @@ export function initializeSocket(loading: Ref<boolean>, chat: ChatData, socket: 
 		server = "http://localhost:4000";
 	}
 
-	let query: HandShake = { uid: chat.uid, name: chat.name, room: chat.room }
+	let query: SocketQuery = { uid: chat.uid, name: chat.name, room: chat.room }
 	query.uid || delete query.uid
 	fetch(`${server}/room/@${chat.room}/record?limit=50`)
 		.then((res) => res.json())
@@ -41,7 +35,7 @@ function configSocket(socket: Socket, chat: ChatData, translation: Record<string
 
 	watch(() => chat.name,
 		(name) => {
-			socket.emit('change-name', name)
+			socket.emit('rename', name)
 			localStorage.setItem('name', name)
 		})
 
@@ -76,11 +70,5 @@ function configSocket(socket: Socket, chat: ChatData, translation: Record<string
 		setTimeout(() => {
 			document.querySelector('#sys').scrollIntoView()
 		}, message_scroll_timeout)
-	});
-
-	socket.on("rename", (info: UserInfo) => {
-		if (info.uid === chat.uid) {
-			chat.name = info.name;
-		}
 	});
 }

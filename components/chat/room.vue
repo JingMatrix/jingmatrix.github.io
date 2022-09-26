@@ -29,7 +29,7 @@ import { useData } from 'vitepress'
 import { send_message } from './sender'
 import start_video from './video'
 import { subscribe_usr } from './subscription'
-import type { ChatData, SubscriptionData } from './type'
+import type { ChatData, SubscriptionData } from './types'
 
 const loading = ref(true)
 const socket = ref<Socket>();

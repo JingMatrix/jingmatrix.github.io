@@ -1,5 +1,5 @@
 import type { Socket } from 'socket.io-client'
-import type { UserMsg, ChatData } from './type'
+import type { UserMsg, ChatData } from './types'
 
 export function send_message(socket: Socket, msg: string, chatData: ChatData) {
 	if (!msg) return

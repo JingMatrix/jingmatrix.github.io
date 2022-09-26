@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import ScrollHack from './jumptomsg'
 import { onMounted } from 'vue'
-import { UserMsg } from './type'
+import { UserMsg } from './types'
 import Markdown from 'markdown-it'
 const md = new Markdown()
 defineProps<{ messageList: UserMsg[], systemMsg: string, name: string }>()
