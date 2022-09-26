@@ -9,10 +9,10 @@ export type UserMsg = {
   msgcolor: string;
   namecolor: string;
   name: string;
-  room: string;
+  room?: string;
   sid?: string;
   time: number;
-  uid?: string;
+  uid: string;
 };
 
 export type UserInfo = {

@@ -57,6 +57,7 @@ const translation = useData().frontmatter.value
 onMounted(async () => {
 	chatData.room = localStorage.getItem("room")
 	if (!chatData.room) document.location.href = `/contact/${translation.lang}`
+	chatData.uid = localStorage.getItem("uid")
 	chatData.name = localStorage.getItem("name") || chatData.room
 	if (localStorage.getItem("msgcolor") && localStorage.getItem("namecolor")) {
 		chatData.msgcolor = localStorage.getItem("msgcolor");

@@ -4,6 +4,8 @@ import type { SystemMsg, UserMsg, UserInfo, UserList, ChatData, SubscriptionData
 import type { Ref } from 'vue'
 import { watch } from 'vue'
 
+const message_scroll_timeout = 100
+
 type HandShake = {
 	uid?: string,
 	name: string,
@@ -20,7 +22,7 @@ export function initializeSocket(loading: Ref<boolean>, chat: ChatData, socket: 
 		server = "http://localhost:4000";
 	}
 
-	let query = <HandShake>chat
+	let query: HandShake = { uid: chat.uid, name: chat.name, room: chat.room }
 	query.uid || delete query.uid
 	fetch(`${server}/room/@${chat.room}/record?limit=50`)
 		.then((res) => res.json())
@@ -59,18 +61,21 @@ function configSocket(socket: Socket, chat: ChatData, translation: Record<string
 		if (user.uid && !chat.uid) {
 			chat.uid = user.uid;
 		}
+		console.log(chat)
 	});
 
 	socket.on("msg", (msgItem: UserMsg) => {
 		chat.messageList.push(msgItem);
-		document.querySelector('#sys').scrollIntoView()
-		document.querySelector("textarea").focus();
+		setTimeout(() => {
+			document.querySelector('#sys').scrollIntoView()
+		}, message_scroll_timeout)
 	});
 
 	socket.on("sys", (data: SystemMsg) => {
 		chat.systemMsg = (data.name || data.uid) + translation[data.type];
-		document.querySelector('#sys').scrollIntoView()
-		document.querySelector("textarea").focus();
+		setTimeout(() => {
+			document.querySelector('#sys').scrollIntoView()
+		}, message_scroll_timeout)
 	});
 
 	socket.on("rename", (info: UserInfo) => {
