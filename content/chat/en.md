@@ -1,5 +1,6 @@
 ---
 title: "Chatroom"
+lang: "en"
 layout: false
 welcome: "Welcome to my chatroom!"
 join-chat: " joined the chat!"
@@ -9,7 +10,9 @@ subscribe: " subscribed the notification push."
 unsubscribe: " unsubscribed from the notification push."
 online: "Online: "
 replyTitle: "Reply to: "
-push: "Enable Notification"
+push:
+  no: "Enable notifications"
+  yes: "Disable notifications"
 loading: "Fetching your messages history..."
 head:
   -  - "script"

@@ -28,7 +28,7 @@
 		<button :disabled="state === 'disabled'"
 			class="rounded-lg cursor-pointer active:outline-none border-solid border-2 border-gray-400"
 			@click="$emit('subscribe')">
-			{{ translation.push }}
+			{{ translation.push[state] }}
 		</button>
 	</div>
 </template>
@@ -51,4 +51,5 @@ defineProps<{
 defineEmits(['video-chat', 'subscribe', 'update:name', 'update:msgcolor', 'update:namecolor'])
 
 const config = ref(false)
+
 </script>

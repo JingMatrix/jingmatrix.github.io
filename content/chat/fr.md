@@ -1,5 +1,6 @@
 ---
 title: "Salon de discussion"
+lang: "fr"
 layout: false
 welcome: "Bienvenue sur mon salon de discussion!"
 join-chat: " a rejoint le chat!"
@@ -9,7 +10,9 @@ subscribe: " s'est abonné au push de notification."
 unsubscribe: " s'est désabonné au push de notification."
 online: "En ligne: "
 replyTitle: "Répondre à: "
-push: "Activer les notifications"
+push:
+  no: "Activer les notifications"
+  yes: "Desactiver les notifications"
 loading: "Récupérer l'historique de vos messages..."
 head:
   -  - "script"

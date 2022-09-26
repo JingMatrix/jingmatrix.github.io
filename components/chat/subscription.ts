@@ -19,19 +19,19 @@ function urlB64ToUint8Array(base64String: string) {
 
 export function configSubscription(socket: Socket, subscriptionData: SubscriptionData) {
 	if ("serviceWorker" in navigator && "PushManager" in window) {
-		// console.log('Service Worker and Push is supported')
+		console.log('Service Worker and Push is supported')
 		navigator.serviceWorker
-			.register("/private/notifysw.js")
+			.register("/chat/chat-notify-sw.js")
 			.then(function(swReg) {
-				// console.log('Service Worker is registered', swReg)
+				console.log('Service Worker is registered', swReg)
 				subscriptionData.swRegistration = swReg;
 				swReg.pushManager.getSubscription().then(function(subscription) {
 					if (subscription === null) {
 						subscriptionData.state = 'no';
-						// console.log('User is NOT subscribed.')
+						console.log('User is NOT subscribed.')
 					} else {
 						subscriptionData.state = 'yes';
-						// console.log('User IS subscribed.')
+						console.log('User IS subscribed.')
 					}
 					updateSubscriptionOnServer(subscription, socket);
 				});
@@ -51,12 +51,11 @@ function updateSubscriptionOnServer(subscription: string | PushSubscription, soc
 		return;
 	}
 	if (subscription === "delete") {
-		this.socket.emit("unsubscribe");
+		socket.emit("unsubscribe");
 		return;
 	}
 	socket.emit("subscribe", subscription);
 }
-
 
 export function subscribe_usr(subscriptionData: SubscriptionData, socket: Socket) {
 	if (subscriptionData.state == "no") {
@@ -67,7 +66,7 @@ export function subscribe_usr(subscriptionData: SubscriptionData, socket: Socket
 				applicationServerKey,
 			})
 			.then(function(subscription) {
-				// console.log('User is subscribed.')
+				console.log('User is subscribed.')
 				updateSubscriptionOnServer(subscription, socket);
 				subscriptionData.state = 'yes';
 			})
@@ -87,7 +86,7 @@ export function subscribe_usr(subscriptionData: SubscriptionData, socket: Socket
 			})
 			.then(function() {
 				updateSubscriptionOnServer("delete", socket);
-				// console.log('User is unsubscribed.')
+				console.log('User is unsubscribed.')
 				subscriptionData.state = 'no';
 			});
 	}

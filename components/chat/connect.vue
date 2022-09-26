@@ -35,7 +35,8 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 import { useData } from 'vitepress'
-const translation = useData().frontmatter.value;
+const translation = useData().frontmatter.value
+const lang = useData().site.value.lang
 
 const name = ref('');
 onMounted(() => {
@@ -52,7 +53,7 @@ function savename() {
 	if (!localStorage.getItem("name")) {
 		localStorage.setItem("name", name.value);
 	}
-	window.location.href = "./chat";
+	window.location.href = `/chat/${lang}`;
 }
 </script>
 
