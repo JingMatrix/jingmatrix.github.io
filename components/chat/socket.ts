@@ -9,7 +9,7 @@ const message_scroll_timeout = 100
 export function initializeSocket(loading: Ref<boolean>, chat: ChatData, socket: Ref<Socket>, translation: Record<string, any>, subscriptionData: SubscriptionData) {
 	let server =
 		process.env.NODE_ENV === "production"
-			? "https://jing-chat.onrender.com"
+			? "https://jing-chat-production.up.railway.app"
 			: "http://192.168.12.1:4000";
 
 	if (window.location.origin.match(/^http:\/\/localhost:/)) {

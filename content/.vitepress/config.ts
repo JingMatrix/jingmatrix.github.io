@@ -17,7 +17,6 @@ export default defineConfigWithTheme<ThemeConfig>({
 		['link', { rel: 'mask-icon', href: '/img/logo.svg', color: '#ffffff' }],
 		['meta', { name: 'author', content: 'Jianyu MA' }],
 		['link', { rel: 'apple-touch-icon', href: '/img/icon-180.png', sizes: '180x180' }],
-		['script', { type: "text/javascript"}, 'window.location.origin === "https://jingmatrix.github.io" && fetch("https://jing-chat.onrender.com")'],
 	],
 	themeConfig: {
 		// pageLayout: "Blog",
