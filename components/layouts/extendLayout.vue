@@ -19,6 +19,9 @@ onMounted(() => {
 		attributes: true,
 		attributeFilter: ['class'],
 	});
+	if (window.location.origin === "https://jingmatrix.github.io") {
+		fetch("https://jing-chat.onrender.com")
+	}
 });
 
 onBeforeUnmount(() => {
