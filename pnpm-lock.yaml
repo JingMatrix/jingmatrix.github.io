@@ -15,6 +15,7 @@ specifiers:
   gray-matter: ^4.0.3
   katex: ^0.16.2
   markdown-it: ^13.0.1
+  markdown-it-emoji: ^2.0.2
   markdown-it-footnote: ^3.0.3
   markdown-it-texmath: ^1.0.0
   postcss: ^8.4.16
@@ -31,6 +32,7 @@ dependencies:
   '@fortawesome/free-regular-svg-icons': 6.2.0
   '@fortawesome/free-solid-svg-icons': 6.2.0
   markdown-it: 13.0.1
+  markdown-it-emoji: 2.0.2
   socket.io-client: 4.5.2
 
 devDependencies:
@@ -2616,6 +2618,10 @@ packages:
     dependencies:
       sourcemap-codec: 1.4.8
     dev: true
+
+  /markdown-it-emoji/2.0.2:
+    resolution: {integrity: sha512-zLftSaNrKuYl0kR5zm4gxXjHaOI3FAOEaloKmRA5hijmJZvSjmxcokOLlzycb/HXlUFWzXqpIEoyEMCE4i9MvQ==}
+    dev: false
 
   /markdown-it-footnote/3.0.3:
     resolution: {integrity: sha512-YZMSuCGVZAjzKMn+xqIco9d1cLGxbELHZ9do/TSYVzraooV8ypsppKNmUJ0fVH5ljkCInQAtFpm8Rb3eXSrt5w==}

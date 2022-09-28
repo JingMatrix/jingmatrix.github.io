@@ -1,4 +1,6 @@
 <template>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
+		integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
 	<div class="fixed overflow-y-scroll mt-12 w-full" style="height: calc(100% - 10rem)">
 		<div v-for="message in messageList" :id="message.time.toString()" :key="message.time"
 			class="w-full max-w-2xl mx-auto" @dblclick="$emit('reply-msg', message)">
@@ -26,7 +28,21 @@ import ScrollHack from './jumptomsg'
 import { onMounted } from 'vue'
 import { UserMsg } from './types'
 import Markdown from 'markdown-it'
-const md = new Markdown()
+import emoji from 'markdown-it-emoji'
+import katex from 'katex'
+import texmath from 'markdown-it-texmath'
+const markdownItOption = {
+	html: true,
+	linkify: true,
+	typographer: true,
+	xhtmlOut: true,
+}
+
+const md = new Markdown(markdownItOption)
+md.use(emoji).use(texmath, {
+	engine: katex,
+	delimiters: ['dollars', 'beg_end', 'julia']
+})
 defineProps<{ messageList: UserMsg[], systemMsg: string, name: string }>()
 const render = (p: string) => {
 	return md.render(p.replace(/&gt;+/g, '>'))

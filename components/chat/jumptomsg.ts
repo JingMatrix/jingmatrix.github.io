@@ -5,12 +5,13 @@ export default function() {
 			const currentUrl = window.location
 			const link = (e.target as Element).closest('a')
 			if (link && !link.closest('.vp-raw')) {
-				e.preventDefault()
+				link.target = '_blank'
 				const { pathname, hash, search } = link
 				if (
 					pathname === currentUrl.pathname &&
 					search === currentUrl.search
 					&& hash && hash.match(/^#\d+$/)) {
+					e.preventDefault()
 					e.stopPropagation()
 					document.querySelector('#chat-room #\\31 ' + hash.slice(2)).scrollIntoView()
 				}
