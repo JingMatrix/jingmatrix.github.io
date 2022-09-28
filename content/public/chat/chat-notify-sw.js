@@ -21,8 +21,8 @@ self.addEventListener('push', function(event) {
 	let title = msgItem.msg;
 	const options = {
 		body: `${msgItem.name} @ ${msgItem.room}`,
-		icon: 'https://jingmatrix.github.io/favicon.png',
-		badge: 'https://jingmatrix.github.io/favicon.png'
+		icon: `${location.origin}/favicon.png`,
+		badge: `${location.origin}/favicon.png`
 	};
 	clients.matchAll({
 		includeUncontrolled: true,

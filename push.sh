@@ -12,4 +12,5 @@ git commit -m "new build by vitepress"
 git remote add origin git@github.com:JingMatrix/jingmatrix.github.io.git
 git push --set-upstream origin master -f
 cd ..
+rclone -L sync push/docs cnrs-perso:public
 rm -rf push
