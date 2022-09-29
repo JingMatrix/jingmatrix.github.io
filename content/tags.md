@@ -48,6 +48,7 @@
 
 ## 思考
 
+- [生活的意义](/zh/blog/2022-09-29-meaning-of-life) 
 - [论顾影自怜](/zh/blog/2022-02-09-feel-sorry-of-oneself) 
 - [无力创造价值](/zh/blog/2021-01-16-valueless-state) 
 - [平静与秩序](/zh/blog/2020-09-26-peace-and-order) 
@@ -90,6 +91,7 @@
 
 ## 生活相关
 
+- [生活的意义](/zh/blog/2022-09-29-meaning-of-life) 
 - [无力创造价值](/zh/blog/2021-01-16-valueless-state) 
 - [简论琐碎](/zh/blog/2020-08-02-on-trivial) 
 - [疫情百日](/zh/blog/2020-04-24-100-days-in-covid) 
