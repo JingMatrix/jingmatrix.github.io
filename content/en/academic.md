@@ -24,4 +24,4 @@ title: 'Academic'
 
 ## Applications
 
-- PhD EDMITT: [motivation letter](/pdf/phd_motivation.pdf)
+- PhD EDMITT: [motivation letter](/pdf/phd_motivation.pdf) and [interview presentation](/pdf/phd_interview.pdf)
