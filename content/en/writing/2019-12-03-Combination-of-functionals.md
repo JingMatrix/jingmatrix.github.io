@@ -53,6 +53,6 @@ which is (1).
 
 #### Remark
 
-This lemma use Hahn-Banach theorem in a tricky way.
+This lemma applies Hahn-Banach theorem in a tricky way.
 
 [^1]: Walter Rudin. Analyse fonctionnelle. French. Trans. English by Adbdellatif Abouhazim.1995. Chap. 3, p. 62.
