@@ -12,7 +12,7 @@ title: 'Academic'
 
 - M2 internship: [Existence and Uniqueness of Barycenter in Metric Spaces](https://drive.google.com/file/d/1DgcO-M13q4x_sCYsJTPjR9Wx154C0tnh/view?usp=sharing)
 
-- M2 Reading Seminar Presentatio: <a ref="noreferer" target='_blank' href="/HyperbolicGroup/index.html">Hyperbolic Groups</a>
+- M2 Reading Seminar Presentatin: <a ref="noreferer" target='_blank' href="/HyperbolicGroup/index.html">Hyperbolic Groups</a>
 
 - M1 internship: [Stochastic calculus application in quantum mechanics](/pdf/probability_M1_stage.pdf)
 
