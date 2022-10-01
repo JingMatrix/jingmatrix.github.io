@@ -1,0 +1,87 @@
+.katex-display { overflow: auto hidden }
+
+.katex-display > .katex { white-space: normal }
+/* Add space between broken lines: */
+.katex-display > .base { margin: 0.25em 0 }
+/* Compensate by reducing space around display math */
+.katex-display { margin: 0.5em 0; }
+
+main {
+  counter-reset: definition theorem lemma example proposition corollary;
+}
+
+div.definition:before {
+	counter-increment: definition;
+	content: "Definition " counter(definition) ". ";
+	font-weight: bold;
+}
+
+div.theorem:before {
+	counter-increment: theorem;
+	content: "Theorem " counter(theorem) ". ";
+	font-weight: bold;
+}
+
+div.lemma:before {
+	counter-increment: lemma;
+	content: "Lemma " counter(lemma) ". ";
+	font-weight: bold;
+}
+
+div.example:before {
+	counter-increment: example;
+	content: "Example " counter(example) ". ";
+	font-weight: bold;
+}
+
+div.proposition:before {
+	counter-increment: proposition;
+	content: "Proposition " counter(proposition) ". ";
+	font-weight: bold;
+}
+
+div.corollary:before {
+	counter-increment: corollary;
+	content: "Corollary " counter(corollary) ". ";
+	font-weight: bold;
+}
+
+div.proof:before {
+	content: "Proof. ";
+	font-style: italic;
+}
+
+div.preuve:before {
+	content: "Démonstation. ";
+	font-style: italic;
+}
+
+div.preuve > p:last-child:after,
+div.proof > p:last-child:after {
+	content: "\25FB";
+	float: right;
+}
+
+div.proof > p:first-child,
+div.preuve > p:first-child,
+div.corollary > p:first-child,
+div.theorem > p:first-child,
+div.proposition > p:first-child,
+div.definition > p:first-child,
+div.lemma > p:first-child,
+div.example > p:first-child {
+	display: inline;
+}
+
+div.corollary,
+div.theorem,
+div.proposition,
+div.definition,
+div.proof,
+div.preuve,
+div.lemma,
+div.example {
+	margin-block: 1rem;
+	text-align: justify;
+	font-family: serif;
+}

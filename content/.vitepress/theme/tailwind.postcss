@@ -11,7 +11,7 @@ html[lang="zh"] body #app {
 }
 
 @layer components {
-  #app .content .content-container .main div[class*="_zh_blog"] {
+  #app .content .content-container .main div[class*="_zh_blog"] div {
     @apply prose-headings:font-[STKaiti,楷体];
   }
   #app .content .content-container .main .vp-doc div {
@@ -23,6 +23,7 @@ html[lang="zh"] body #app {
 		prose-a:decoration-1
 		prose-code:font-medium
 		prose-a:underline-offset-4
+		prose-p:text-justify
 		prose-p:indent-[2em];
     .header-anchor {
       @apply text-green-200;
@@ -37,6 +38,10 @@ html[lang="zh"] body #app {
       @apply hover:text-blue-500 hover:decoration-4 dark:hover:text-indigo-300;
     }
   }
+  
+  #app .content .content-container .main .vp-doc div li.footnote-item  p {
+	  @apply indent-0
+	}
 
   #chat-room .render-html {
     @apply prose prose-zinc dark:prose-invert prose-p:my-0;

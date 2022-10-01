@@ -36,7 +36,16 @@ export function hookFrontmatter(f: Frontmatter, filename: string): Frontmatter {
 					href: "https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css",
 					integrity: "sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X",
 					crossorigin: "anonymous"
-				}]);
+				}])
+			f.head.push(
+				['link', { rel: "stylesheet", href: "/css/math.css" }])
+			f.head.push(
+				['script', {
+					type: "module",
+					src: "https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/copy-tex.mjs",
+					integrity: "sha384-bVEnwt0PtX+1EuJoOEcm4rgTUWvb2ILTdjHfI1gUe/r5fdqrTcQaUuRdHG2DciuQ",
+					crossorigin: "anonymous"
+				}])
 		}
 	}
 	return f
@@ -79,7 +88,7 @@ export default function() {
 	["fr/essai", "zh/blog", "en/writing"].forEach(dir => {
 		fs.writeFileSync(`server/data/${dir.slice(3)}.json`, JSON.stringify(getPosts(
 			'content/' + dir).filter(
-			(p: Post) => p.frontMatter.hidden !== true)
+				(p: Post) => p.frontMatter.hidden !== true)
 			.map(
 				(p: Post) => {
 					posts.push(p);

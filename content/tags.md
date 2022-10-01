@@ -1,6 +1,6 @@
 ## Analyse
 
-- [Combination of functionals](/en/writing/2019-12-03-Combination-of-functionals) 
+- [Combination of Functionals](/en/writing/2019-12-03-Combination-of-Functionals) 
 
 ## Daily
 
@@ -13,9 +13,9 @@
 - [October Personal Summary](/zh/blog/2017-10-17-review-oct-2017) 
 - [致刘伟安教授](/zh/blog/2017-09-10-to-liu) 
 - [七夕](/zh/blog/2017-08-17-chinese-valentines-day) 
-- [Christamas Eve](/en/writing/2019-12-25-christamas-eve-en) 
+- [Christamas Eve](/en/writing/2019-12-25-Christamas-Eve) 
 - [Workflow](/en/writing/2019-12-21-Workflow) 
-- [Crossing GFW in WHU](/en/writing/2019-07-16-crossing-gfw) 
+- [Crossing GFW in WHU](/en/writing/2019-07-16-Crossing-GFW) 
 
 ## Excerpt
 
@@ -26,25 +26,17 @@
 - [讲故事的人](/zh/blog/2019-12-28-storyteller) 
 - [博学笃志-追求卓越](/zh/blog/2019-12-24-advices-graduates) 
 - [二十世纪的数学](/zh/blog/2019-12-24-20th-century-math) 
-- [The Slow Science Manifesto](/en/writing/2020-05-01-slow-science) 
-- [Solving math exercises](/en/writing/2019-12-20-Solving-math-exercises) 
+- [The Slow Science Manifesto](/en/writing/2020-05-01-Slow-Science) 
+- [Solving Math Exercises](/en/writing/2019-12-20-Solving-Math-Exercises) 
 
 ## Geometry
 
 - [Intersection de l'espace tangent](/fr/essai/2019-08-12-Intersection-of-tangent-space) 
 
-## Lemma
-
-- [Combination of functionals](/en/writing/2019-12-03-Combination-of-functionals) 
-
 ## Poème
 
 - [Pourquoi tu es triste?](/fr/essai/2022-01-26-pourquoi-triste) 
 - [À ma grand-mère](/fr/essai/2022-01-10-grand-m%C3%A8re) 
-
-## Proposition
-
-- [Intersection de l'espace tangent](/fr/essai/2019-08-12-Intersection-of-tangent-space) 
 
 ## 思考
 
