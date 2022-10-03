@@ -4,6 +4,7 @@
 
 ## Daily
 
+- [Hack Wifirst dans la Résidence Blaise Pascal](/fr/essai/2022-10-03-hack-wifi-blaise-pascal) 
 - [平安夜](/zh/blog/2019-12-24-christamas-eve) 
 - [2019年1月总结](/zh/blog/2019-06-15-review-jun-2019) 
 - [除夕日文](/zh/blog/2018-02-15-chinese-new-year) 
