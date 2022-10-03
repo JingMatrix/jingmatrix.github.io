@@ -100,7 +100,6 @@
 - [来法国一个月了](/zh/blog/2019-09-22-one-month-in-France) 
 - [抵达法国](/zh/blog/2019-08-24-arrive%20in%20France) 
 - [我要学习做菜](/zh/blog/2019-07-30-cooker) 
-- [前往法国的准备](/zh/blog/2019-07-25-preparation-abroad) 
 - [单机游戏](/zh/blog/2019-07-24-offline-games) 
 - [对网络生活的约定](/zh/blog/2019-07-20-internet-life) 
 - [心理暗示](/zh/blog/2018-02-14-psycological-suggestion) 
@@ -119,7 +118,6 @@
 
 ## 读书笔记
 
-- [法语中含有作用不明确的en的短语小结](/zh/blog/2019-08-01-french-note) 
 - [尼采读书笔记---壹](/zh/blog/2019-07-26-Nietzsche1) 
 - [尼采读书笔记---零](/zh/blog/2019-07-26-Nietzsche0) 
 

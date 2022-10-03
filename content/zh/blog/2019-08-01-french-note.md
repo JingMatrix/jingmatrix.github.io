@@ -1,6 +1,7 @@
 ---
 author: 李小玉
 title: 法语中含有作用不明确的en的短语小结
+hidden: true
 tags:
   - 读书笔记
 ---

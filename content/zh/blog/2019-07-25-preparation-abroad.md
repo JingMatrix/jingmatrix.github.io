@@ -1,6 +1,7 @@
 ---
 title: 前往法国的准备
 date: 2019-07-25
+hidden: true
 tags:
   - 生活相关
 ---
