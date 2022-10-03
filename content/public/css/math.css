@@ -85,3 +85,7 @@ div.example {
 	text-align: justify;
 	font-family: serif;
 }
+
+div.theorem {
+	font-style: italic;
+}
