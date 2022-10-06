@@ -1,7 +1,6 @@
 # /bin/sh
 
 [ -d push ] && rm -rf push
-# pnpm build
 mkdir push
 cd push
 git init -q

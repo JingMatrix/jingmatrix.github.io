@@ -4,6 +4,7 @@
   "description": "Jianyu MA's homepage",
   "author": "Jing Matrix",
   "scripts": {
+	"build-vitepress": "cd vitepress && pnpm install && pnpm build",  
     "dev": "ts-node main.ts && vitepress dev content --host",
     "build": "ts-node main.ts && vitepress build content",
     "serve": "vitepress serve content"
@@ -26,7 +27,7 @@
     "tailwindcss": "^3.1.8",
     "vite-plugin-pwa": "^0.13.1",
     "vite-plugin-rss": "^0.0.6",
-    "vitepress": "link:../vitepress",
+    "vitepress": "link:vitepress",
     "vue": "^3.2.39",
     "vue-utterances": "^0.3.4"
   },

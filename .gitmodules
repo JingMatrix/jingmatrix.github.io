@@ -1,0 +1,5 @@
+[submodule "vitepress"]
+	path = vitepress
+	url = https://github.com/JingMatrix/vitepress.git
+	ignore = all
+	shallow = true

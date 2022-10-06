@@ -1,4 +1,5 @@
 dist
+content/tags.md
 server/data/blog.json
 server/data/writing.json
 server/data/essai.json

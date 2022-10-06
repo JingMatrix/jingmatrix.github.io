@@ -24,7 +24,7 @@ specifiers:
   tailwindcss: ^3.1.8
   vite-plugin-pwa: ^0.13.1
   vite-plugin-rss: ^0.0.6
-  vitepress: link:../vitepress
+  vitepress: link:vitepress
   vue: ^3.2.39
   vue-utterances: ^0.3.4
 
@@ -54,7 +54,7 @@ devDependencies:
   tailwindcss: 3.1.8_postcss@8.4.16
   vite-plugin-pwa: 0.13.1
   vite-plugin-rss: 0.0.6
-  vitepress: link:../vitepress
+  vitepress: link:vitepress
   vue: 3.2.39
   vue-utterances: 0.3.4_vue@3.2.39
 
