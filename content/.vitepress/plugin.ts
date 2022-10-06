@@ -1,9 +1,11 @@
 import markdownHook from '../../server/markdownHook'
-import { VitePWA } from 'vite-plugin-pwa'
+import { VitePWA, VitePluginPWAAPI } from 'vite-plugin-pwa'
 import { rssPlugin } from "vite-plugin-rss";
 import blogList from '../../server/data/blog.json'
 import writingList from '../../server/data/writing.json'
 import essaiList from '../../server/data/essai.json'
+import type MarkdownIt from 'markdown-it'
+import { resolveConfig } from 'vite'
 
 const katex_tags = ['math', 'annotation', 'semantics', 'mtext', 'mn', 'mo', 'mi', 'mspace', 'mover', 'munder', 'munderover', 'msup', 'msub', 'msubsup', 'mfrac', 'mroot', 'msqrt', 'mtable', 'mtr', 'mtd', 'mlabeledtr', 'mrow', 'menclose', 'mstyle', 'mpadded', 'mphantom', 'mglyph', 'svg', 'line', 'path', 'eq', 'eqn'];
 
@@ -15,16 +17,17 @@ const vue = {
 		}
 	}
 }
+
 const blog = blogList.map((p) => { return { text: p.text, link: p.link } })
 const essai = essaiList.map((p) => { return { text: p.text, link: p.link } })
 const writing = writingList.map((p) => { return { text: p.text, link: p.link } })
 
 const pwa = () => {
 	return VitePWA({
-		outDir: '.vitepress/dist',
+		outDir: 'content/.vitepress/dist',
 		registerType: 'autoUpdate',
-		injectRegister: 'script',
-		includeAssets: ['favicon.ico', 'img/icon-180.png', 'img/masked-icon.svg'],
+		injectRegister: false,
+		includeAssets: ['favicon.png', 'img/icon-180.png', 'img/masked-icon.svg'],
 		manifest: {
 			name: "Jianyu MA's website",
 			short_name: 'Jianyu',
@@ -32,12 +35,12 @@ const pwa = () => {
 			theme_color: '#ffffff',
 			icons: [
 				{
-					src: 'img/icon-192x192.png',
+					src: 'img/icon-192.png',
 					sizes: '192x192',
 					type: 'image/png'
 				},
 				{
-					src: 'img/icon-512x512.png',
+					src: 'img/icon-512.png',
 					sizes: '512x512',
 					type: 'image/png'
 				}
@@ -88,12 +91,18 @@ const vite = {
 	]
 }
 
+const buildEnd = async () => {
+	const config = await resolveConfig({ plugins: [pwa()] }, 'build', 'production')
+	const pwaPlugin: VitePluginPWAAPI = config.plugins.find(i => i.name === 'vite-plugin-pwa')?.api
+	if (pwaPlugin && pwaPlugin.generateSW && !pwaPlugin.disabled)
+		await pwaPlugin.generateSW()
+}
 
 const markdown = {
 	theme: { dark: 'dark-plus', light: 'nord' },
-	config: (md) => {
+	config: (md: MarkdownIt) => {
 		md.use(markdownHook)
 	}
 }
 
-export { blog, writing, essai, vue, vite, markdown }
+export { blog, writing, essai, vue, vite, markdown, buildEnd }
