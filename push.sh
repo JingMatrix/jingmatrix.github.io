@@ -6,6 +6,7 @@ cd push
 git init -q
 touch .nojekyll
 cp -r ../content/.vitepress/dist docs/
+rm -rf docs/**/.git
 git add .
 git commit -m "new build by vitepress"
 git remote add origin git@github.com:JingMatrix/jingmatrix.github.io.git

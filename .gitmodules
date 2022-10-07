@@ -1,3 +1,13 @@
+[submodule "hyperbolic-canvas"]
+	path = content/public/hyperbolic-canvas
+	url = https://github.com/JingMatrix/hyperbolic-canvas.git
+	ignore = all
+	shallow = true
+[submodule "h2snake"]
+	path = content/public/h2snake
+	url = https://github.com/JingMatrix/h2snake.git
+	ignore = all
+	shallow = true
 [submodule "vitepress"]
 	path = vitepress
 	url = https://github.com/JingMatrix/vitepress.git
