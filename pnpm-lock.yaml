@@ -12,6 +12,7 @@ specifiers:
   '@types/node': ^18.7.18
   autoprefixer: ^10.4.11
   cssnano: ^5.1.13
+  filesize: ^10.0.5
   gray-matter: ^4.0.3
   katex: ^0.16.2
   markdown-it: ^13.0.1
@@ -48,6 +49,7 @@ devDependencies:
   '@types/node': 18.7.18
   autoprefixer: 10.4.11_postcss@8.4.16
   cssnano: 5.1.13_postcss@8.4.16
+  filesize: 10.0.5
   gray-matter: 4.0.3
   markdown-it-fancy-lists: 1.1.3_markdown-it@13.0.1
   markdown-it-footnote: 3.0.3
@@ -2402,6 +2404,11 @@ packages:
     resolution: {integrity: sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==}
     dependencies:
       minimatch: 5.1.0
+    dev: true
+
+  /filesize/10.0.5:
+    resolution: {integrity: sha512-qrzyt8gLh86nsyYiC3ibI5KyIYRCWg2yqIklYrWF4a0qNfekik4OQfn7AoPJG2hRrPMSlH6fET4VEITweZAzjA==}
+    engines: {node: '>= 14.0.0'}
     dev: true
 
   /fill-range/7.0.1:
