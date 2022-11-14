@@ -1,7 +1,15 @@
 <template>
-	<div class="flex flex-col justify-center pt-8 sm:w-5/6 lg:w-2/3 mx-auto">
-		<div v-for="item in items" :key="item.file_id" @click="get(item.file_id)" class="flex flex-row pt-6 px-2">
-			<div class="basis-11/12 mr-2 text-violet-600 dark:text-green-300 hover:shadow-md py-2"> {{ item.name }} </div>
+	<div v-if='relay'>
+		<div class="text-center mt-4 text-lg text-gray-400"> {{ info }} </div>
+		<a :href='link' v-if='ready' target='_blank'
+			class="block underline text-slate-400 dark:text-green-400 mx-auto mt-6 text-center"> {{ translation.link
+			+ filename }}
+		</a>
+	</div>
+	<div v-else class="flex flex-col justify-center pt-8 sm:w-5/6 lg:w-2/3 mx-auto">
+		<div v-for="item in items" :key="item.file_id" @click="get(item)" class="flex flex-row pt-6 px-2">
+			<div class="basis-11/12 mr-2 text-violet-600 dark:text-green-300 hover:shadow-md py-2"> {{ item.name }}
+			</div>
 			<div class="basis-1/12 ml-2 text-gray-400"> {{ filesize(item.size) }} </div>
 		</div>
 	</div>
@@ -12,17 +20,26 @@
 import { Info } from './types'
 import { useData } from 'vitepress'
 import { filesize } from "filesize";
+import { ref } from 'vue';
 const translation = useData().frontmatter.value
+const relay = ref(false)
+const ready = ref(false)
+const link = ref('')
+const filename = ref('')
+const info = ref(translation.wait)
 defineProps<{ items: Info[] }>()
 
-const get = (file_id: string) => {
+const get = (item: Info) => {
+	relay.value = true
+	filename.value = item.name
 	fetch(translation.api, {
 		method: 'POST',
-		body: file_id
+		body: item.file_id
 	}).then((response) =>
 		response.text()).then((url) => {
-			alert(translation.notice)
-			window.location.href = url
+			ready.value = true
+			info.value = translation.ready
+			link.value = url
 		})
 }
 </script>
