@@ -5,6 +5,7 @@
 			class="block underline text-slate-400 dark:text-green-400 mx-auto mt-6 text-center"> {{ translation.link
 			+ filename }}
 		</a>
+		<font-awesome-icon v-else class="text-center block mx-auto mt-4" icon="fa-solid fa-spinner" spin />
 	</div>
 	<div v-else class="flex flex-col justify-center pt-8 sm:w-5/6 lg:w-2/3 mx-auto">
 		<div v-for="item in items" :key="item.file_id" @click="get(item)" class="flex flex-row pt-6 px-2">
@@ -22,17 +23,23 @@ import { useData } from 'vitepress'
 import { filesize } from "filesize";
 import { ref } from 'vue';
 const translation = useData().frontmatter.value
-const relay = ref(false)
 const ready = ref(false)
 const link = ref('')
 const filename = ref('')
 const info = ref(translation.wait)
-defineProps<{ items: Info[] }>()
+const emit = defineEmits(['relay-show'])
+const api = process.env.NODE_ENV === "production"
+	? translation.api
+	: "http://localhost:4000/Alibrary";
+defineProps<{ items: Info[], relay: boolean }>()
 
 const get = (item: Info) => {
-	relay.value = true
+	emit('relay-show')
+	ready.value = false
+	info.value = translation.wait
 	filename.value = item.name
-	fetch(translation.api, {
+	link.value = ''
+	fetch(api, {
 		method: 'POST',
 		body: item.file_id
 	}).then((response) =>

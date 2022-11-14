@@ -47,6 +47,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 				],
 				nav: [
 					{ text: "Academic", link: "/en/academic" },
+					{ text: "Alibrary", link: "/en/Alibrary" },
 					{ text: "Writing", link: writing[0].link },
 					{ text: "Contact Online", link: "/en/contact" },
 					{
@@ -84,6 +85,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 					}
 				],
 				nav: [
+					{ text: "Alibrary", link: "/zh/Alibrary" },
 					{ text: "博客", link: blog[0].link },
 					{ text: "在线聊天", link: "/zh/contact" },
 					{
