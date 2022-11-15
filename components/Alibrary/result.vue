@@ -28,10 +28,7 @@ const link = ref('')
 const filename = ref('')
 const info = ref(translation.wait)
 const emit = defineEmits(['relay-show'])
-const api = process.env.NODE_ENV === "production"
-	? translation.api
-	: "http://localhost:4000/Alibrary";
-defineProps<{ items: Info[], relay: boolean }>()
+const props = defineProps<{ items: Info[], relay: boolean, api: string }>()
 
 const get = (item: Info) => {
 	emit('relay-show')
@@ -39,14 +36,18 @@ const get = (item: Info) => {
 	info.value = translation.wait
 	filename.value = item.name
 	link.value = ''
-	fetch(api, {
+	fetch(props.api, {
 		method: 'POST',
-		body: item.file_id
+		body: JSON.stringify({ 'file_id': item.file_id, 'share_id': item.share_id })
 	}).then((response) =>
 		response.text()).then((url) => {
-			ready.value = true
-			info.value = translation.ready
-			link.value = url
+			if (url != 'Failed') {
+				ready.value = true
+				info.value = translation.ready
+				link.value = url
+			} else {
+				alert(translation.failed + JSON.stringify(item))
+			}
 		})
 }
 </script>
