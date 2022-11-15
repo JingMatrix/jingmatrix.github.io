@@ -13,7 +13,7 @@
 		</div>
 		<span class="text-gray-400"> {{ translation.api_choice }} </span>
 <select v-model="api_choice" @change="update_api"
-			class="p-2 mb-6 text-sm text-gray-900 border-2 border-solid ring-2 border-gray-300 rounded-lg bg-gray-100 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+			class="p-2 mb-6 mt-3 text-sm text-gray-900 border-2 border-solid ring-2 border-gray-300 rounded-lg bg-gray-100 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 			<option value="Fast"> {{ translation.fast_api.name }} </option>
 			<option value="Large"> {{ translation.large_api.name }} </option>
 		</select>
