@@ -28,15 +28,16 @@ const link = ref('')
 const filename = ref('')
 const info = ref(translation.wait)
 const emit = defineEmits(['relay-show'])
-const props = defineProps<{ items: Info[], relay: boolean, api: string }>()
+defineProps<{ items: Info[], relay: boolean }>()
 
+const api = translation.fast_api.entry_point
 const get = (item: Info) => {
 	emit('relay-show')
 	ready.value = false
 	info.value = translation.wait
 	filename.value = item.name
 	link.value = ''
-	fetch(props.api, {
+	fetch(api, {
 		method: 'POST',
 		body: JSON.stringify({ 'file_id': item.file_id, 'share_id': item.share_id })
 	}).then((response) =>
