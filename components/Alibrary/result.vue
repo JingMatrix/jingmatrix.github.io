@@ -30,7 +30,6 @@ const info = ref(translation.wait)
 const emit = defineEmits(['relay-show'])
 defineProps<{ items: Info[], relay: boolean }>()
 const api = translation.api[0]
-
 const get = (item: Info) => {
 	emit('relay-show')
 	ready.value = false
@@ -42,12 +41,12 @@ const get = (item: Info) => {
 		body: JSON.stringify({ 'file_id': item.file_id, 'share_id': item.share_id })
 	}).then((response) =>
 		response.text()).then((url) => {
-			if (url != 'Failed') {
+			if (url.substring(0, 6) != 'Failed') {
 				ready.value = true
 				info.value = translation.ready
 				link.value = url
 			} else {
-				alert(translation.failed + JSON.stringify(item))
+				alert(translation.failed + JSON.stringify(item) + ' with error: ' + url)
 			}
 		})
 }
