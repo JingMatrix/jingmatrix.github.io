@@ -31,6 +31,8 @@ const api = translation.api[0]
 
 const submit = (e: Event) => {
 	searching.value = true;
+	relay.value = false
+	results.value = []
 	const search = (e.target as HTMLInputElement).value || search_text.value
 	if (search.trim() != '') {
 		fetch(api + '?' + encodeURIComponent(search)).then((response) => response.json()).
@@ -39,6 +41,7 @@ const submit = (e: Event) => {
 				if (data.length > 0) {
 					results.value = data;
 					zero_result.value = false;
+					searching.value = false;
 				} else {
 					zero_result.value = true;
 				}
