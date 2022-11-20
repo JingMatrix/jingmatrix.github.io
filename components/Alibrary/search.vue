@@ -35,6 +35,10 @@ onMounted(() => {
 		search_text.value = decodeURIComponent(search.substring(1))
 		submit()
 	}
+	fetch(api, {
+		method: 'POST',
+		body: '{"alibrary": "login"}'
+	})
 })
 
 const submit = () => {
