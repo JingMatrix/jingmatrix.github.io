@@ -20,7 +20,7 @@
 <script lang="ts" setup>
 import Result from './result.vue'
 import { useData } from 'vitepress'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 const search_text = ref('');
 const zero_result = ref(false)
 const relay = ref(false)
@@ -29,14 +29,33 @@ const results = ref([])
 const translation = useData().frontmatter.value
 const api = translation.api[0]
 
-const submit = (e: Event) => {
+onMounted(() => {
+	const search = window.location.search
+	if (search != '') {
+		search_text.value = decodeURIComponent(search.substring(1))
+		submit()
+	}
+})
+
+const submit = () => {
 	searching.value = true;
 	relay.value = false
 	results.value = []
-	const search = (e.target as HTMLInputElement).value || search_text.value
+	const search = search_text.value
 	if (search.trim() != '') {
-		fetch(api + '?' + encodeURIComponent(search)).then((response) => response.json()).
+		fetch(api + '?' + encodeURIComponent(search)).then((response) => {
+			if (response.status == 403) {
+				zero_result.value = true;
+				alert(translation.invalid_search)
+			} else {
+				return response.json()
+			}
+		}
+		).
 			then((data) => {
+				if (data == undefined) {
+					return
+				}
 				searching.value = false;
 				if (data.length > 0) {
 					results.value = data;
