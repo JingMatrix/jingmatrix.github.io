@@ -1,11 +1,15 @@
 ---
 layout: "page"
 title: "Alibray"
-head_title: "Search for Chinese e-books "
-api:
-  - "https://jing-backend.deno.dev/Alibrary"
-  - "https://alibrary-production.up.railway.app"
-  - "https://alibrary-4xpvmmm4za-de.a.run.app"
+head_title: "Accurate search engine for Aliyundrive"
+api: "https://jing-backend.deno.dev/Alibrary"
+categories:
+  - name: "book"
+    text: "Chinese publications"
+    description: "552544 records"
+  - name: "collection"
+    text: "General resources"
+    description: "275969 records"
 zero_result: "No results found, you might consider changing keywords."
 invalid_search: "Your search contains illegal keywords, please retry!"
 failed: "Errors found in the dataset, please provde the following infomation to https://github.com/JingMatrix/Alibrary/issues : "

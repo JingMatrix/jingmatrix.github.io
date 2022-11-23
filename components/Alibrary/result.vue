@@ -29,7 +29,7 @@ const filename = ref('')
 const info = ref(translation.wait)
 const emit = defineEmits(['relay-show'])
 defineProps<{ items: Info[], relay: boolean }>()
-const api = translation.api[0]
+const api = translation.api
 const get = (item: Info) => {
 	emit('relay-show')
 	ready.value = false
