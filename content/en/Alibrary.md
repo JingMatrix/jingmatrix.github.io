@@ -12,7 +12,7 @@ categories:
     description: "378907 records"
 zero_result: "No results found, you might consider changing keywords."
 invalid_search: "Your search contains illegal keywords, please retry!"
-failed: "Errors found in the dataset, please provde the following infomation to https://github.com/JingMatrix/Alibrary/issues : "
+failed: "Errors found in the dataset, please provide the following infomation to https://github.com/JingMatrix/Alibrary/issues : "
 ready: "Here is your file"
 wait: "Please wait, we are preparing for your query"
 search: "Enter to search"
