@@ -1,9 +1,13 @@
 <template>
 	<div v-if="metadata.isValid" class="mx-2">
-		<a :href="metadata.getUrl()" class="text-xl text-center block px-8 break-all text-cyan-600"> {{
-		metadata.getTitle() }} </a>
+		<a :href="metadata.getUrl()" class="text-xl text-center block px-9 break-all text-cyan-600">{{
+		metadata.getTitle() }}</a>
+		<span class="absolute right-2 -mt-4 text-xs text-right text-gray-300 dark:text-gray-600">{{ metadata.version
+		}}</span>
 		<p class="indent-2 my-4 mx-4 text-gray-500 dark:text-gray-400">{{ metadata.description }}</p>
-		<p class="indent-0 text-right text-gray-700 dark:text-gray-200 pr-4">{{ metadata.author }}</p>
+		<a v-if="metadata.author"
+			class="indent-0 block text-right text-gray-700 dark:text-gray-200 pr-4 before:content-['@']"
+			:href="metadata.getSupport()">{{ metadata.author }}</a>
 		<div class="my-4" v-for="group in ['match', 'exclude', 'grant']" :key="group">
 			<font-awesome-icon class="pl-2 pr-4 dark:text-gray-600 text-gray-300" icon="fa-solid fa-plus"
 				@click="metadata[group].push('');" />

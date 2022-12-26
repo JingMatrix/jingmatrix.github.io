@@ -11,6 +11,7 @@ export class Metadata {
 	version: string;
 	updateURL: string;
 	downloadURL: string;
+	supportURL: string;
 	homepage: string;
 	isValid: boolean = false;
 
@@ -58,6 +59,10 @@ export class Metadata {
 		} else {
 			return "javascript: void 0;"
 		}
+	}
+
+	getSupport(): string {
+		return this.supportURL || "javascript: void 0;"
 	}
 
 	toString(): string {

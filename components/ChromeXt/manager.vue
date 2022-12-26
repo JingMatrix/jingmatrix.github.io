@@ -6,7 +6,7 @@
 		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row">
 			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 mt-1"
 				@click="deleteScriptById([script]);getIds();" />
-			<button class="basis-5/8 flex-1 pl-3" @click="show_details=true;getMetaById([script]);"> {{
+			<button class="basis-5/8 flex-1 text-left indent-3" @click="show_details=true;getMetaById([script]);"> {{
 			getName(script) }} </button>
 			<div class="basis-1/4 text-xs px-2 break-all text-gray-200 dark:text-gray-700"> {{
 			getSimpleNameSpace(script) }} </div>
