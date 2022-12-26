@@ -1,18 +1,18 @@
 const CHROMEXT_SPLIT = "ChromeXt_Split_For_Metadata_Update"
 
 export class Metadata {
-	private name: string;
-	private namespace: string;
+	private name: string = "";
+	private namespace: string = "";
 	private preserved: string[] = [];
 
-	author: string;
-	runAt: string;
-	description: string;
-	version: string;
-	updateURL: string;
-	downloadURL: string;
-	supportURL: string;
-	homepage: string;
+	author: string = "";
+	runAt: string = "";
+	description: string = "";
+	version: string = "";
+	updateURL: string = "";
+	downloadURL: string = "";
+	supportURL: string = "";
+	homepage: string = "";
 	isValid: boolean = false;
 
 	match: string[] = [];
@@ -21,7 +21,6 @@ export class Metadata {
 
 	constructor(d: string) {
 		if (d.startsWith("// ==UserScript==")) {
-			this.isValid = true;
 			d.split("\n").forEach((line: string) => {
 				let meta = line.match(/^\/\/\s+@([\w-]+)\s+(.+)\s*$/)
 				if (meta != null && (this.hasOwnProperty(meta[1]) || meta[1] == "run-at")) {
@@ -41,6 +40,7 @@ export class Metadata {
 					this.preserved.push(line);
 				}
 			})
+			this.isValid = true;
 		}
 	}
 
@@ -54,7 +54,7 @@ export class Metadata {
 
 	getUrl(): string {
 		const url = this.updateURL || this.downloadURL || this.homepage || this.namespace;
-		if (typeof url == 'string' && url.startsWith("http")) {
+		if (url.startsWith("http")) {
 			return url;
 		} else {
 			return "javascript: void 0;"
