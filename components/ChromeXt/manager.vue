@@ -1,6 +1,10 @@
 <template>
-	<div v-if="installed">
-		<h1 @click="show_details = ! show_details">{{ translation.installed }}</h1>
+	<h1 @click="show_details = ! show_details">{{ header }}</h1>
+	<p v-if="scripts.length == 0">
+		{{ translation.introduction }}
+		<a href="https://github.com/JingMatrix/ChromeXt">ChromeXt</a>.
+	</p>
+	<div v-else>
 		<Meta v-if="show_details && script_meta != ''" :meta="script_meta"
 			@exit="show_details=false; script_meta = '';" />
 		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row">
@@ -12,13 +16,6 @@
 			getSimpleNameSpace(script) }} </div>
 		</div>
 	</div>
-	<div v-else>
-		<h1>{{ translation.not_installed }}</h1>
-		<p>
-			{{ translation.introduction }}
-			<a href="https://github.com/JingMatrix/ChromeXt">ChromeXt</a>.
-		</p>
-	</div>
 </template>
 
 <script lang="ts" setup>
@@ -26,11 +23,11 @@ import { useData } from "vitepress";
 import { ref, onMounted } from "vue";
 import Meta from "./meta.vue"
 
-const installed = ref(false);
 const show_details = ref(false);
 const script_meta = ref("");
 const scripts = ref([]);
 const translation = useData().frontmatter.value;
+const header = ref(translation.not_installed)
 const SINGLE_QUOTE_ESCAPE = /ChromeXt_Quote_Escape_String/g
 
 function getIds() {
@@ -79,10 +76,11 @@ function deleteScriptById(arg: string[]) {
 
 onMounted(async () => {
 
-	installed.value = typeof globalThis.ChromeXt !== "undefined"
-	if (installed.value) {
+	if (typeof globalThis.ChromeXt !== "undefined") {
+		header.value = translation.installed
 		window.addEventListener("script_id", (e: CustomEvent) => {
-			scripts.value = e.detail.map((text: string) => text.replace(SINGLE_QUOTE_ESCAPE, "'"));
+			scripts.value = e.detail.filter((id: string) => id.includes(":")).
+				map((text: string) => text.replace(SINGLE_QUOTE_ESCAPE, "'"));
 		})
 		window.addEventListener("script_meta", (e: CustomEvent) => {
 			script_meta.value = e.detail[0].replace(SINGLE_QUOTE_ESCAPE, "`") || "invalid";

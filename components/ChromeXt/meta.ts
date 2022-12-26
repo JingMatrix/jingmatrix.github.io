@@ -54,7 +54,7 @@ export class Metadata {
 
 	getUrl(): string {
 		const url = this.updateURL || this.downloadURL || this.homepage || this.namespace;
-		if (url.startsWith("http")) {
+		if (typeof url == 'string' && url.startsWith("http")) {
 			return url;
 		} else {
 			return "javascript: void 0;"
