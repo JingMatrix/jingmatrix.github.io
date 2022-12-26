@@ -13,6 +13,7 @@ export class Metadata {
 	downloadURL: string = "";
 	supportURL: string = "";
 	homepage: string = "";
+	icon: string = "";
 	isValid: boolean = false;
 
 	match: string[] = [];
@@ -26,7 +27,6 @@ export class Metadata {
 				if (meta != null && (this.hasOwnProperty(meta[1]) || meta[1] == "run-at")) {
 					const key = meta[1];
 					const value = meta[2];
-					console.debug(key, value)
 					if (["match", "exclude", "grant"].includes(key)) {
 						this[key].push(value);
 					} else if (key == "include") {
