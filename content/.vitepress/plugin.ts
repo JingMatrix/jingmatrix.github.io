@@ -20,31 +20,6 @@ const blog = blogList.map((p) => { return { text: p.text, link: p.link } })
 const essai = essaiList.map((p) => { return { text: p.text, link: p.link } })
 const writing = writingList.map((p) => { return { text: p.text, link: p.link } })
 
-const pwa = {
-	outDir: '.vitepress/dist',
-	registerType: 'autoUpdate',
-	injectRegister: 'auto',
-	includeAssets: ['favicon.png', 'img/icon-180.png', 'img/masked-icon.svg'],
-	manifest: {
-		name: "Jianyu MA's website",
-		short_name: 'Jianyu',
-		description: 'Hope you find me interesting',
-		theme_color: '#ffffff',
-		icons: [
-			{
-				src: 'img/icon-192.png',
-				sizes: '192x192',
-				type: 'image/png'
-			},
-			{
-				src: 'img/icon-512.png',
-				sizes: '512x512',
-				type: 'image/png'
-			}
-		]
-	}
-}
-
 function rss(blog: { text?: string, title: string, link: string }) {
 	blog.link = 'https://jingmatrix.github.io' + blog.link;
 	delete blog.text;
@@ -93,4 +68,27 @@ const markdown = {
 	}
 }
 
-export { blog, writing, essai, vue, vite, markdown, pwa }
+const rssIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416c0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96C14.3 96 0 81.7 0 64zM128 416c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288c0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>'
+
+const cvLink = "https://jingmatrix.github.io/cv/"
+
+const manifest = {
+	name: "Jianyu MA's website",
+	short_name: 'Jianyu',
+	description: 'Hope you find me interesting',
+	theme_color: '#ffffff',
+	icons: [
+		{
+			src: 'img/icon-192.png',
+			sizes: '192x192',
+			type: 'image/png'
+		},
+		{
+			src: 'img/icon-512.png',
+			sizes: '512x512',
+			type: 'image/png'
+		}
+	]
+}
+
+export { blog, writing, essai, vue, vite, markdown, rssIcon, cvLink, manifest }
