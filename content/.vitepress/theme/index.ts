@@ -1,5 +1,6 @@
 import "./tailwind.postcss";
 import theme from "vitepress/theme";
+import { h } from 'vue'
 import { DefaultTheme } from "vitepress";
 // import type { Post } from "./../../../server/posts";
 // @ts-ignore
@@ -16,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import { faBlog, faBars, faVideo, faSpinner, faMagnifyingGlass, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { faFilePdf, faCircleXmark, faPaperPlane, faTrashCan} from '@fortawesome/free-regular-svg-icons'
+import { faFilePdf, faCircleXmark, faPaperPlane, faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { faWikipediaW } from '@fortawesome/free-brands-svg-icons'
 
 /* add icons to the library */
@@ -35,10 +36,5 @@ export default {
 	enhanceApp({ app }) {
 		// app.component('Blog', Blog)
 		app.component('font-awesome-icon', FontAwesomeIcon)
-	},
-	hookPageData({ frontmatter }) {
-		console.log(frontmatter);
-		frontmatter.title = "Changed";
-		frontmatter.layout = "doc"
-	},
+	}
 };

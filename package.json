@@ -16,8 +16,9 @@
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "@mdit-vue/types": "^0.11.0",
     "@tailwindcss/typography": "^0.5.8",
-    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it": "link:vitepress/node_modules/@types/markdown-it",
     "@types/node": "link:vitepress/node_modules/@types/node",
+    "@vite-pwa/vitepress": "^0.0.3",
     "autoprefixer": "^10.4.13",
     "cssnano": "^5.1.14",
     "filesize": "^10.0.6",
@@ -31,7 +32,8 @@
     "vite-plugin-rss": "^0.0.6",
     "vitepress": "link:vitepress",
     "vue": "link:vitepress/node_modules/vue",
-    "vue-utterances": "^0.3.4"
+    "vue-utterances": "^0.3.4",
+    "workbox-window": "^6.5.4"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.2.1",

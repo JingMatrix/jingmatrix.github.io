@@ -1,11 +1,9 @@
 import markdownHook from '../../server/markdownHook'
-import { VitePWA, VitePluginPWAAPI } from 'vite-plugin-pwa'
 import { rssPlugin } from "vite-plugin-rss";
 import blogList from '../../server/data/blog.json'
 import writingList from '../../server/data/writing.json'
 import essaiList from '../../server/data/essai.json'
 import type MarkdownIt from 'markdown-it'
-import { resolveConfig } from 'vite'
 
 const katex_tags = ['math', 'annotation', 'semantics', 'mtext', 'mn', 'mo', 'mi', 'mspace', 'mover', 'munder', 'munderover', 'msup', 'msub', 'msubsup', 'mfrac', 'mroot', 'msqrt', 'mtable', 'mtr', 'mtd', 'mlabeledtr', 'mrow', 'menclose', 'mstyle', 'mpadded', 'mphantom', 'mglyph', 'svg', 'line', 'path', 'eq', 'eqn'];
 
@@ -22,31 +20,29 @@ const blog = blogList.map((p) => { return { text: p.text, link: p.link } })
 const essai = essaiList.map((p) => { return { text: p.text, link: p.link } })
 const writing = writingList.map((p) => { return { text: p.text, link: p.link } })
 
-const pwa = () => {
-	return VitePWA({
-		outDir: 'content/.vitepress/dist',
-		registerType: 'autoUpdate',
-		injectRegister: false,
-		includeAssets: ['favicon.png', 'img/icon-180.png', 'img/masked-icon.svg'],
-		manifest: {
-			name: "Jianyu MA's website",
-			short_name: 'Jianyu',
-			description: 'Hope you find me interesting',
-			theme_color: '#ffffff',
-			icons: [
-				{
-					src: 'img/icon-192.png',
-					sizes: '192x192',
-					type: 'image/png'
-				},
-				{
-					src: 'img/icon-512.png',
-					sizes: '512x512',
-					type: 'image/png'
-				}
-			]
-		}
-	})
+const pwa = {
+	outDir: '.vitepress/dist',
+	registerType: 'autoUpdate',
+	injectRegister: 'auto',
+	includeAssets: ['favicon.png', 'img/icon-180.png', 'img/masked-icon.svg'],
+	manifest: {
+		name: "Jianyu MA's website",
+		short_name: 'Jianyu',
+		description: 'Hope you find me interesting',
+		theme_color: '#ffffff',
+		icons: [
+			{
+				src: 'img/icon-192.png',
+				sizes: '192x192',
+				type: 'image/png'
+			},
+			{
+				src: 'img/icon-512.png',
+				sizes: '512x512',
+				type: 'image/png'
+			}
+		]
+	}
 }
 
 function rss(blog: { text?: string, title: string, link: string }) {
@@ -57,7 +53,6 @@ function rss(blog: { text?: string, title: string, link: string }) {
 
 const vite = {
 	plugins: [
-		pwa(),
 		rssPlugin({
 			mode: "define",
 			fileName: "feed-en.xml",
@@ -91,13 +86,6 @@ const vite = {
 	]
 }
 
-const buildEnd = async () => {
-	const config = await resolveConfig({ plugins: [pwa()] }, 'build', 'production')
-	const pwaPlugin: VitePluginPWAAPI = config.plugins.find(i => i.name === 'vite-plugin-pwa')?.api
-	if (pwaPlugin && pwaPlugin.generateSW && !pwaPlugin.disabled)
-		await pwaPlugin.generateSW()
-}
-
 const markdown = {
 	theme: { dark: 'dark-plus', light: 'nord' },
 	config: (md: MarkdownIt) => {
@@ -105,4 +93,4 @@ const markdown = {
 	}
 }
 
-export { blog, writing, essai, vue, vite, markdown, buildEnd }
+export { blog, writing, essai, vue, vite, markdown, pwa }
