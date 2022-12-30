@@ -69,7 +69,7 @@ export class Metadata {
 		const backup = this.preserved.join("\n");
 		const end = this.preserved.pop();
 		for (const [key, value] of Object.entries(this)) {
-			if (typeof value == "string" && key != "" && key != "runAt") {
+			if (typeof value == "string" && value != "" && key != "runAt") {
 				this.preserved.push(`// @${key}\t${value}`)
 			}
 		}
