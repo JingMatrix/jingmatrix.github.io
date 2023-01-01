@@ -27,16 +27,19 @@
 			</div>
 		</div>
 	</div>
+	<DevTools v-if="cdp_port != 0 && !show_details" :port="cdp_port" />
 </template>
 
 <script lang="ts" setup>
 import { useData } from "vitepress";
 import { ref, onMounted } from "vue";
 import Meta from "./meta.vue";
+import DevTools from "./devtools.vue";
 
 const show_details = ref(false);
 const script_meta = ref("");
 const scripts = ref([]);
+const cdp_port = ref(0);
 const translation = useData().frontmatter.value;
 const header = ref(translation.not_installed);
 const SINGLE_QUOTE_ESCAPE = /ChromeXt_Quote_Escape_String/g;
@@ -96,6 +99,9 @@ onMounted(async () => {
 		window.addEventListener("script_meta", (e: CustomEvent) => {
 			script_meta.value =
 				e.detail[0].replace(SINGLE_QUOTE_ESCAPE, "`") || "invalid";
+		});
+		window.addEventListener("cdp_port", (e: CustomEvent) => {
+			cdp_port.value = e.detail;
 		});
 		getIds();
 	}
