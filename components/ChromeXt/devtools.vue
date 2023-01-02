@@ -57,11 +57,6 @@ onMounted(() => {
 		}
 		)
 	});
-	addEventListener('beforeunload', () => {
-		if (inspecting.value) {
-			globalThis.ChromeXt(JSON.stringify({ action: "stopDevTools", payload: "" }));
-		}
-	});
 	getPages()
 })
 
