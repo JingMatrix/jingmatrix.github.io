@@ -22,9 +22,9 @@ Any __cited propositions__ in the following are meant to be found in this book.
 Given a measure space $(X, \sigma)$,
 typically the Borel measurable space for some topology space $(X, \tau)$,
 i.e., $\sigma = \mathcal{B}(X):= \sigma(\tau)$,
-we usually have many different topologies available in the base
+we usually have different topologies available in the base
 space $X$ for our use.
-Especially, it is common that our space $X$ is a metric spaces of functions
+Especially, it is common that our space $X$ is a metric space of functions
 of functionals, and we might have different metrics for this base space $X$.
 
 The first question here is how to find a possible non-trivial
@@ -35,7 +35,7 @@ $\mathcal{B}(X)$ and $\varepsilon > 0$,
 there exists a compact set $K_\varepsilon \subset B$ such that
 $|\mu|(B\setminus K_{\varepsilon})<\varepsilon$.
 And it is quite frequently used that, stated as Theorem 7.1.7 in the book,
-any Borel measure on a complete and separable space is Radon.
+any finite Borel measure on a complete and separable space is Radon.
 At this stage, we must choose a Borel measure $\mu$ which is actually
 Radon and an $\varepsilon > 0$ to accomplish our goal.
 
@@ -93,11 +93,11 @@ called co-Souslin or coanalytic.
 
 This definition looks ordinary and less powerful as expected.
 But as happened frequently in the domain of measure theory,
-we also has an unexpected equivalent definition for it.
+we also have an unexpected equivalent definition for it.
 It is stated in Theorem 6.6.8 from the book that
 every Souslin set in a Hausdorff space can be obtained
 from closed sets by means of the $\mathcal{A}$-operation.
-The rough ideas is that $\mathcal{A}$-operation includes at least
+The rough idea is that $\mathcal{A}$-operation includes at least
 countable unions and intersections.
 We shall show this equivalence in the next section.
 
@@ -170,7 +170,7 @@ $$ E(n_{0},\ldots,n_{k}) = \bigcup_{j=0}^{\infty}E(n_{0},\ldots,n_{k},j). $$
 For every $\alpha = (n_i) \in \mathbb{N}^\mathbb{N}$,
 the closed sets $E(n_0, . . . , n_k)$ are decreasing and
 have diameters less than $2^{−k−2}$.
-Hence they shrink to a single point denoted
+Hence, they shrink to a single point denoted
 by $f(\alpha)$.
 Note that $f(\mathbb{N}^\mathbb{N}) = X$.
 Indeed, every point $x$ belongs to some
