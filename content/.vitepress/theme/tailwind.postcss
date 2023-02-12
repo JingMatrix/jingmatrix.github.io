@@ -12,8 +12,22 @@ html[lang="zh"] body #app {
 
 @layer components {
   #app .content .content-container .main div[class*="_zh_blog"] div {
-    @apply prose-headings:font-[STKaiti,楷体];
+    @apply prose-headings:font-[STKaiti,楷体]
+		prose-headings:font-normal
+		prose-h1:font-[STXingkai,华文行楷]
+		prose-h3:font-[STXinwei,华文新魏];
   }
+
+  #app .content .content-container .main div[class*="_zh_blog"] div blockquote {
+    p {
+      @apply font-[STFangsong,serif] my-1 font-semibold;
+    }
+    p::before,
+    p::after {
+      content: none;
+    }
+  }
+
   #app .content .content-container .main .vp-doc div {
     @apply prose prose-stone lg:prose-lg
 		dark:prose-invert
@@ -38,19 +52,19 @@ html[lang="zh"] body #app {
       @apply hover:text-blue-500 hover:decoration-4 dark:hover:text-indigo-300;
     }
   }
-  
-  #app .content .content-container .main .vp-doc div li.footnote-item  p {
-	  @apply indent-0
-	}
+
+  #app .content .content-container .main .vp-doc div li.footnote-item p {
+    @apply indent-0;
+  }
 
   #chat-room .render-html {
     @apply prose prose-zinc dark:prose-invert prose-p:my-0;
     a[href^="#"] {
       @apply text-sm dark:text-gray-600 text-gray-200;
-    };
-	p + blockquote {
-		@apply my-2
-	}
+    }
+    p + blockquote {
+      @apply my-2;
+    }
   }
 }
 
