@@ -16,15 +16,19 @@ html[lang="zh"] body #app {
 		prose-headings:font-normal
 		prose-h1:font-[STXingkai,华文行楷]
 		prose-h3:font-[STXinwei,华文新魏];
-  }
-
-  #app .content .content-container .main div[class*="_zh_blog"] div blockquote {
-    p {
-      @apply font-[STFangsong,serif] my-1 font-semibold;
-    }
-    p::before,
-    p::after {
-      content: none;
+	p > sup > a {
+		text-decoration: none;
+	}
+    blockquote {
+      @apply prose-p:text-slate-900
+		prose-p:dark:text-violet-200;
+      p {
+        @apply font-[STFangsong,serif] my-1 font-semibold not-italic;
+      }
+      p::before,
+      p::after {
+        content: none;
+      }
     }
   }
 
