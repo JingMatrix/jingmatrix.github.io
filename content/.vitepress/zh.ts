@@ -16,7 +16,7 @@ export const zhConfig: LocaleSpecificConfig<ThemeConfig> = {
 			{
 				text: "文章列表",
 				items: blog,
-				collapsible: true,
+				collapsed: true,
 			}
 		],
 		nav: [

@@ -16,9 +16,15 @@ html[lang="zh"] body #app {
 		prose-headings:font-normal
 		prose-h1:font-[STXingkai,华文行楷]
 		prose-h3:font-[STXinwei,华文新魏];
-	p > sup > a {
-		text-decoration: none;
-	}
+    p > sup > a {
+      text-decoration: none;
+    }
+    section.footnotes > ol.footnotes-list {
+      font-family: STXihei;
+    }
+    h2 + hr.footnotes-sep {
+      display: none;
+    }
     blockquote {
       @apply prose-p:text-slate-900
 		prose-p:dark:text-violet-200;
@@ -35,6 +41,7 @@ html[lang="zh"] body #app {
   #app .content .content-container .main .vp-doc div {
     @apply prose prose-stone lg:prose-lg
 		dark:prose-invert
+		prose-em:italic
 		prose-a:text-green-400
 		prose-a:dark:text-sky-600
 		prose-a:underline

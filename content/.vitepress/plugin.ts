@@ -62,7 +62,7 @@ const vite = {
 }
 
 const markdown = {
-	theme: { dark: 'dark-plus', light: 'nord' },
+	theme: { dark: 'dark-plus', light: 'material-theme-palenight' },
 	config: (md: MarkdownIt) => {
 		md.use(markdownHook)
 	}

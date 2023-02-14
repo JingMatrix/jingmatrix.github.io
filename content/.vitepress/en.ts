@@ -15,7 +15,7 @@ export const enConfig: LocaleSpecificConfig<ThemeConfig> = {
 			{
 				text: "All Blogs",
 				items: writing,
-				collapsible: true,
+				collapsed: true,
 			}
 		],
 		nav: [

@@ -16,7 +16,7 @@ export default withPwa(defineConfigWithTheme<ThemeConfig>({
 		includeAssets: ['favicon.png', 'img/icon-180.png', 'img/masked-icon.svg'],
 		manifest
 	},
-	cleanUrls: "without-subfolders",
+	cleanUrls: true,
 	head: [
 		['link', { rel: 'prefetch', href: '/manifest.webmanifest' }],
 		['link', { rel: 'manifest', href: '/manifest.webmanifest' }],

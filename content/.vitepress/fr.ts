@@ -16,7 +16,7 @@ export const frConfig: LocaleSpecificConfig<ThemeConfig> = {
 			{
 				text: "Mes Essais",
 				items: essai,
-				collapsible: true,
+				collapsed: true,
 			}
 		],
 		nav: [
