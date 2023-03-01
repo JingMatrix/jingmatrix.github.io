@@ -20,13 +20,13 @@
     "@types/node": "link:vitepress/node_modules/@types/node",
     "@vite-pwa/vitepress": "^0.0.3",
     "autoprefixer": "^10.4.13",
-    "cssnano": "^5.1.14",
+    "cssnano": "^5.1.15",
     "filesize": "^10.0.6",
     "gray-matter": "^4.0.3",
     "markdown-it-fancy-lists": "^1.2.1",
     "markdown-it-footnote": "^3.0.3",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.6",
+    "tailwindcss": "^3.2.7",
     "vite": "link:vitepress/node_modules/vite",
     "vite-plugin-pwa": "^0.14.4",
     "vite-plugin-rss": "^0.0.6",
@@ -43,6 +43,6 @@
     "markdown-it": "link:vitepress/node_modules/markdown-it",
     "markdown-it-emoji": "link:vitepress/node_modules/markdown-it-emoji",
     "markdown-it-texmath": "^1.0.0",
-    "socket.io-client": "^4.6.0"
+    "socket.io-client": "^4.6.1"
   }
 }
