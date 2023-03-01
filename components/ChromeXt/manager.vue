@@ -42,7 +42,7 @@ const scripts = ref([]);
 const cdp_port = ref(0);
 const translation = useData().frontmatter.value;
 const header = ref(translation.not_installed);
-const SINGLE_QUOTE_ESCAPE = /ChromeXt_Quote_Escape_String/g;
+const QUOTE_ESCAPE = /ChromeXt_Quote_Escape_String/g;
 
 function getIds() {
 	globalThis.ChromeXt(JSON.stringify({ action: "getIds", payload: "" }));
@@ -94,11 +94,11 @@ onMounted(async () => {
 		window.addEventListener("script_id", (e: CustomEvent) => {
 			scripts.value = e.detail
 				.filter((id: string) => id.includes(":"))
-				.map((text: string) => text.replace(SINGLE_QUOTE_ESCAPE, "'"));
+				.map((text: string) => text.replace(QUOTE_ESCAPE, "'"));
 		});
 		window.addEventListener("script_meta", (e: CustomEvent) => {
 			script_meta.value =
-				e.detail[0].replace(SINGLE_QUOTE_ESCAPE, "`") || "invalid";
+				e.detail[0].replace(QUOTE_ESCAPE, "`") || "invalid";
 		});
 		window.addEventListener("cdp_port", (e: CustomEvent) => {
 			cdp_port.value = e.detail;
