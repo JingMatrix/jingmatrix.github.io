@@ -7,19 +7,12 @@
 		<a href="https://github.com/JingMatrix/ChromeXt">ChromeXt</a>.
 	</p>
 	<div v-else>
-		<Meta v-if="show_details && script_meta != ''" :meta="script_meta" @exit="
-		  show_details = false;
-		  script_meta = '';
-		" />
+		<Meta v-if="show_details && script_meta != ''" :meta="script_meta"
+			@exit="show_details = false; script_meta = '';" />
 		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row">
-			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 mt-1" @click="
-			  deleteScriptById([script]);
-			  getIds();
-			" />
-			<button class="basis-5/8 flex-1 text-left indent-3" @click="
-			  show_details = true;
-			  getMetaById([script]);
-			">
+			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 mt-1"
+				@click="deleteScriptById([script]); getIds();" />
+			<button class="basis-5/8 flex-1 text-left indent-3" @click="show_details = true; getMetaById([script]);">
 				{{ getName(script) }}
 			</button>
 			<div class="basis-1/4 text-xs px-2 break-all text-gray-200 dark:text-gray-700">
@@ -42,7 +35,6 @@ const scripts = ref([]);
 const cdp_port = ref(0);
 const translation = useData().frontmatter.value;
 const header = ref(translation.not_installed);
-const QUOTE_ESCAPE = /ChromeXt_Quote_Escape_String/g;
 
 function getIds() {
 	globalThis.ChromeXt(JSON.stringify({ action: "getIds", payload: "" }));
@@ -92,13 +84,10 @@ onMounted(async () => {
 	if (typeof globalThis.ChromeXt !== "undefined") {
 		header.value = translation.installed;
 		window.addEventListener("script_id", (e: CustomEvent) => {
-			scripts.value = e.detail
-				.filter((id: string) => id.includes(":"))
-				.map((text: string) => text.replace(QUOTE_ESCAPE, "'"));
+			scripts.value = e.detail.filter((id: string) => id.includes(":"));
 		});
 		window.addEventListener("script_meta", (e: CustomEvent) => {
-			script_meta.value =
-				e.detail[0].replace(QUOTE_ESCAPE, "`") || "invalid";
+			script_meta.value = e.detail[0] || "invalid";
 		});
 		window.addEventListener("cdp_port", (e: CustomEvent) => {
 			cdp_port.value = e.detail;
