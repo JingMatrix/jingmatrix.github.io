@@ -13,7 +13,7 @@
 		<a v-if="metadata.author"
 			class="indent-0 block text-right text-gray-700 dark:text-gray-200 pr-4 before:content-['@']"
 			:href="metadata.getSupport()">{{ metadata.author }}</a>
-		<div class="my-4" v-for="group in ['match', 'exclude', 'grant']" :key="group">
+		<div class="my-4" v-for="group in ['match', 'include', 'exclude']" :key="group">
 			<font-awesome-icon class="pl-2 pr-4 dark:text-gray-600 text-gray-300" icon="fa-solid fa-plus"
 				@click="metadata[group].push('')" />
 			<span> {{ capitalizeFirstLetter(group) }} </span>

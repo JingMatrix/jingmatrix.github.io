@@ -17,19 +17,18 @@ export class Metadata {
 	isValid: boolean = false;
 
 	match: string[] = [];
+	include: string[] = [];
 	exclude: string[] = [];
 	grant: string[] = [];
 
 	constructor(d: string) {
 		d.split("\n").forEach((line: string) => {
 			let meta = line.match(/^\/\/\s+@([\w-]+)\s+(.+)\s*$/)
-			if (meta != null && (this.hasOwnProperty(meta[1]) || meta[1] == "run-at" || meta[1] == "include")) {
+			if (meta != null && (this.hasOwnProperty(meta[1]) || meta[1] == "run-at")) {
 				const key = meta[1];
 				const value = meta[2];
-				if (["match", "exclude", "grant"].includes(key)) {
+				if (["match", "include", "exclude", "grant"].includes(key)) {
 					this[key].push(value);
-				} else if (key == "include") {
-					this.match.push(value);
 				} else if (key == "run-at") {
 					this.runAt = value
 				} else {
@@ -39,7 +38,7 @@ export class Metadata {
 				this.preserved.push(line);
 			}
 		})
-		if (this.match.length > 0) {
+		if (this.match.length + this.include.length > 0) {
 			this.isValid = true;
 		}
 	}
@@ -74,7 +73,7 @@ export class Metadata {
 			}
 		}
 		this.preserved.push(`// @run-at\t${this.runAt}`)
-		for (const key of ["match", "grant", "exclude"]) {
+		for (const key of ["match", "include", "exclude", "grant"]) {
 			for (const value of this[key]) {
 				if (value != "") {
 					this.preserved.push(`// @${key}\t${value}`)
