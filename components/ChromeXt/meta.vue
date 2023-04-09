@@ -1,7 +1,7 @@
 <template>
 	<div v-if="metadata.isValid" class="mx-2">
 		<a :href="metadata.getUrl()" class="text-xl text-center block px-9 break-all text-cyan-600">
-			<img v-if="metadata.icon != ''" class="inline" :src="metadata.icon" />
+			<img v-if="metadata.icon != ''" class="inline h-6" :src="metadata.icon" />
 			{{ metadata.getTitle() }}
 		</a>
 		<span class="absolute right-2 -mt-4 text-xs text-right text-gray-300 dark:text-gray-600">
