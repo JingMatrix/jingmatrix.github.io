@@ -20,7 +20,7 @@ export const zhConfig: LocaleSpecificConfig<ThemeConfig> = {
 			}
 		],
 		nav: [
-			{ text: "Alibrary", link: "/zh/Alibrary" },
+			// { text: "Alibrary", link: "/zh/Alibrary" },
 			{ text: "博客", link: blog[0].link },
 			{ text: "在线聊天", link: "/zh/contact" },
 			{
@@ -41,5 +41,4 @@ export const zhConfig: LocaleSpecificConfig<ThemeConfig> = {
 			next: "下一篇",
 		}
 	},
-
 }

@@ -20,7 +20,7 @@ export const enConfig: LocaleSpecificConfig<ThemeConfig> = {
 		],
 		nav: [
 			{ text: "Academic", link: "/en/academic" },
-			{ text: "Alibrary", link: "/en/Alibrary" },
+			// { text: "Alibrary", link: "/en/Alibrary" },
 			{ text: "Writing", link: writing[0].link },
 			{ text: "Contact Online", link: "/en/contact" },
 			{
