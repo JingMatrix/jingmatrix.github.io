@@ -31,7 +31,7 @@ export default withPwa(defineConfigWithTheme<ThemeConfig>({
 		logo: "/img/logo.svg",
 		siteTitle: false,
 		outline: 'deep',
-		localSearch: true,
+		localSearch: false,
 	},
 	locales: {
 		en: { lang: "en", label: "English", ...enConfig },
