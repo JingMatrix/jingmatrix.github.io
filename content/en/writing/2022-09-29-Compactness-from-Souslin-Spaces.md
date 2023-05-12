@@ -354,20 +354,13 @@ which implies that $B$ is Borel set for $(X, \tau^\prime)$.
 Let $(E,d)$ be a Polish space,
 then the Wasserstein-$2$ space $\mathcal{W}_2(E)$ 
 is also a Polish space.
-Fix a reference measure $\mu$ on $(E, d)$,
-the set of absolutely continuous probability measures
-in $\mathcal{W}_2(E)$ with respect to $\mu$ have their
-density functions in the unit sphere of $L^1(\mu)$,
-so we can define this set of measurable functions on $E$ as
-$$
-	\mathbb{B} := 
-	\{ f \in L^1(\mu) \mid
-		f \ge 0,\,  \int_E f \,\mathrm{d} \mu = 1, \,
-	\int_E d(x_0, x)^2 f(x) \,\mathrm{d} \mu < \infty \},
-$$
-which is bijective to the set $\mathcal{W}_2(E) \cap P_{\operatorname{ac}}(E)$
-through the natural
-identification $f \leftrightarrow f \cdot \mu$.
+Fix a reference measure $\mu$ on $(E, d)$.
+Define the set $\mathbb{B}: = \mathcal{W}_2(E) \cap P_{\operatorname{ac}}(E)$
+of absolutely continuous probability measures
+in $\mathcal{W}_2(E)$ with respect to $\mu$.
+Via the identification $f \cdot \mu \in \mathbb{B} \leftrightarrow f$,
+we consider $\mathbb{B}$ as a subset of
+the unit sphere of $L^1(\mu)$.
 
 We can consider $\mathbb{B}$
 with different topologies.
