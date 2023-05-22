@@ -295,7 +295,7 @@ we now discuss several fondamental and useful results in this theory.
 
 <div class="theorem">
 
-(The Lusin Separation Theorem) Let $X$ be a Hausdorff space
+(Lusin's Separation Theorem) Let $X$ be a Hausdorff space
 and let $A,B \subset X$ be two disjoint Souslin sets.
 Then there is a Borel set $C \subset X$ separating $A$ from $B$.
 

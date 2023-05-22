@@ -4,7 +4,7 @@ title: "ChromeXt"
 titleTemplate: false
 installed: "ChromeXt is working"
 not_installed: "ChromeXt is not installed"
-introduction: "ChromeXt adds support of UserScripts to the latest Android Chrome. See details in the project homepage: "
+introduction: "ChromeXt adds UserScript and DevTools support to Chromium or WebView based browsers. See details in the project homepage: "
 dev_title: "Chrome DevTools"
 dev_intro: "Open pages in new tabs, and then inspect them from here. Note that so far, one cannot inspect inactive tabs correctly. Tapping on the Developer tools menu can give a new inspecting session to refresh tabs status."
 inspect: "Inspect"
