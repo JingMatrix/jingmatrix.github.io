@@ -8,9 +8,9 @@ title: 'Academic'
 
 ## Reports
 
-- PhD Activity Report: [2021-2022](/pdf/report_2021-2022.pdf)
+<!-- - PhD Activity Report: [2021-2022](/pdf/report_2021-2022.pdf) -->
 
-- M2 internship: [Existence and Uniqueness of Barycenter in Metric Spaces](https://drive.google.com/file/d/1DgcO-M13q4x_sCYsJTPjR9Wx154C0tnh/view?usp=sharing)
+<!-- - M2 internship: [Existence and Uniqueness of Barycenter in Metric Spaces](https://drive.google.com/file/d/1DgcO-M13q4x_sCYsJTPjR9Wx154C0tnh/view?usp=sharing) -->
 
 - M2 Reading Seminar Presentatin: <a ref="noreferer" target='_blank' href="/HyperbolicGroup/index.html">Hyperbolic Groups</a>
 
@@ -20,8 +20,10 @@ title: 'Academic'
 
 ## Presentations
 
-- M2 internship: [defence](https://drive.google.com/file/d/15S3LcjXWZZD2koQOzDQT-KYDL2tsmYLp/view?usp=sharing)
+- PhD Student seminar: [Souslin space theory](https://drive.google.com/file/d/1eTfQvdMlMWBhDNXlBEvxbNkI0Sfa8aUB/view)
 
-## Applications
+<!-- - M2 internship: [defence](https://drive.google.com/file/d/15S3LcjXWZZD2koQOzDQT-KYDL2tsmYLp/view?usp=sharing) -->
 
-- PhD EDMITT: [motivation letter](/pdf/phd_motivation.pdf) and [interview presentation](/pdf/phd_interview.pdf)
+<!-- ## Applications -->
+
+<!-- - PhD EDMITT: [motivation letter](/pdf/phd_motivation.pdf) and [interview presentation](/pdf/phd_interview.pdf) -->

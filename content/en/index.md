@@ -17,11 +17,11 @@ export default {
         "I like the idea that mathematics is the art of giving the same name to different things. When exploring new concepts there, I feel that I am finding connections between mysteries.",
       content: [
         {
-          title: "M2 Internship Report",
-          description: "Barycenter of two countries in the image above",
-          img: "/img/barycenter.png",
-          link: "https://drive.google.com/file/d/1DgcO-M13q4x_sCYsJTPjR9Wx154C0tnh/view",
-          tags: ["Riemannian Geometry"],
+          title: "Souslin space theory",
+          description: "PhD student seminar presentation",
+          img: "/img/souslin_joke.png",
+          link: "https://drive.google.com/file/d/1eTfQvdMlMWBhDNXlBEvxbNkI0Sfa8aUB/view",
+          tags: ["Measure theory"],
         },
         {
           title: "M1 Topology Homework",
