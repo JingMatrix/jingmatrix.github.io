@@ -14,7 +14,7 @@ export default {
     this.mathfeature = {
       title: "do math",
       description:
-        "I like the idea that mathematics is the art of giving the same name to different things. When exploring new concepts there, I feel that I am finding connections between mysteries.",
+        "Mathematics, which most of us see as the most factual of all sciences, constitutes the most colossal metaphor imaginable, and must be judged, aesthetically as well as intellectually, in terms of the success of this metaphor.",
       content: [
         {
           title: "Souslin space theory",
