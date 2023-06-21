@@ -10,7 +10,7 @@
 		<Meta v-if="show_details && script_meta != ''" :meta="script_meta"
 			@exit="show_details = false; script_meta = '';" />
 		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row">
-			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 mt-1"
+			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 my-auto"
 				@click="deleteScriptById([script]); getIds();" />
 			<button class="basis-5/8 flex-1 text-left indent-3" @click="show_details = true; getMetaById([script]);">
 				{{ getName(script) }}
