@@ -7,12 +7,19 @@
 		<a href="https://github.com/JingMatrix/ChromeXt">ChromeXt</a>.
 	</p>
 	<div v-else>
-		<Meta v-if="show_details && script_meta != ''" :meta="script_meta"
-			@exit="show_details = false; script_meta = '';" />
+		<Meta v-if="show_details && script_meta != ''" :meta="script_meta" @exit="
+			show_details = false;
+		script_meta = '';
+		" />
 		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row">
-			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 my-auto"
-				@click="deleteScriptById([script]); getIds();" />
-			<button class="basis-5/8 flex-1 text-left indent-3" @click="show_details = true; getMetaById([script]);">
+			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 my-auto" @click="
+				deleteScriptById([script]);
+			getIds();
+			" />
+			<button class="basis-5/8 flex-1 text-left indent-3" @click="
+				show_details = true;
+			getMetaById([script]);
+			">
 				{{ getName(script) }}
 			</button>
 			<div class="basis-1/4 text-xs px-2 break-all text-gray-200 dark:text-gray-700">
@@ -20,19 +27,21 @@
 			</div>
 		</div>
 	</div>
-	<DevTools v-if="cdp_port != 0 && !show_details" :port="cdp_port" />
+	<DevTools v-if="cdp_port != 0 && !show_details" :port="cdp_port" :pages="cdp_pages" />
 </template>
 
 <script lang="ts" setup>
 import { useData } from "vitepress";
 import { ref, onMounted } from "vue";
 import Meta from "./meta.vue";
+import type { DevInfo } from "./type";
 import DevTools from "./devtools.vue";
 
 const show_details = ref(false);
 const script_meta = ref("");
 const scripts = ref([]);
 const cdp_port = ref(0);
+const cdp_pages = ref([]);
 const translation = useData().frontmatter.value;
 const header = ref(translation.not_installed);
 
@@ -89,8 +98,14 @@ onMounted(async () => {
 		window.addEventListener("script_meta", (e: CustomEvent) => {
 			script_meta.value = e.detail[0] || "invalid";
 		});
-		window.addEventListener("cdp_port", (e: CustomEvent) => {
-			cdp_port.value = e.detail;
+		window.addEventListener("cdp_info", (e: CustomEvent) => {
+			cdp_port.value = e.detail.port;
+			cdp_pages.value = e.detail.pages.filter(
+				(it: DevInfo) =>
+					!it.url.startsWith("https://chrome-devtools-frontend.appspot.com") &&
+					it.type == "page" &&
+					window.location.href != it.url
+			);
 		});
 		getIds();
 	}

@@ -96,3 +96,14 @@ export class Metadata {
 		}
 	}
 }
+
+
+export type DevInfo = {
+	description: string,
+	devtoolsFrontendUrl: string,
+	id: string,
+	title: string,
+	type: string,
+	url: string,
+	webSocketDebuggerUrl: string
+}

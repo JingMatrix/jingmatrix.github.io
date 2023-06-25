@@ -52,7 +52,7 @@
 
 <script lang="ts" setup>
 import { useData } from "vitepress";
-import { Metadata } from "./meta";
+import { Metadata } from "./type";
 import { ref } from "vue";
 
 const props = defineProps<{ meta: string }>();

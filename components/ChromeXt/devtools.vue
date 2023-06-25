@@ -18,47 +18,14 @@
 
 <script lang="ts" setup>
 import { useData } from "vitepress";
+import { DevInfo } from "./type"
 
-import { onMounted } from "vue";
-import { ref } from "vue";
-
-defineProps<{ port: number }>();
+defineProps<{ port: number, pages: Array<DevInfo> }>();
 const translation = useData().frontmatter.value;
-
-type DevInfo = {
-	description: string,
-	devtoolsFrontendUrl: string,
-	id: string,
-	title: string,
-	type: string,
-	url: string,
-	webSocketDebuggerUrl: string
-}
-
-const pages = ref([])
 
 function fixUrl(url: string, port: number) {
 	return url.replace("?ws=/devtools/page/",
 		`?ws=localhost:${port}/devtools/page/`)
 }
-
-function getPages() {
-	globalThis.ChromeXt(JSON.stringify({ action: "getPages", payload: "" }));
-}
-
-onMounted(() => {
-	window.addEventListener("pages", (e: CustomEvent) => {
-		pages.value = []
-		e.detail.forEach((it: DevInfo) => {
-			if (!it.url.startsWith("https://chrome-devtools-frontend.appspot.com")
-				&& it.type == "page"
-				&& window.location.href != it.url) {
-				pages.value.push(it)
-			}
-		}
-		)
-	});
-	getPages()
-})
 
 </script>
