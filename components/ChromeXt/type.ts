@@ -1,5 +1,3 @@
-const CHROMEXT_SPLIT = "ChromeXt_Split_For_Metadata_Update"
-
 export class Metadata {
 	private name: string = "";
 	private namespace: string = "";
@@ -90,8 +88,10 @@ export class Metadata {
 	submit() {
 		if (this.isValid) {
 			globalThis.ChromeXt(JSON.stringify({
-				action: "updateMetaForId", payload: this.getId() +
-					CHROMEXT_SPLIT + this.toString()
+				action: "updateMeta", payload: {
+					id: this.getId(),
+					meta: this.toString()
+				}
 			}));
 		}
 	}

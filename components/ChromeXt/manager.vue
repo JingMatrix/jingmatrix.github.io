@@ -13,12 +13,12 @@
 		" />
 		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row">
 			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 my-auto" @click="
-				deleteScriptById([script]);
+				deleteScript([script]);
 			getIds();
 			" />
 			<button class="basis-5/8 flex-1 text-left indent-3" @click="
 				show_details = true;
-			getMetaById([script]);
+			getMeta([script]);
 			">
 				{{ getName(script) }}
 			</button>
@@ -49,11 +49,11 @@ function getIds() {
 	globalThis.ChromeXt(JSON.stringify({ action: "getIds", payload: "" }));
 }
 
-function getMetaById(arg: string[]) {
+function getMeta(arg: string[]) {
 	script_meta.value = "";
 	if (show_details.value) {
 		globalThis.ChromeXt(
-			JSON.stringify({ action: "getMetaById", payload: arg })
+			JSON.stringify({ action: "getMeta", payload: arg })
 		);
 	}
 }
@@ -83,9 +83,9 @@ function getSimpleNameSpace(id: string) {
 	}
 }
 
-function deleteScriptById(arg: string[]) {
+function deleteScript(arg: string[]) {
 	globalThis.ChromeXt(
-		JSON.stringify({ action: "deleteScriptById", payload: arg })
+		JSON.stringify({ action: "deleteScript", payload: arg })
 	);
 }
 
