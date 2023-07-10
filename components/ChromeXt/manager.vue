@@ -27,7 +27,7 @@
 			</div>
 		</div>
 	</div>
-	<DevTools v-if="cdp_port != 0 && !show_details" :port="cdp_port" :pages="cdp_pages" />
+	<DevTools v-if="inspecting && !show_details" :pages="inspect_pages" />
 </template>
 
 <script lang="ts" setup>
@@ -40,8 +40,8 @@ import DevTools from "./devtools.vue";
 const show_details = ref(false);
 const script_meta = ref("");
 const scripts = ref([]);
-const cdp_port = ref(0);
-const cdp_pages = ref([]);
+const inspect_pages = ref(new Array<DevInfo>());
+const inspecting = ref(false);
 const translation = useData().frontmatter.value;
 const header = ref(translation.not_installed);
 
@@ -98,13 +98,14 @@ onMounted(async () => {
 		window.addEventListener("script_meta", (e: CustomEvent) => {
 			script_meta.value = e.detail[0] || "invalid";
 		});
-		window.addEventListener("cdp_info", (e: CustomEvent) => {
-			cdp_port.value = e.detail.port;
-			cdp_pages.value = e.detail.pages.filter(
+		window.addEventListener("inspect_pages", (e: CustomEvent) => {
+			inspecting.value = true;
+			inspect_pages.value = e.detail.filter(
 				(it: DevInfo) =>
 					!it.url.startsWith("https://chrome-devtools-frontend.appspot.com") &&
 					it.type == "page" &&
-					window.location.href != it.url
+					!it.url.endsWith("ChromeXt/") &&
+					(it.description == "" || JSON.parse(it.description).attached)
 			);
 		});
 		getIds();
