@@ -105,7 +105,7 @@ onMounted(async () => {
 					!it.url.startsWith("https://chrome-devtools-frontend.appspot.com") &&
 					it.type == "page" &&
 					!it.url.endsWith("ChromeXt/") &&
-					(it.description == "" || JSON.parse(it.description).attached)
+					(it.description == "" || !JSON.parse(it.description).never_attached)
 			);
 		});
 		getIds();
