@@ -6,8 +6,8 @@
 		<div v-for="p in pages" :key="p.id" class="pl-4 py-3 pr-6">
 			<div class="flex justify-between">
 				<span class="shrink w-64 text-slate-600 dark:text-slate-300" v-html="p.title"></span>
-				<a :href="p.devtoolsFrontendUrl" target="_blank"
-					class="flex-shrink-0 text-green-600 dark:text-green-300 my-auto">{{ translation.inspect }}</a>
+				<a :href="fixUrl(p)" target="_blank" class="flex-shrink-0 text-green-600 dark:text-green-300 my-auto">{{
+					translation.inspect }}</a>
 			</div>
 			<p class="text-gray-400 dark:text-gray-500 text-sm">{{ p.url }}</p>
 		</div>
@@ -22,5 +22,17 @@ import { DevInfo } from "./type"
 
 defineProps<{ pages: Array<DevInfo> }>();
 const translation = useData().frontmatter.value;
+
+const chromium_commit = "a24e4da66c95e4517a6a02d510bcb3cc9c3e7101";
+// Using tag 116.0.5845.11
+
+function fixUrl(p: DevInfo): string {
+	const url = p.devtoolsFrontendUrl;
+	if (url.startsWith("https://chrome-devtools-frontend.appspot.com/")) {
+		return url
+	} else {
+		return "https://chrome-devtools-frontend.appspot.com/serve_internal_file/@" + chromium_commit + "/inspector.html?ws=/devtools/page/" + p.id
+	}
+}
 
 </script>
