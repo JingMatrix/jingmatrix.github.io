@@ -5,7 +5,7 @@
 		}}</h2>
 		<div v-for="p in pages" :key="p.id" class="pl-4 py-3 pr-6">
 			<div class="flex justify-between">
-				<span class="shrink w-64 text-slate-600 dark:text-slate-300" v-html="p.title"></span>
+				<span class="shrink break-words w-64 text-slate-600 dark:text-slate-300" v-html="p.title"></span>
 				<a :href="fixUrl(p)" target="_blank" class="flex-shrink-0 text-green-600 dark:text-green-300 my-auto">{{
 					translation.inspect }}</a>
 			</div>

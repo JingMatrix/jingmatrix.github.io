@@ -99,6 +99,13 @@ onMounted(async () => {
 			script_meta.value = e.detail[0] || "invalid";
 		});
 		window.addEventListener("inspect_pages", (e: CustomEvent) => {
+			if (!inspecting.value) {
+				window.addEventListener("visibilitychange", (_e) => {
+					if (document.visibilityState === "visible") {
+						setTimeout(() => globalThis.ChromeXt(JSON.stringify({ action: "inspectPages", payload: "" })), 0);
+					}
+				});
+			};
 			inspecting.value = true;
 			inspect_pages.value = e.detail.filter(
 				(it: DevInfo) =>
