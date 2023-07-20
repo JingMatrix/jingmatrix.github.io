@@ -113,7 +113,7 @@ i.e., two files _D-000.ppm_ and _D-001.ppm_.
 
 ```sh
 cd /var/tmp/extract
-for file in 00[01]; do
+for file in 00{0,1}; do
     c44 D-$file.ppm djvu/D-$file.djvu
 done
 ```
