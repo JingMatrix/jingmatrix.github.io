@@ -1,111 +1,60 @@
 <template>
-	<h1 @click="show_details ? (show_details = false) : getIds()">
+	<h1 @click="toggle_details ? (toggle_details = !toggle_details) : refresh()">
 		{{ header }}
 	</h1>
-	<p v-if="scripts.length == 0">
-		{{ translation.introduction }}
-		<a href="https://github.com/JingMatrix/ChromeXt">ChromeXt</a>.
-	</p>
-	<div v-else>
-		<Meta v-if="show_details && script_meta != ''" :meta="script_meta" @exit="
-			show_details = false;
-		script_meta = '';
-		" />
-		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row">
-			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 my-auto" @click="
-				deleteScript([script]);
-			getIds();
-			" />
-			<button class="basis-5/8 flex-1 text-left indent-3" @click="
-				show_details = true;
-			getMeta([script]);
-			">
-				{{ getName(script) }}
-			</button>
-			<div class="basis-1/4 text-xs px-2 break-all text-gray-200 dark:text-gray-700">
-				{{ getSimpleNameSpace(script) }}
-			</div>
-		</div>
-	</div>
-	<DevTools v-if="inspecting && !show_details" :pages="inspect_pages" />
+	<UserScript v-if="!toggle_extensions" :scripts="scripts" :toggle_details="toggle_details" @refresh="refresh"
+		@toggle_details="toggle_details = !toggle_details" />
+	<Extension v-else :extensions="extensions" :toggle_details="toggle_details" @refresh="refresh"
+		@toggle_details="toggle_details = !toggle_details" />
+	<DevTools v-if="inspecting && !toggle_details" :pages="inspect_pages" />
 </template>
 
 <script lang="ts" setup>
 import { useData } from "vitepress";
 import { ref, onMounted } from "vue";
-import Meta from "./meta.vue";
-import type { DevInfo } from "./type";
+import type { DevInfo, ExtensionInfo } from "./type";
+import UserScript from "./userscript.vue";
+import Extension from "./extension.vue";
 import DevTools from "./devtools.vue";
 
-const show_details = ref(false);
-const script_meta = ref("");
+const toggle_details = ref(false);
+const toggle_extensions = ref(false);
+const inspecting = ref(false);
+
 const scripts = ref([]);
 const inspect_pages = ref(new Array<DevInfo>());
-const inspecting = ref(false);
+const extensions = ref(new Array<ExtensionInfo>());
+
 const translation = useData().frontmatter.value;
 const header = ref(translation.not_installed);
 
-function getIds() {
-	globalThis.ChromeXt(JSON.stringify({ action: "getIds", payload: "" }));
+function refresh() {
+	const action = toggle_extensions.value ? "extension" : "userscript";
+	globalThis.ChromeXt(JSON.stringify({ action }));
 }
 
-function getMeta(arg: string[]) {
-	script_meta.value = "";
-	if (show_details.value) {
-		globalThis.ChromeXt(
-			JSON.stringify({ action: "getMeta", payload: arg })
-		);
-	}
-}
-
-function getName(id: string) {
-	const split = id.split(":");
-	return split[split.length - 1];
-}
-
-function getSimpleNameSpace(id: string) {
-	const split = id.split(":");
-	split.pop();
-	if (split.length == 1) {
-		return split[0];
-	} else {
-		if (split[0].startsWith("http")) {
-			split.shift();
-			let namespace = split.join(":");
-			if (namespace.startsWith("//")) {
-				return namespace.substring(2);
-			} else {
-				return namespace;
-			}
-		} else {
-			return split.join(":");
-		}
-	}
-}
-
-function deleteScript(arg: string[]) {
-	globalThis.ChromeXt(
-		JSON.stringify({ action: "deleteScript", payload: arg })
-	);
-}
-
-onMounted(async () => {
+onMounted(() => {
 	if (typeof globalThis.ChromeXt !== "undefined") {
 		header.value = translation.installed;
-		window.addEventListener("script_id", (e: CustomEvent) => {
-			scripts.value = e.detail.filter((id: string) => id.includes(":"));
-		});
-		window.addEventListener("script_meta", (e: CustomEvent) => {
-			script_meta.value = e.detail[0] || "invalid";
+		window.addEventListener("userscript", (e: CustomEvent) => {
+			if (e.detail.type == "init") {
+				scripts.value = e.detail.ids.filter((id: string) => id.includes(":"));
+			}
 		});
 		window.addEventListener("inspect_pages", (e: CustomEvent) => {
 			if (!inspecting.value) {
 				window.addEventListener("visibilitychange", (_e) => {
 					if (document.visibilityState === "visible") {
-						setTimeout(() => globalThis.ChromeXt(JSON.stringify({ action: "inspectPages", payload: "" })), 0);
+						setTimeout(
+							() =>
+								globalThis.ChromeXt(
+									JSON.stringify({ action: "inspectPages" })
+								),
+							0
+						);
 					}
 				});
-			};
+			}
 			inspecting.value = true;
 			inspect_pages.value = e.detail.filter(
 				(it: DevInfo) =>
@@ -115,7 +64,13 @@ onMounted(async () => {
 					(it.description == "" || !JSON.parse(it.description).never_attached)
 			);
 		});
-		getIds();
+		window.addEventListener("extension", (e: CustomEvent) => {
+			toggle_extensions.value = !toggle_extensions.value;
+			if (e.detail.type == "init") {
+				extensions.value = e.detail.manifests;
+			}
+		});
+		refresh();
 	}
 });
 </script>

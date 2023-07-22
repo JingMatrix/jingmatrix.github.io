@@ -4,6 +4,7 @@ title: "ChromeXt"
 titleTemplate: false
 installed: "ChromeXt is working"
 not_installed: "ChromeXt is not installed"
+extension: "Support for WebExtension is still working in progress. No installed extensions found."
 introduction: "ChromeXt adds UserScript and DevTools supports to Chromium based and WebView based browsers. See details in the project homepage: "
 dev_title: "Chrome DevTools"
 dev_intro: "Open pages in new tabs, and then inspect them from here. For inactive tabs, you may need to activate them before inspecting."

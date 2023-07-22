@@ -20,7 +20,7 @@ export class Metadata {
 	grant: string[] = [];
 
 	constructor(d: string) {
-		d.split("\n").forEach((line: string) => {
+		d.trim().split("\n").forEach((line: string) => {
 			let meta = line.match(/^\/\/\s+@([\w-]+)\s+(.+)\s*$/)
 			if (meta != null && (this.hasOwnProperty(meta[1]) || meta[1] == "run-at")) {
 				const key = meta[1];
@@ -81,14 +81,14 @@ export class Metadata {
 		this.preserved.push(end);
 		const result = this.preserved.join("\n");
 		this.preserved = backup.split("\n");
-		return result;
+		return result + "\n";
 	}
 
 
 	submit() {
 		if (this.isValid) {
 			globalThis.ChromeXt(JSON.stringify({
-				action: "updateMeta", payload: {
+				action: "userscript", payload: {
 					id: this.getId(),
 					meta: this.toString()
 				}
@@ -107,3 +107,15 @@ export type DevInfo = {
 	url: string,
 	webSocketDebuggerUrl: string
 }
+
+interface ExtensionV2 extends chrome.runtime.ManifestV2 {
+	readonly id: string
+	readonly port: number
+}
+
+interface ExtensionV3 extends chrome.runtime.ManifestV2 {
+	readonly id: string
+	readonly port: number
+}
+
+export type ExtensionInfo = ExtensionV2 | ExtensionV3
