@@ -20,22 +20,27 @@ export class Metadata {
 	grant: string[] = [];
 
 	constructor(d: string) {
-		d.trim().split("\n").forEach((line: string) => {
-			let meta = line.match(/^\/\/\s+@([\w-]+)\s+(.+)\s*$/)
-			if (meta != null && (this.hasOwnProperty(meta[1]) || meta[1] == "run-at")) {
-				const key = meta[1];
-				const value = meta[2];
-				if (["match", "include", "exclude", "grant"].includes(key)) {
-					this[key].push(value);
-				} else if (key == "run-at") {
-					this.runAt = value
+		d.trim()
+			.split("\n")
+			.forEach((line: string) => {
+				let meta = line.match(/^\/\/\s+@([\w-]+)\s+(.+)\s*$/);
+				if (
+					meta != null &&
+					(this.hasOwnProperty(meta[1]) || meta[1] == "run-at")
+				) {
+					const key = meta[1];
+					const value = meta[2];
+					if (["match", "include", "exclude", "grant"].includes(key)) {
+						this[key].push(value);
+					} else if (key == "run-at") {
+						this.runAt = value;
+					} else {
+						this[key] = value;
+					}
 				} else {
-					this[key] = value;
+					this.preserved.push(line);
 				}
-			} else {
-				this.preserved.push(line);
-			}
-		})
+			});
 		if (this.match.length + this.include.length > 0) {
 			this.isValid = true;
 		}
@@ -50,16 +55,17 @@ export class Metadata {
 	}
 
 	getUrl(): string {
-		const url = this.updateURL || this.downloadURL || this.homepage || this.namespace;
+		const url =
+			this.updateURL || this.downloadURL || this.homepage || this.namespace;
 		if (url.startsWith("http")) {
 			return url;
 		} else {
-			return "javascript: void 0;"
+			return "javascript: void 0;";
 		}
 	}
 
 	getSupport(): string {
-		return this.supportURL || "javascript: void 0;"
+		return this.supportURL || "javascript: void 0;";
 	}
 
 	toString(): string {
@@ -67,14 +73,14 @@ export class Metadata {
 		const end = this.preserved.pop();
 		for (const [key, value] of Object.entries(this)) {
 			if (typeof value == "string" && value != "" && key != "runAt") {
-				this.preserved.push(`// @${key}\t${value}`)
+				this.preserved.push(`// @${key}\t${value}`);
 			}
 		}
-		this.preserved.push(`// @run-at\t${this.runAt}`)
+		this.preserved.push(`// @run-at\t${this.runAt}`);
 		for (const key of ["match", "include", "exclude", "grant"]) {
 			for (const value of this[key]) {
 				if (value != "") {
-					this.preserved.push(`// @${key}\t${value}`)
+					this.preserved.push(`// @${key}\t${value}`);
 				}
 			}
 		}
@@ -84,38 +90,34 @@ export class Metadata {
 		return result + "\n";
 	}
 
-
 	submit() {
 		if (this.isValid) {
-			globalThis.ChromeXt(JSON.stringify({
-				action: "userscript", payload: {
-					id: this.getId(),
-					meta: this.toString()
-				}
-			}));
+			globalThis.ChromeXt.dispatch("userscript", {
+				id: this.getId(),
+				meta: this.toString(),
+			});
 		}
 	}
 }
 
-
 export type DevInfo = {
-	description: string,
-	devtoolsFrontendUrl: string,
-	id: string,
-	title: string,
-	type: string,
-	url: string,
-	webSocketDebuggerUrl: string
-}
+	description: string;
+	devtoolsFrontendUrl: string;
+	id: string;
+	title: string;
+	type: string;
+	url: string;
+	webSocketDebuggerUrl: string;
+};
 
 interface ExtensionV2 extends chrome.runtime.ManifestV2 {
-	readonly id: string
-	readonly port: number
+	readonly id: string;
+	readonly port: number;
 }
 
 interface ExtensionV3 extends chrome.runtime.ManifestV2 {
-	readonly id: string
-	readonly port: number
+	readonly id: string;
+	readonly port: number;
 }
 
-export type ExtensionInfo = ExtensionV2 | ExtensionV3
+export type ExtensionInfo = ExtensionV2 | ExtensionV3;

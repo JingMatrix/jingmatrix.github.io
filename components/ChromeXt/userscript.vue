@@ -38,7 +38,7 @@ defineProps<{ scripts: any[]; toggle_details: boolean }>();
 
 function getMeta(ids: string[]) {
 	script_meta.value = "";
-	globalThis.ChromeXt(JSON.stringify({ action: "userscript", payload: { ids } }));
+	globalThis.ChromeXt.dispatch("userscript", { ids });
 }
 
 function getName(id: string) {
@@ -67,11 +67,11 @@ function getSimpleNameSpace(id: string) {
 }
 
 function deleteScript(ids: string[]) {
-	globalThis.ChromeXt(JSON.stringify({ action: "userscript", payload: { ids, "delete": true } }));
+	globalThis.ChromeXt.dispatch("userscript", { ids, "delete": true });
 }
 
 onMounted(() => {
-	window.addEventListener("script_meta", (e: CustomEvent) => {
+	globalThis.ChromeXt.addEventListener("script_meta", (e: CustomEvent) => {
 		script_meta.value = e.detail[0] || "invalid";
 	});
 });

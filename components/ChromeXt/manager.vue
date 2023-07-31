@@ -30,28 +30,32 @@ const header = ref(translation.not_installed);
 
 function refresh() {
 	const action = toggle_extensions.value ? "extension" : "userscript";
-	globalThis.ChromeXt(JSON.stringify({ action }));
+	globalThis.ChromeXt.dispatch(action);
+}
+
+if (
+	typeof globalThis.ChromeXt !== "undefined" &&
+	typeof globalThis.ChromeXt.dispatch != "function"
+) {
+	globalThis.ChromeXt.dispatch = (action: string, payload: any) => {
+		console.debug(JSON.stringify({ action, payload }));
+	};
+	globalThis.ChromeXt.addEventListener = window.addEventListener.bind(window);
 }
 
 onMounted(() => {
 	if (typeof globalThis.ChromeXt !== "undefined") {
 		header.value = translation.installed;
-		window.addEventListener("userscript", (e: CustomEvent) => {
+		globalThis.ChromeXt.addEventListener("userscript", (e: CustomEvent) => {
 			if (e.detail.type == "init") {
 				scripts.value = e.detail.ids.filter((id: string) => id.includes(":"));
 			}
 		});
-		window.addEventListener("inspect_pages", (e: CustomEvent) => {
+		globalThis.ChromeXt.addEventListener("inspect_pages", (e: CustomEvent) => {
 			if (!inspecting.value) {
 				window.addEventListener("visibilitychange", (_e) => {
 					if (document.visibilityState === "visible") {
-						setTimeout(
-							() =>
-								globalThis.ChromeXt(
-									JSON.stringify({ action: "inspectPages" })
-								),
-							0
-						);
+						setTimeout(() => globalThis.ChromeXt.dispatch("inspectPages"), 0);
 					}
 				});
 			}
@@ -64,7 +68,7 @@ onMounted(() => {
 					(it.description == "" || !JSON.parse(it.description).never_attached)
 			);
 		});
-		window.addEventListener("extension", (e: CustomEvent) => {
+		globalThis.ChromeXt.addEventListener("extension", (e: CustomEvent) => {
 			toggle_extensions.value = !toggle_extensions.value;
 			if (e.detail.type == "init") {
 				extensions.value = e.detail.manifests;

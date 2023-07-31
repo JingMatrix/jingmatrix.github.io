@@ -10,7 +10,6 @@
 
 <script lang="ts" setup>
 import { useData } from "vitepress";
-import { onMounted } from "vue";
 import { initFrame } from "./chrome"
 import type { ExtensionInfo } from "./type";
 
