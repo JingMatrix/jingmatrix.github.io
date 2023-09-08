@@ -5,18 +5,18 @@
 	</p>
 	<div v-else>
 		<Meta v-if="toggle_details && script_meta != ''" :meta="script_meta" @exit="$emit('toggle_details')" />
-		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row">
+		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row max-h-10">
 			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 my-auto" @click="
 				deleteScript([script]);
 			$emit('refresh');
 			" />
-			<button class="basis-5/8 flex-1 text-left indent-3" @click="
+			<button class="basis-5/8 flex-1 text-left indent-3 overflow-hidden" @click="
 				$emit('toggle_details');
 			getMeta([script]);
 			">
 				{{ getName(script) }}
 			</button>
-			<div class="basis-1/4 text-xs px-2 break-all text-gray-200 dark:text-gray-700">
+			<div class="basis-1/4 text-xs px-2 break-all overflow-y-auto text-gray-200 dark:text-gray-700">
 				{{ getSimpleNameSpace(script) }}
 			</div>
 		</div>
