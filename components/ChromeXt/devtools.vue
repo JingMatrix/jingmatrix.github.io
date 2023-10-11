@@ -23,8 +23,8 @@ import { DevInfo } from "./type"
 defineProps<{ pages: Array<DevInfo> }>();
 const translation = useData().frontmatter.value;
 
-const chromium_commit = "a24e4da66c95e4517a6a02d510bcb3cc9c3e7101";
-// Using tag 116.0.5845.11
+const chromium_commit = "71a97c345b75e0862bf81b98d06f1edbef2b0d49";
+// Using commit https://chromium.googlesource.com/chromium/src.git/+/refs/tags/120.0.6060.1
 
 function fixUrl(p: DevInfo): string {
 	const url = p.devtoolsFrontendUrl;
