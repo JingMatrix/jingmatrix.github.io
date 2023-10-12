@@ -72,14 +72,23 @@ We tune an exemplar image with varying parameters
 and preview the results
 with the `display` command to find the best parameters
 for current document.
+Please refer to the [-blur parameter](https://imagemagick.org/script/command-line-options.php#blur) for better adjustment.
 
 ```sh
-convert -blur 1 -threshold 73% D-011.ppm /tmp/tmp.pbm && display /tmp/tmp.pbm
+convert -blur 2x0.3 -threshold 73% D-011.ppm /tmp/tmp.pbm && display /tmp/tmp.pbm
 ```
 
-In case that the example image is of inverted color, that is say,
+In case that the examplar image (D-011.ppm) is of inverted color, that is say,
 with white text and black background,
-we should add the `-negate` argument immediately after the `convert` command.
+we should add the [`-negate`](https://imagemagick.org/script/command-line-options.php#negate) argument immediately after the `convert` command.
+Also, sometimes one may need to replace the margins of pages by pure white blanks,
+which can be done by combining the [`-shave`](https://imagemagick.org/Usage/crop/#shave)
+and [`-border`](https://imagemagick.org/script/command-line-options.php#border) arguments:
+
+```sh
+convert -negate -shave 80x100 -bordercolor white -border 80x100 D-011.pbm /tmp/tmp.pbm && display /tmp/tmp.pbm
+```
+
 After finding out the best adjustment,
 we first create subdirectories to store processed images and
 futur converted DjVu pages.
@@ -88,7 +97,7 @@ Then we use a `for` loop to convert all images.
 ```sh
 mkdir opt-img djvu
 for file in D*.pbm;  do
-    convert -blur 1 -threshold 73% $file opt-img/${file:r}.pbm;
+    convert -blur 2x0.3 -threshold 73% $file opt-img/${file:r}.pbm;
 done
 ```
 
@@ -109,11 +118,11 @@ Here the command `cjb2` from [DjVuLibre](https://djvu.sourceforge.net/)
 can convert PBM images to single page DjVu files.
 For PPM images, we should use the `c44` command from DjVuLibre instead.
 Here is an example to convert some few PPM images,
-i.e., two files _D-000.ppm_ and _D-001.ppm_.
+i.e., four files from _D-000.ppm_ to _D-003.ppm_.
 
 ```sh
 cd /var/tmp/extract
-for file in 00{0,1}; do
+for file in 00{0..3}; do
     c44 D-$file.ppm djvu/D-$file.djvu
 done
 ```
