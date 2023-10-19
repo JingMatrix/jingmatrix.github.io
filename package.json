@@ -28,7 +28,7 @@
     "markdown-it-fancy-lists": "^1.2.3",
     "markdown-it-footnote": "^3.0.3",
     "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^3.3.5",
     "vite": "link:vitepress/node_modules/vite",
     "vite-plugin-pwa": "^0.14.7",
     "vite-plugin-rss": "^0.0.6",

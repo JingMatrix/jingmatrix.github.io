@@ -138,7 +138,7 @@ djvm -c my-awesome-and-light-document.djvu djvu/*
 ## Add bookmarks
 
 For a textbook in the formats PDF or DjVu,
-it would be convient that one can use bookmarks or outlines provided
+it would be convenient that one can use bookmarks or outlines provided
 by the document to help us jump between different chapters.
 To do so, we need the page numbers corresponding to chapters or sections.
 This is usually presented in the document, precisely in the pages for _Table of Content_.
@@ -192,7 +192,7 @@ I store and read all my edited EPUB books on [Google Play Books](https://play.go
 
 The dedicated tool for this task is [wkhtmltopdf](https://wkhtmltopdf.org/).
 I once made a web page for my [curriculum vitae](https://jingmatrix.github.io/cv/)
-so that I can always print it to a PDF file with this convient tool.
+so that I can always print it to a PDF file with this convenient tool.
 
 ## Document reader softwares
 
