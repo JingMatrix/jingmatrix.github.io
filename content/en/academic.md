@@ -5,12 +5,13 @@ title: 'Academic'
 
 # Works on mathematics
 
+## Preprints
+
+- [Absolute continuity of Wasserstein barycenters on manifolds with a lower Ricci curvature bound](https://arxiv.org/abs/2310.13832)
 
 ## Reports
 
 <!-- - PhD Activity Report: [2021-2022](/pdf/report_2021-2022.pdf) -->
-
-<!-- - M2 internship: [Existence and Uniqueness of Barycenter in Metric Spaces](https://drive.google.com/file/d/1DgcO-M13q4x_sCYsJTPjR9Wx154C0tnh/view?usp=sharing) -->
 
 - M2 Reading Seminar Presentatin: <a ref="noreferer" target='_blank' href="/HyperbolicGroup/index.html">Hyperbolic Groups</a>
 
