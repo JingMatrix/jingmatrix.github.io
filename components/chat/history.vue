@@ -9,13 +9,13 @@
 					:class="[name == message.name ? 'text-right' : 'text-left']">
 					{{ message.name }} </span>
 				<span class="text-xs dark:text-gray-600 text-gray-400 basis-1/2 text-center -mb-4"> {{
-				getTime(message.time) }}</span>
+					getTime(message.time) }}</span>
 				<span class="text-gray-100 dark:text-gray-800 text-sm basis-1/4">
 					{{ " @ " + message.uid }}
 				</span>
 			</div>
 			<div :style="{ color: message.msgcolor }" class="mx-12 flex my-2 flex-col render-html" :class="[
-			name == message.name ? 'items-end' : '']" v-html="render(message.msg)"></div>
+				name == message.name ? 'items-end' : '']" v-html="render(message.msg)"></div>
 		</div>
 		<span id="sys" class="text-center text-sm block text-green-300 px-8 dark:text-cyan-700">
 			{{ systemMsg }}
@@ -28,7 +28,7 @@ import ScrollHack from './jumptomsg'
 import { onMounted } from 'vue'
 import { UserMsg } from './types'
 import Markdown from 'markdown-it'
-import emoji from 'markdown-it-emoji'
+import { full as emoji } from 'markdown-it-emoji'
 import katex from 'katex'
 import texmath from 'markdown-it-texmath'
 const markdownItOption = {

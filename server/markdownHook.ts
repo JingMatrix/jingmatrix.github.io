@@ -1,7 +1,7 @@
 import type MarkdownIt = require("markdown-it");
 import textmath from "markdown-it-texmath";
 import footnote from "markdown-it-footnote";
-import { markdownItFancyListPlugin } from "markdown-it-fancy-lists";
+// import { markdownItFancyListPlugin } from "markdown-it-fancy-lists";
 import katex from "katex";
 import { markdownData } from "./types";
 import { hookFrontmatter } from "./posts";
@@ -12,7 +12,7 @@ export default function(md: MarkdownIt) {
 		delimiters: "dollars",
 	});
 	md.use(footnote);
-	md.use(markdownItFancyListPlugin);
+	// md.use(markdownItFancyListPlugin);
 	const render = md.render.bind(md);
 	md.render = (src, env: markdownData) => {
 		if (env.relativePath) {
