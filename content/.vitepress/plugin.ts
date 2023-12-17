@@ -4,6 +4,7 @@ import blogList from '../../server/data/blog.json'
 import writingList from '../../server/data/writing.json'
 import essaiList from '../../server/data/essai.json'
 import type MarkdownIt from 'markdown-it'
+import { ThemeOptions } from 'vitepress'
 
 const katex_tags = ['math', 'annotation', 'semantics', 'mtext', 'mn', 'mo', 'mi', 'mspace', 'mover', 'munder', 'munderover', 'msup', 'msub', 'msubsup', 'mfrac', 'mroot', 'msqrt', 'mtable', 'mtr', 'mtd', 'mlabeledtr', 'mrow', 'menclose', 'mstyle', 'mpadded', 'mphantom', 'mglyph', 'svg', 'line', 'path', 'eq', 'eqn'];
 
@@ -61,8 +62,9 @@ const vite = {
 	]
 }
 
+const theme: ThemeOptions = { dark: 'dark-plus', light: 'material-theme-palenight' }
 const markdown = {
-	theme: { dark: 'dark-plus', light: 'material-theme-palenight' },
+	theme,
 	preConfig: (md: MarkdownIt) => {
 		md.use(markdownHook)
 	}

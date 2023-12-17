@@ -15,7 +15,7 @@ export default function(md: MarkdownIt) {
 	// md.use(markdownItFancyListPlugin);
 	const render = md.render.bind(md);
 	md.render = (src, env: markdownData) => {
-		if (env.relativePath) {
+		if (env.relativePath && env.frontmatter != null) {
 			const path = env.relativePath.split("/");
 			if (path.length >= 3) {
 				env.frontmatter = hookFrontmatter(env.frontmatter, path[2]);
