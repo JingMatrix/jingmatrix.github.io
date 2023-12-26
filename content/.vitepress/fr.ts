@@ -4,7 +4,7 @@ import { essai, rssIcon, cvLink } from './plugin'
 
 export const frConfig: LocaleSpecificConfig<ThemeConfig> = {
 	title: "Jianyu MA",
-	description: "J'espère que vous trouverez ici quelque chose d'intéressant sur moi",
+	description: "J'espère que vous trouverez des choses intéressantes ici",
 	themeConfig: {
 		socialLinks: [
 			{ icon: 'instagram', link: 'https://www.instagram.com/jingmatrix/' },
@@ -20,7 +20,7 @@ export const frConfig: LocaleSpecificConfig<ThemeConfig> = {
 			}
 		],
 		nav: [
-			{ text: "Enseignement", link: "/fr/enseignement" },
+			// { text: "Enseignement", link: "/fr/enseignement" },
 			{ text: "Essai", link: essai[0].link },
 			{ text: "Contactez en ligne", link: "/fr/contact" },
 			{
