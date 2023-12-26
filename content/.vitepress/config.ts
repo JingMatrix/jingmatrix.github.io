@@ -12,6 +12,12 @@ export default withPwa(defineConfigWithTheme<ThemeConfig>({
 	vue, vite, markdown,
 	pwa: {
 		outDir: '.vitepress/dist',
+		strategies: 'generateSW',
+		workbox: {
+			globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+			globIgnores: ['workbox-*.js', "sw.js", "{hyperbolic-canvas,HyperbolicGroup,h2snake,public}/**/*"],
+			navigateFallbackDenylist: [/^\/pdf\/*/, /^\/cv\/*/, /^\/mikutap\/*/, /^\/hyperbolic-canvas\/*/],
+		},
 		registerType: "autoUpdate",
 		includeAssets: ['favicon.png', 'img/icon-180.png', 'img/masked-icon.svg'],
 		manifest

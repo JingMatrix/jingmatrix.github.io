@@ -2,24 +2,39 @@
 import VueUtterances from "vue-utterances";
 import DefaultTheme from "vitepress/theme";
 import Author from "../blog/author.vue";
-import RegisterSW from "./RegisterSW.vue";
 import { useData } from "vitepress";
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount, onBeforeMount } from "vue";
 
 const isDark = ref(false);
 let observer = null;
 
-const setDark = () => {
-	isDark.value = document.documentElement.classList.contains("dark");
+function checkDark() {
+	const setValue = () => {
+		isDark.value = document.documentElement.classList.contains("dark");
+	};
+	setTimeout(setValue, document?.documentElement == null ? 0 : 1000);
 };
 
+onBeforeMount(async () => {
+	const { registerSW } = await import("virtual:pwa-register");
+	registerSW({
+		immediate: true,
+		onRegistered() {
+			console.info("Service Worker registered");
+		},
+		onRegisterError(e) {
+			console.error("Service Worker registration error!", e);
+		},
+	});
+});
+
 onMounted(() => {
-	setTimeout(setDark, 1000);
-	observer = new MutationObserver(setDark);
+	observer = new MutationObserver(checkDark);
 	observer.observe(document.documentElement, {
 		attributes: true,
 		attributeFilter: ["class"],
 	});
+	checkDark();
 });
 
 onBeforeUnmount(() => {
@@ -30,6 +45,7 @@ const frontmatter = useData().frontmatter;
 
 const { Layout } = DefaultTheme;
 const site = useData().site;
+
 function formatDateByLocale(date: Date, lang: string) {
 	const options: Intl.DateTimeFormatOptions = {
 		year: "numeric",
@@ -61,13 +77,9 @@ function formatDateByLocale(date: Date, lang: string) {
 		</template>
 		<template #doc-after>
 			<div>
-				<VueUtterances repo="JingMatrix/jingmatrix.github.io"
-					:theme="isDark? 'github-dark' : 'github-light'" issue-term="title"
-					v-if="frontmatter.header" />
+				<VueUtterances repo="JingMatrix/jingmatrix.github.io" :theme="isDark ? 'github-dark' : 'github-light'"
+					issue-term="title" v-if="frontmatter.header" />
 			</div>
-		</template>
-		<template #layout-bottom>
-			<RegisterSW />
 		</template>
 	</Layout>
 </template>
