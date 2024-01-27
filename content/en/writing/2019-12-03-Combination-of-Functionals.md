@@ -1,4 +1,5 @@
 ---
+title: Combination of Functionals
 math: true
 tags:
   - Analyse

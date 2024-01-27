@@ -1,4 +1,5 @@
 ---
+title: Solving Math Exercises
 category: math-work
 author: Paul R. Haimos
 
