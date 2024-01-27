@@ -1,96 +1,155 @@
-import markdownHook from '../../server/markdownHook'
-import { rssPlugin } from "vite-plugin-rss";
-import blogList from '../../server/data/blog.json'
-import writingList from '../../server/data/writing.json'
-import essaiList from '../../server/data/essai.json'
-import type MarkdownIt from 'markdown-it'
-import { ThemeOptions } from 'vitepress'
+import textmath from "markdown-it-texmath";
+import footnote from "markdown-it-footnote";
+import katex from "katex";
+import authors from "./author.json";
 
-const katex_tags = ['math', 'annotation', 'semantics', 'mtext', 'mn', 'mo', 'mi', 'mspace', 'mover', 'munder', 'munderover', 'msup', 'msub', 'msubsup', 'mfrac', 'mroot', 'msqrt', 'mtable', 'mtr', 'mtd', 'mlabeledtr', 'mrow', 'menclose', 'mstyle', 'mpadded', 'mphantom', 'mglyph', 'svg', 'line', 'path', 'eq', 'eqn'];
+import { ThemeOptions } from "vitepress";
+import type MarkdownIt = require("markdown-it");
+import { markdownData, Frontmatter } from "./types";
 
-const vue = {
-	"template": {
-		compilerOptions: {
-			isCustomElement:
-				(tag: string) => katex_tags.includes(tag)
+function hookFrontmatter(f: Frontmatter, filename: string): Frontmatter {
+	if (isNaN(Date.parse(filename.slice(0, 10)))) {
+		f.header = false;
+	} else {
+		f.header = true;
+		if (!f.title) {
+			f.title = filename.slice(11).replace(/-/g, " ").slice(0, -3);
+		}
+		if (f.created) {
+			f.date = new Date(f.created);
+		} else if (f.date) {
+			f.date = new Date(f.date);
+		} else {
+			f.date = new Date(filename.slice(0, 10));
+		}
+		if (f.date == null) {
+			console.log(`Post $path have no valide date indicated`);
+			f.date = new Date();
+		}
+		if (f.author != null && typeof f.author == "string") {
+			f.author = authors[f.author];
+		}
+		f.tags = f.tags || [];
+		if (f.math) {
+			f.head = f.head || [];
+			f.head.push([
+				"link",
+				{
+					rel: "stylesheet",
+					href: "https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css",
+					integrity:
+						"sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X",
+					crossorigin: "anonymous",
+				},
+			]);
+			f.head.push(["link", { rel: "stylesheet", href: "/css/math.css" }]);
+			f.head.push([
+				"script",
+				{
+					type: "module",
+					src: "https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/copy-tex.mjs",
+					integrity:
+						"sha384-bVEnwt0PtX+1EuJoOEcm4rgTUWvb2ILTdjHfI1gUe/r5fdqrTcQaUuRdHG2DciuQ",
+					crossorigin: "anonymous",
+				},
+			]);
 		}
 	}
+	return f;
 }
 
-const blog = blogList.map((p) => { return { text: p.text, link: p.link } })
-const essai = essaiList.map((p) => { return { text: p.text, link: p.link } })
-const writing = writingList.map((p) => { return { text: p.text, link: p.link } })
-
-function rss(blog: { text?: string, title: string, link: string }) {
-	blog.link = 'https://jingmatrix.github.io' + blog.link;
-	delete blog.text;
-	return blog;
+function markdownHook(md: MarkdownIt) {
+	md.use(textmath, {
+		engin: katex,
+		delimiters: "dollars",
+	});
+	md.use(footnote);
+	const render = md.render.bind(md);
+	md.render = (src, env: markdownData) => {
+		if (env.relativePath && env.frontmatter != null) {
+			const path = env.relativePath.split("/");
+			if (path.length >= 3) {
+				env.frontmatter = hookFrontmatter(env.frontmatter, path[2]);
+			} else {
+				env.frontmatter.sidebar = false;
+			}
+		}
+		return render(src, env);
+	};
 }
 
-const vite = {
-	plugins: [
-		rssPlugin({
-			mode: "define",
-			fileName: "feed-en.xml",
-			channel: {
-				title: "English RSS Feed for Jianyu MA's blog",
-				link: "https://jingmatrix.github.io",
-				description: "Update for blogs English",
-			},
-			items: writingList.map(rss)
-		}),
-		rssPlugin({
-			mode: "define",
-			fileName: "feed-fr.xml",
-			channel: {
-				title: "Flux RSS en Français pour le blog de Jianyu MA",
-				link: "https://jingmatrix.github.io",
-				description: "Mis à jour des blogs en Français",
-			},
-			items: essaiList.map(rss)
-		}),
-		rssPlugin({
-			mode: "define",
-			fileName: "feed-zh.xml",
-			channel: {
-				title: "马健宇中文博客 RSS",
-				link: "https://jingmatrix.github.io",
-				description: "中文博客的更新",
-			},
-			items: blogList.map(rss)
-		}),
-	]
-}
+const katex_tags = [
+	"math",
+	"annotation",
+	"semantics",
+	"mtext",
+	"mn",
+	"mo",
+	"mi",
+	"mspace",
+	"mover",
+	"munder",
+	"munderover",
+	"msup",
+	"msub",
+	"msubsup",
+	"mfrac",
+	"mroot",
+	"msqrt",
+	"mtable",
+	"mtr",
+	"mtd",
+	"mlabeledtr",
+	"mrow",
+	"menclose",
+	"mstyle",
+	"mpadded",
+	"mphantom",
+	"mglyph",
+	"svg",
+	"line",
+	"path",
+	"eq",
+	"eqn",
+];
 
-const theme: ThemeOptions = { dark: 'dark-plus', light: 'material-theme-palenight' }
+const vue = {
+	template: {
+		compilerOptions: {
+			isCustomElement: (tag: string) => katex_tags.includes(tag),
+		},
+	},
+};
+
+const theme: ThemeOptions = {
+	dark: "dark-plus",
+	light: "material-theme-palenight",
+};
+
 const markdown = {
 	theme,
 	preConfig: (md: MarkdownIt) => {
-		md.use(markdownHook)
-	}
-}
-
-const rssIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416c0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96C14.3 96 0 81.7 0 64zM128 416c0 35.3-28.7 64-64 64s-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64zM32 160c159.1 0 288 128.9 288 288c0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>'
-
-const cvLink = "https://jingmatrix.github.io/cv/"
+		md.use(markdownHook);
+	},
+};
 
 const manifest = {
 	name: "Jianyu MA's website",
-	short_name: 'Jianyu',
-	description: 'Hope you find me interesting',
-	theme_color: '#ffffff',
+	short_name: "Jianyu",
+	description: "Hope you find me interesting",
+	theme_color: "#ffffff",
 	icons: [
 		{
-			src: 'img/icon-192.png',
-			sizes: '192x192',
-			type: 'image/png'
+			src: "img/icon-192.png",
+			sizes: "192x192",
+			type: "image/png",
 		},
 		{
-			src: 'img/icon-512.png',
-			sizes: '512x512',
-			type: 'image/png'
-		}
-	]
-}
+			src: "img/icon-512.png",
+			sizes: "512x512",
+			type: "image/png",
+		},
+	],
+};
 
-export { blog, writing, essai, vue, vite, markdown, rssIcon, cvLink, manifest }
+export { vue, markdown, manifest };
