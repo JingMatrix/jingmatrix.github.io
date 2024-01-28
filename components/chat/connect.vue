@@ -1,6 +1,6 @@
 <template>
 	<div class="lg:flex lg:flex-row-reverse lg:px-20 lg:h-screen">
-		<img src="/img/connect.svg" class="w-2/3 mx-auto my-8 lg:w-1/2" />
+		<img :src="withBase('/img/connect.svg')" class="w-2/3 mx-auto my-8 lg:w-1/2" />
 		<div class="max-w-md mx-auto">
 			<h1 class="headtext">
 				{{ translation.title }}
@@ -34,7 +34,7 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 const translation = useData().frontmatter.value
 const lang = useData().site.value.lang
 
@@ -53,7 +53,7 @@ function savename() {
 	if (!localStorage.getItem("name")) {
 		localStorage.setItem("name", name.value);
 	}
-	window.location.href = `/chat/${lang}`;
+	window.location.href = withBase(`/chat/${lang}`);
 }
 </script>
 

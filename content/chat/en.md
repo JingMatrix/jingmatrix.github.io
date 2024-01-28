@@ -15,12 +15,7 @@ push:
   no: "Enable notifications"
   yes: "Disable notifications"
 loading: "Fetching your messages history..."
-head:
-  -  - "script"
-     - src: "/js/simple-signal-client.min.js"
-       type: "module"
 ---
-
 
 <script setup>
 import Chat from '../../components/chat/room.vue'

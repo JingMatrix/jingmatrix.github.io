@@ -2,7 +2,7 @@
 	<Base :features="features">
 	<div v-for="feature in features.content" :key="feature.title" class="shadow-lg hover:shadow-xl cards">
 		<div class="flex h-64 justify-center flex-col">
-			<img :src="feature.img" :alt="feature.alt || feature.title" />
+			<img :src="withBase(feature.img)" :alt="feature.alt || feature.title" />
 		</div>
 		<div class="px-2 py-4">
 			<a :href="feature.link" download=""
@@ -24,5 +24,6 @@
 </template>
 <script lang="ts" setup>
 import Base from "./base.vue";
+import { withBase } from "vitepress";
 defineProps({ features: Object });
 </script>

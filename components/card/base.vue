@@ -8,20 +8,12 @@
 				{{ features.description }}
 			</div>
 		</div>
-		<div class="px-10 mx-auto lg:w-3/4 lg:flex md:justify-between md:px-0 xl:px-30 xl:justify-around ">
+		<div class="px-10 mx-auto lg:w-3/4 lg:flex md:justify-between md:px-0 xl:px-30 xl:justify-around">
 			<slot />
 		</div>
 	</div>
 </template>
 
-<script>
-export default {
-	props: {
-		features: {
-			type: Object,
-			require: true,
-			default: () => { },
-		},
-	},
-};
+<script lang="ts" setup>
+defineProps({ features: Object });
 </script>

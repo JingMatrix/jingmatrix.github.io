@@ -1,56 +1,54 @@
 import initPosts from "./posts";
 import localeConfig from "./locales";
-import { defineConfigWithTheme } from "vitepress";
-import { ThemeConfig } from "./theme";
+import { defineConfigWithTheme, DefaultTheme } from "vitepress";
 import { withPwa } from "@vite-pwa/vitepress";
-import { vue, markdown, manifest } from "./plugin";
+import { vue, markdown, manifest, origin, base, fixLink } from "./plugin";
 import { rssPlugin } from "vite-plugin-rss";
 
-const hostname = "https://jingmatrix.github.io";
 const posts = initPosts();
 
 type blog = { text?: string; title: string; link: string };
-const rssConfig = localeConfig.map((c) => {
-  c.config.themeConfig.sidebar[0].items = posts[c.lang].map((p: blog) => {
+const rssConfig = [];
+
+for (const c of localeConfig) {
+  const theme = c.config.themeConfig;
+  if (theme.sidebar == null || theme.nav == null) continue;
+  theme.sidebar[0].items = posts[c.lang].map((p: blog) => {
     return { link: p.link, text: p.text };
   });
-  const navItem = c.config.themeConfig.nav.find(
-    (i) => "link" in i && i.link == null
+  theme.socialLinks.forEach(fixLink);
+  for (const o of theme.nav) if ("items" in o) o.items.forEach(fixLink);
+  const navItem = theme.nav.find((i: Object) => "link" in i && i.link == null);
+  if (navItem != undefined && "link" in navItem)
+    navItem.link = posts[c.lang][0].link;
+
+  rssConfig.push(
+    rssPlugin({
+      mode: "define",
+      fileName: `feed-${c.lang}.xml`,
+      items: posts[c.lang].map((p: blog) => {
+        p.link = origin + p.link;
+        delete p.text;
+        return p;
+      }),
+      channel: { ...c.channel, link: origin + "/" + c.lang + "/" },
+    })
   );
-  if ("link" in navItem) navItem.link = posts[c.lang][0].link;
-  return rssPlugin({
-    mode: "define",
-    fileName: `feed-${c.lang}.xml`,
-    items: posts[c.lang].map((p: blog) => {
-      p.link = hostname + p.link;
-      delete p.text;
-      return p;
-    }),
-    channel: c.channel,
-  });
-});
+}
 
 export default withPwa(
-  defineConfigWithTheme<ThemeConfig>({
+  defineConfigWithTheme<DefaultTheme.Config>({
     vue,
+    base,
     markdown,
     vite: { plugins: rssConfig },
     pwa: {
       outDir: ".vitepress/dist",
       strategies: "generateSW",
       workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
-        globIgnores: [
-          "workbox-*.js",
-          "sw.js",
-          "{hyperbolic-canvas,HyperbolicGroup,h2snake,public}/**/*",
-        ],
-        navigateFallbackDenylist: [
-          /^\/pdf\/*/,
-          /^\/cv\/*/,
-          /^\/mikutap\/*/,
-          /^\/hyperbolic-canvas\/*/,
-        ],
+        globPatterns: ["**/*.{js,css,html,svg}"],
+        globIgnores: ["workbox-*.js", "sw.js", "HyperbolicGroup/**/*", "*.xml"],
+        navigateFallbackAllowlist: [/^\/en\/*/, /^\/fr\/*/, /^\/zh\/*/],
       },
       registerType: "autoUpdate",
       includeAssets: ["favicon.png", "img/icon-180.png", "img/masked-icon.svg"],
@@ -58,25 +56,28 @@ export default withPwa(
     },
     cleanUrls: true,
     head: [
-      ["link", { rel: "prefetch", href: "/manifest.webmanifest" }],
-      ["link", { rel: "manifest", href: "/manifest.webmanifest" }],
+      ["link", { rel: "prefetch", href: base + "manifest.webmanifest" }],
+      ["link", { rel: "manifest", href: base + "manifest.webmanifest" }],
       ["meta", { name: "theme-color", content: "#ffffff" }],
       [
         "link",
         {
           rel: "icon",
-          href: "/favicon.png",
+          href: base + "favicon.png",
           type: "image/png",
           sizes: "32x32",
         },
       ],
-      ["link", { rel: "mask-icon", href: "/img/logo.svg", color: "#ffffff" }],
+      [
+        "link",
+        { rel: "mask-icon", href: base + "img/logo.svg", color: "#ffffff" },
+      ],
       ["meta", { name: "author", content: "Jianyu MA" }],
       [
         "link",
         {
           rel: "apple-touch-icon",
-          href: "/img/icon-180.png",
+          href: base + "img/icon-180.png",
           sizes: "180x180",
         },
       ],
@@ -87,7 +88,7 @@ export default withPwa(
       siteTitle: false,
       outline: "deep",
     },
-    sitemap: { hostname },
+    sitemap: { hostname: origin },
     locales: Object.fromEntries(
       localeConfig.map((c) => [
         c.lang,

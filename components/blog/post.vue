@@ -11,7 +11,7 @@ defineProps({
 	tags: Array,
 });
 
-function formatDateByLocale(date) {
+function formatDateByLocale(date: string) {
 	const options: Intl.DateTimeFormatOptions = {
 		year: "2-digit",
 		month: "long",
@@ -26,12 +26,12 @@ function formatDateByLocale(date) {
 	<article>
 		<header>
 			<div>
-				<h1> {{ title }} </h1>
+				<h1>{{ title }}</h1>
 				<div>
 					<div>
 						<Author :author="author" />
 					</div>
-					<div> {{ formatDateByLocale(date) }} </div>
+					<div>{{ formatDateByLocale(date) }}</div>
 				</div>
 			</div>
 		</header>
@@ -45,4 +45,3 @@ function formatDateByLocale(date) {
 		</div>
 	</article>
 </template>
-

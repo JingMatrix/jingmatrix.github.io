@@ -1,0 +1,14 @@
+image: node:latest
+pages:
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - npm install
+    - npm run build
+    - mv content/.vitepress/dist public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "vitepress build content",
-    "preview": "vitepress preview content --port 8080"
+    "preview": "vitepress preview content --port 8080",
+    "imt": "rclone sync --checksum content/.vitepress/dist imt-perso:public_html"
   },
   "license": "MIT",
   "private": true,
@@ -15,11 +16,10 @@
     "@fortawesome/vue-fontawesome": "^3.0.5",
     "@mdit-vue/types": "^2.0.0",
     "@tailwindcss/typography": "^0.5.10",
-    "@types/chrome": "^0.0.254",
+    "@types/chrome": "^0.0.259",
     "@types/katex": "^0.16.7",
     "@types/markdown-it": "^13.0.7",
     "@types/markdown-it-footnote": "^3.0.3",
-    "@types/markdown-it-texmath": "link:node_modules/@types/markdown-it-footnote",
     "@types/node": "^20.11.8",
     "@vite-pwa/vitepress": "^0.3.1",
     "autoprefixer": "^10.4.17",
@@ -29,11 +29,13 @@
     "markdown-it": "^14.0.0",
     "markdown-it-emoji": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
+    "markdown-it-texmath": "^1.0.0",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
     "vite-plugin-pwa": "^0.17.5",
     "vite-plugin-rss": "^0.0.6",
-    "vitepress": "1.0.0-rc.40",
+    "vitepress": "^1.0.0-rc.40",
+    "vue": "^3.4.15",
     "vue-utterances": "^0.3.4",
     "workbox-window": "^7.0.0"
   },
@@ -42,7 +44,6 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "katex": "^0.16.9",
-    "markdown-it-texmath": "^1.0.0",
     "socket.io-client": "^4.7.4"
   }
 }

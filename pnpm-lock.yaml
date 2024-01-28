@@ -17,9 +17,6 @@ dependencies:
   katex:
     specifier: ^0.16.9
     version: 0.16.9
-  markdown-it-texmath:
-    specifier: ^1.0.0
-    version: 1.0.0
   socket.io-client:
     specifier: ^4.7.4
     version: 4.7.4
@@ -38,8 +35,8 @@ devDependencies:
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.4.1)
   '@types/chrome':
-    specifier: ^0.0.254
-    version: 0.0.254
+    specifier: ^0.0.259
+    version: 0.0.259
   '@types/katex':
     specifier: ^0.16.7
     version: 0.16.7
@@ -49,9 +46,6 @@ devDependencies:
   '@types/markdown-it-footnote':
     specifier: ^3.0.3
     version: 3.0.3
-  '@types/markdown-it-texmath':
-    specifier: link:node_modules/@types/markdown-it-footnote
-    version: link:node_modules/@types/markdown-it-footnote
   '@types/node':
     specifier: ^20.11.8
     version: 20.11.8
@@ -79,6 +73,9 @@ devDependencies:
   markdown-it-footnote:
     specifier: ^4.0.0
     version: 4.0.0
+  markdown-it-texmath:
+    specifier: ^1.0.0
+    version: 1.0.0
   postcss:
     specifier: ^8.4.33
     version: 8.4.33
@@ -92,8 +89,11 @@ devDependencies:
     specifier: ^0.0.6
     version: 0.0.6
   vitepress:
-    specifier: 1.0.0-rc.40
+    specifier: ^1.0.0-rc.40
     version: 1.0.0-rc.40(@algolia/client-search@4.22.1)(@types/node@20.11.8)(postcss@8.4.33)(search-insights@2.13.0)
+  vue:
+    specifier: ^3.4.15
+    version: 3.4.15
   vue-utterances:
     specifier: ^0.3.4
     version: 0.3.4(vue@3.4.15)
@@ -1993,8 +1993,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
-  /@types/chrome@0.0.254:
-    resolution: {integrity: sha512-svkOGKwA+6ZZuk9xtrYun8MYpNY/9hD17rgZ19v3KunhsK1ZOKaMESw12/1AXLh1u3UPA8jQIRi2370DXv9wgw==}
+  /@types/chrome@0.0.259:
+    resolution: {integrity: sha512-WP1HsLqKgoUwR/4dYiTfmOSUG5B05+xrPLbqboO15nuaUC+aBYxwB9ixVyLPYY9D+vocJK9rzH5g1lpqVrJqhg==}
     dependencies:
       '@types/filesystem': 0.0.35
       '@types/har-format': 1.2.15
@@ -2364,7 +2364,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.22.3
-      caniuse-lite: 1.0.30001580
+      caniuse-lite: 1.0.30001581
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2451,7 +2451,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001580
+      caniuse-lite: 1.0.30001581
       electron-to-chromium: 1.4.648
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.3)
@@ -2483,13 +2483,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.22.3
-      caniuse-lite: 1.0.30001580
+      caniuse-lite: 1.0.30001581
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: true
 
-  /caniuse-lite@1.0.30001580:
-    resolution: {integrity: sha512-mtj5ur2FFPZcCEpXFy8ADXbDACuNFXg6mxVDqp7tqooX6l3zwm+d8EPoeOSIFRDvHs8qu7/SLFOGniULkcH2iA==}
+  /caniuse-lite@1.0.30001581:
+    resolution: {integrity: sha512-whlTkwhqV2tUmP3oYhtNfaWGYHDdS3JYFQBKXxcUR9qqPWsRhFHhoISO2Xnl/g0xyKzht9mI1LZpiNWfMzHixQ==}
     dev: true
 
   /chalk@2.4.2:
@@ -3578,7 +3578,7 @@ packages:
 
   /markdown-it-texmath@1.0.0:
     resolution: {integrity: sha512-4hhkiX8/gus+6e53PLCUmUrsa6ZWGgJW2XCW6O0ASvZUiezIK900ZicinTDtG3kAO2kon7oUA/ReWmpW2FByxg==}
-    dev: false
+    dev: true
 
   /markdown-it@14.0.0:
     resolution: {integrity: sha512-seFjF0FIcPt4P9U39Bq1JYblX0KZCjDLFFQPHpL5AzHpqPEKtosxmdq/LTVZnjfH7tjt9BxStm+wXcDBNuYmzw==}

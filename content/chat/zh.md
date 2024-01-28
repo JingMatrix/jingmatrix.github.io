@@ -15,12 +15,7 @@ push:
  no: "订阅消息推送"
  yes: "取消消息推送"
 loading: "正在从云端拉取您的历史消息……"
-head:
-  -  - "script"
-     - src: "/js/simple-signal-client.min.js"
-       type: "module"
 ---
-
 
 <script setup>
 import Chat from '../../components/chat/room.vue'
