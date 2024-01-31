@@ -1,4 +1,4 @@
-image: node:latest
+image: registry.redhat.io/rhel9/nodejs-20:latest
 pages:
   cache:
     paths:
