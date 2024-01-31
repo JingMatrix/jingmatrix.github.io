@@ -60,7 +60,7 @@ const translation = useData().frontmatter.value;
 onMounted(async () => {
 	import(withBase("/js/simple-signal-client.min.js"));
 	chatData.room = localStorage.getItem("room");
-	if (!chatData.room) document.location.href = withBase(`/contact/${translation.lang}`);
+	if (!chatData.room) document.location.href = withBase(`/${translation.lang}/contact`);
 	chatData.uid = localStorage.getItem("uid");
 	chatData.name = localStorage.getItem("name") || chatData.room;
 	if (localStorage.getItem("msgcolor") && localStorage.getItem("namecolor")) {

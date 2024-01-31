@@ -6,5 +6,5 @@ titleTemplate: English, Français, 中文
 head:
  - - script
    - type: "text/javascript"
-   - "let userLang = navigator.language || 'en'; let path = window.location.pathname; if (!path.endsWith('/')) path = path + '/'; window.location.href = path + userLang.substring(0, 2) + '/'"
+   - "let userLang = navigator.language || 'en'; if (!['en', 'fr', 'zh'].includes(userLang)) userLang = 'en'; let path = window.location.pathname; if (!path.endsWith('/')) path = path + '/'; window.location.href = path + userLang.substring(0, 2) + '/'"
 ---
