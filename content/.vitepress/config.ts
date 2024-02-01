@@ -48,7 +48,9 @@ export default withPwa(
       workbox: {
         globPatterns: ["**/*.{js,css,html,svg}"],
         globIgnores: ["workbox-*.js", "sw.js", "HyperbolicGroup/**/*", "*.xml"],
-        navigateFallbackAllowlist: [/^\/en\/*/, /^\/fr\/*/, /^\/zh\/*/],
+        navigateFallbackAllowlist: ["en", "fr", "zh"].map((lang) => {
+          return new RegExp("^" + base.replaceAll("/", "\\/") + lang + "/*");
+        }),
       },
       registerType: "autoUpdate",
       includeAssets: ["favicon.png", "img/icon-180.png", "img/masked-icon.svg"],

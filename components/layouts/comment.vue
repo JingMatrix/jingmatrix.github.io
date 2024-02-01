@@ -1,15 +1,16 @@
 <template>
 	<div>
 		<VueUtterances repo="JingMatrix/jingmatrix.github.io" :theme="isDark ? 'github-dark' : 'github-light'"
-			issue-term="title" v-if="frontmatter.header" />
+			issue-term="title" label="Comment" v-if="showComment" />
 	</div>
 </template>
 
 <script lang="ts" setup>
 import VueUtterances from "vue-utterances";
-import { useData } from "vitepress";
+import { useData, useRouter } from "vitepress";
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
+const showComment = ref(useData().frontmatter.value.header);
 const isDark = ref(false);
 let observer = null;
 
@@ -33,5 +34,11 @@ onBeforeUnmount(() => {
 	observer.disconnect();
 });
 
-const frontmatter = useData().frontmatter;
+useRouter().onBeforeRouteChange = (_path: string) => {
+	showComment.value = false;
+};
+useRouter().onAfterRouteChanged = (path: string) => {
+	checkDark();
+	showComment.value = ["en", "fr", "zh"].includes(path.split("/").at(-3));
+};
 </script>
