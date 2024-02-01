@@ -18,20 +18,20 @@
 <script lang="ts" setup>
 import Author from "../blog/author.vue";
 import { useData, withBase } from "vitepress";
-import { onBeforeMount } from "vue";
+// import { onBeforeMount } from "vue";
 
-onBeforeMount(async () => {
-	const { registerSW } = await import("virtual:pwa-register");
-	registerSW({
-		immediate: true,
-		onRegistered() {
-			console.info("Service Worker registered");
-		},
-		onRegisterError(e) {
-			console.error("Service Worker registration error!", e);
-		},
-	});
-});
+// onBeforeMount(async () => {
+// 	const { registerSW } = await import("virtual:pwa-register");
+// 	registerSW({
+// 		immediate: true,
+// 		onRegistered() {
+// 			console.info("Service Worker registered");
+// 		},
+// 		onRegisterError(e) {
+// 			console.error("Service Worker registration error!", e);
+// 		},
+// 	});
+// });
 
 const frontmatter = useData().frontmatter;
 
