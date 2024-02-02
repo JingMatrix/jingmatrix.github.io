@@ -84,6 +84,7 @@ export default withPwa(
         },
       ],
     ],
+    srcExclude: ["**/LICENSE"],
     themeConfig: {
       i18nRouting: false,
       logo: "/img/logo.svg",
