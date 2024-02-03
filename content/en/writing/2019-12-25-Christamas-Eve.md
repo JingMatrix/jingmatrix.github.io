@@ -17,7 +17,7 @@ Our hostess, Leena, is interesting. She says that when she saw the interior scen
 
 Heeral is from India and made delicious fried rice for us at the hostess's house, but I forgot to praise her for the food. She askes me some direct questions to the soul, so I have to organize the language carefully.
 
-> Have you been interested in mathematics since > childhood?
+> Have you been interested in mathematics since childhood?
 >
 > What contribution can you make to society as a mathematician?
 
