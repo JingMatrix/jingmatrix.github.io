@@ -26,9 +26,9 @@ export default {
 	extends: theme,
 	Layout() {
 		return h(theme.Layout, null, {
-			'not-found': h(NotFound),
-			'doc-before': h(Header),
-			'doc-after': h(Comment),
+			'not-found': () => h(NotFound),
+			'doc-before': () => h(Header),
+			'doc-after': () => h(Comment),
 		})
 	},
 	enhanceApp({ app }) {
