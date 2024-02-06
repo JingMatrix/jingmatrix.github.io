@@ -46,7 +46,7 @@ tel que l'on peut l'utiliser sans rien payer.
 
 ## Exploiter
 
-Les commandements suivants sont utilisé dans mon système d'exploitation `Ubuntu Kinetic Kudu`
+Les commandements suivants sont utilisé dans mon système d'exploitation `Ubuntu`
 pour automatiser et maintenir la connexion.
 
 - `curl`, ennoyer la requête de POST avec les donnés nécessaires.
