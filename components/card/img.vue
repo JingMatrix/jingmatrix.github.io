@@ -2,10 +2,10 @@
 	<Base :features="features">
 	<div v-for="feature in features.content" :key="feature.title" class="shadow-lg hover:shadow-xl cards">
 		<div class="flex h-64 justify-center flex-col">
-			<img :src="withBase(feature.img)" :alt="feature.alt || feature.title" />
+			<img :src="withBase(feature.img)" :alt="feature.alt || feature.title" :class="feature.css" />
 		</div>
 		<div class="px-2 py-4">
-			<a :href="feature.link" download=""
+			<a :href="withBase(feature.link)" download=""
 				class="no-underline flex items-baseline hover:underline font-medium text-xl mb-2 underline-offset-8">
 				{{ feature.title }}
 				<font-awesome-icon icon="fa-regular fa-file-pdf" class="pl-2 text-sm" />

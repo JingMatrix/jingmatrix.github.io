@@ -6,7 +6,7 @@ layout: page
 
 <script lang="ts" setup>
 import CardDate from '../../components/card/date.vue';
-const blogfeature = {
+const features = {
 title: 'Apprenti de Français',
 description:
   "J'aimerais pouvoir écrire de beaux poèmes un jour.",
@@ -36,4 +36,4 @@ j’ai tout oublié de toi sauf mes larmes.`,
 }
 </script>
 
-<CardDate :features="blogfeature" class="border-b-2" />
+<CardDate :features="features" class="border-b-2" />
