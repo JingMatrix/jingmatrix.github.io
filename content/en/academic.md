@@ -7,7 +7,8 @@ title: 'Academic'
 
 ## Preprints
 
-- [Absolute continuity of Wasserstein barycenters on manifolds with a lower Ricci curvature bound](https://arxiv.org/abs/2310.13832)
+- [Absolute continuity of Wasserstein barycenters on manifolds with a lower Ricci curvature bound](/pdf/absolute_continuity.pdf)
+<!-- https://arxiv.org/abs/2310.13832 -->
 
 ## Presentations
 
