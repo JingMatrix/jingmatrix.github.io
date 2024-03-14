@@ -12,7 +12,7 @@ title: 'Academic'
 
 ## Presentations
 
-- [GT CalVa](https://indico.math.cnrs.fr/category/424/) [seminar](https://indico.math.cnrs.fr/event/10197/): [Displacement functional and absolute continuity of Wasserstein barycenters](/pdf/GTCalVa.pdf)
+- [GT CalVa](https://indico.math.cnrs.fr/category/424/) [seminar](https://indico.math.cnrs.fr/event/10197/), [Séminaire Images Optimisation et Probabilités](https://www.math.u-bordeaux.fr/imb/seminaire-images-optimisation-et-probabilites?lang=fr): `Displacement functional and absolute continuity of Wasserstein barycenters`, with slightly different sildes for [Paris](/pdf/GTCalVa.pdf) and [Bordeaux](/pdf/SIOP.pdf).
 
 - PhD Student [seminar](https://indico.math.cnrs.fr/event/9915/): [Why could Souslin spaces theory be helpful?](https://drive.google.com/file/d/1eTfQvdMlMWBhDNXlBEvxbNkI0Sfa8aUB/view)
 
