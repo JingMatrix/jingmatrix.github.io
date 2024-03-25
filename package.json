@@ -43,7 +43,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "katex": "^0.16.9",
+    "katex": "^0.16.10",
     "socket.io-client": "^4.7.4"
   }
 }
