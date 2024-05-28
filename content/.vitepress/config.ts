@@ -47,7 +47,7 @@ export default withPwa(
       strategies: "generateSW",
       workbox: {
         globPatterns: ["**/*.{js,css,html,svg}"],
-        globIgnores: ["workbox-*.js", "sw.js", "HyperbolicGroup/**/*", "*.xml"],
+        globIgnores: ["workbox-*.js", "sw.js", "HyperbolicGroup/**/*", "*.xml", "*.user.js"],
         navigateFallbackAllowlist: ["en", "fr", "zh"].map((lang) => {
           return new RegExp("^" + base.replaceAll("/", "\\/") + lang + "/*");
         }),

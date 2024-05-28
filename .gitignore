@@ -1,4 +1,5 @@
 dist
+content/public/js/*.js
 node_modules
 content/tags.md
 content/.vitepress/cache/
