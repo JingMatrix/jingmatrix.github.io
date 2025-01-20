@@ -1,5 +1,5 @@
 <template>
-	<h1 class="text-3xl text-center py-8 text-cyan-700 dark:text-violet-300 font-[STFangsong]">
+	<h1 class="text-3xl text-center py-8 text-cyan-700 dark:text-violet-300 font-[Fangsong]">
 		{{ translation.head_title }}
 	</h1>
 	<select v-model="category"

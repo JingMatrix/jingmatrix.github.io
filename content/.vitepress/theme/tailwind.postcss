@@ -6,16 +6,41 @@
   @apply rounded flex-shrink-0 max-w-xs mt-10;
 }
 
+@font-face {
+  font-family: Fangsong;
+  src: local(STFangsong), local(华文仿宋), local(仿宋), local(serif);
+}
+
+@font-face {
+  font-family: Kaiti;
+  src: local(STKaiti), local(华文楷体), local(楷体), local(serif);
+}
+
+@font-face {
+  font-family: Xihei;
+  src: local(STXihei), local(华文细黑), local(细黑), local(serif);
+}
+
+@font-face {
+  font-family: Xinwei;
+  src: local(STXinwei), local(华文新魏), local(新魏), local(serif);
+}
+
+@font-face {
+  font-family: Xingkai;
+  src: local(STXingkai), local(华文行楷), local(行楷), local(serif);
+}
+
 html[lang="zh"] body #app {
   font-family: Noto Sans, Noto Sans CJK SC;
 }
 
 @layer components {
   #app .content .content-container .main div[class*="_zh_blog"] div {
-    @apply prose-headings:font-[STKaiti,楷体]
+    @apply prose-headings:font-[Kaiti]
 		prose-headings:font-normal
-		prose-h1:font-[STXingkai,华文行楷]
-		prose-h3:font-[STXinwei,华文新魏];
+		prose-h1:font-[Xingkai]
+		prose-h3:font-[Xinwei];
     p > sup > a {
       text-decoration: none;
     }
@@ -29,7 +54,7 @@ html[lang="zh"] body #app {
       @apply prose-p:text-slate-900
 		prose-p:dark:text-violet-200;
       p {
-        @apply font-[STFangsong,serif] my-1 font-semibold not-italic;
+        @apply font-[Fangsong] my-1 font-semibold not-italic;
       }
       p::before,
       p::after {
