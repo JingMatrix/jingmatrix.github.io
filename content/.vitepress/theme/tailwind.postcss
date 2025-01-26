@@ -1,6 +1,10 @@
+@import "tailwindcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@config "../../../tailwind.config.js";
 
 .cards {
   @apply rounded flex-shrink-0 max-w-xs mt-10;
@@ -35,36 +39,35 @@ html[lang="zh"] body #app {
   font-family: Noto Sans, Noto Sans CJK SC;
 }
 
-@layer components {
-  #app .content .content-container .main div[class*="_zh_blog"] div {
-    @apply prose-headings:font-[Kaiti]
+#app .content .content-container .main div[class*="_zh_blog"] div {
+  @apply prose-headings:font-[Kaiti]
 		prose-headings:font-normal
 		prose-h1:font-[Xingkai]
 		prose-h3:font-[Xinwei];
-    p > sup > a {
-      text-decoration: none;
-    }
-    section.footnotes > ol.footnotes-list {
-      font-family: STXihei;
-    }
-    h2 + hr.footnotes-sep {
-      display: none;
-    }
-    blockquote {
-      @apply prose-p:text-slate-900
+  p > sup > a {
+    text-decoration: none;
+  }
+  section.footnotes > ol.footnotes-list {
+    font-family: Xihei;
+  }
+  h2 + hr.footnotes-sep {
+    display: none;
+  }
+  blockquote {
+    @apply prose-p:text-slate-900
 		prose-p:dark:text-violet-200;
-      p {
-        @apply font-[Fangsong] my-1 font-semibold not-italic;
-      }
-      p::before,
-      p::after {
-        content: none;
-      }
+    p {
+      @apply font-[Fangsong] my-1 font-semibold not-italic;
+    }
+    p::before,
+    p::after {
+      content: none;
     }
   }
+}
 
-  #app .content .content-container .main .vp-doc div {
-    @apply prose prose-stone lg:prose-lg
+#app .content .content-container .main .vp-doc div {
+  @apply prose prose-stone lg:prose-lg
 		dark:prose-invert
 		prose-em:italic
 		prose-a:text-green-400
@@ -75,36 +78,35 @@ html[lang="zh"] body #app {
 		prose-a:underline-offset-4
 		prose-p:text-justify
 		prose-p:indent-[2em];
-    .header-anchor {
-      @apply text-green-200;
-    }
-    ul > li > p,
-    ol > li > p {
-      text-indent: 0;
-    }
-    code::before {
-      display: none;
-    }
-    code::after {
-      display: none;
-    }
-    a {
-      @apply hover:text-blue-500 hover:decoration-4 dark:hover:text-indigo-300;
-    }
+  .header-anchor {
+    @apply text-green-200;
   }
-
-  #app .content .content-container .main .vp-doc div li.footnote-item p {
-    @apply indent-0;
+  ul > li > p,
+  ol > li > p {
+    text-indent: 0;
   }
+  code::before {
+    display: none;
+  }
+  code::after {
+    display: none;
+  }
+  a {
+    @apply hover:text-blue-500 hover:decoration-4 dark:hover:text-indigo-300;
+  }
+}
 
-  #chat-room .render-html {
-    @apply prose prose-zinc dark:prose-invert prose-p:my-0;
-    a[href^="#"] {
-      @apply text-sm dark:text-gray-600 text-gray-200;
-    }
-    p + blockquote {
-      @apply my-2;
-    }
+#app .content .content-container .main .vp-doc div li.footnote-item p {
+  @apply indent-0;
+}
+
+#chat-room .render-html {
+  @apply prose prose-zinc dark:prose-invert prose-p:my-0;
+  a[href^="#"] {
+    @apply text-sm dark:text-gray-600 text-gray-200;
+  }
+  p + blockquote {
+    @apply my-2;
   }
 }
 

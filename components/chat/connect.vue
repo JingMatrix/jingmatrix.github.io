@@ -58,23 +58,21 @@ function savename() {
 </script>
 
 <style lang="postcss" scoped>
-@tailwind components;
+@reference "tailwindcss";
 
-@layer components {
-	.headtext {
-		@apply font-semibold text-lg my-3 min-w-[64] pl-5;
-	}
+.headtext {
+	@apply font-semibold text-lg my-3 min-w-[64] pl-5;
+}
 
-	.paratext {
-		@apply px-8 dark:text-gray-400 text-gray-600 whitespace-pre-wrap
-	}
+.paratext {
+	@apply px-8 dark:text-gray-400 text-gray-600 whitespace-pre-wrap
+}
 
-	input {
-		@apply bg-transparent focus:outline-none focus:shadow border-solid border border-gray-500 dark:border-gray-300 rounded-lg py-2 px-4 block w-2/3 appearance-none leading-normal
-	}
+input {
+	@apply bg-transparent focus:outline-none focus:shadow border-solid border border-gray-500 dark:border-gray-300 rounded-lg py-2 px-4 block w-2/3 appearance-none leading-normal
+}
 
-	button {
-		@apply bg-transparent hover:bg-indigo-500 text-sky-500 font-semibold hover:text-yellow-100 block py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-cyan-300 border-solid
-	}
+button {
+	@apply bg-transparent hover:bg-indigo-500 text-sky-500 font-semibold hover:text-yellow-100 block py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-cyan-300 border-solid
 }
 </style>

@@ -80,19 +80,17 @@ onMounted(() => {
 </script>
 
 <style lang="postcss" scoped>
-@tailwind base;
+@reference "tailwindcss";
 
-@layer base {
-	h1 {
-		@apply text-center text-2xl py-8;
-	}
+h1 {
+	@apply text-center text-2xl py-8;
+}
 
-	p {
-		@apply px-2 indent-2;
-	}
+p {
+	@apply px-2 indent-2;
+}
 
-	a {
-		@apply text-violet-400;
-	}
+a {
+	@apply text-violet-400;
 }
 </style>
