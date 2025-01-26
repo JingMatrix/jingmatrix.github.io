@@ -46,7 +46,7 @@ function formatDateByLocale(date: Date, lang: string) {
 </script>
 
 <style lang="postcss" scoped>
-@reference "tailwindcss/theme.css";
+@reference "tailwindcss";
 
 h1 {
     @apply text-3xl text-center pb-16;

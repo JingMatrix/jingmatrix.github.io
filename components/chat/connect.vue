@@ -58,7 +58,7 @@ function savename() {
 </script>
 
 <style lang="postcss" scoped>
-@reference "tailwindcss/theme.css";
+@reference "tailwindcss";
 
 .headtext {
 	@apply font-semibold text-lg my-3 min-w-[64] pl-5;

@@ -80,7 +80,7 @@ onMounted(() => {
 </script>
 
 <style lang="postcss" scoped>
-@reference "tailwindcss/theme.css";
+@reference "tailwindcss";
 
 h1 {
 	@apply text-center text-2xl py-8;
