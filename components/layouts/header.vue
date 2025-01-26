@@ -1,6 +1,6 @@
 <template>
   <div class="relative mb-16" v-if="frontmatter.header">
-    <h1 class="text-3xl text-center pb-16">{{ frontmatter.title }}</h1>
+    <h1>{{ frontmatter.title }}</h1>
     <div class="text-sm mb-2 text-cyan-500 hover:text-black">
       <a
         v-for="tag in frontmatter.tags"
@@ -44,3 +44,11 @@ function formatDateByLocale(date: Date, lang: string) {
   return localDate;
 }
 </script>
+
+<style lang="postcss" scoped>
+@reference "tailwindcss/theme.css";
+
+h1 {
+    @apply text-3xl text-center pb-16;
+}
+</style>
