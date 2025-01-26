@@ -1,6 +1,10 @@
+@import "tailwindcss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@config "../../../tailwind.config.js";
 
 .cards {
   @apply rounded flex-shrink-0 max-w-xs mt-10;
@@ -45,7 +49,7 @@ html[lang="zh"] body #app {
       text-decoration: none;
     }
     section.footnotes > ol.footnotes-list {
-      font-family: STXihei;
+      font-family: Xihei;
     }
     h2 + hr.footnotes-sep {
       display: none;
