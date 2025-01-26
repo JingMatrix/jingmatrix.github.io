@@ -58,6 +58,7 @@ function savename() {
 </script>
 
 <style lang="postcss" scoped>
+@reference "tailwindcss/theme.css";
 @tailwind components;
 
 @layer components {

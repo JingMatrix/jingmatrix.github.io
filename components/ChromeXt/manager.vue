@@ -80,6 +80,7 @@ onMounted(() => {
 </script>
 
 <style lang="postcss" scoped>
+@reference "tailwindcss/theme.css";
 @tailwind base;
 
 @layer base {
