@@ -8,7 +8,7 @@
 				{{ features.description }}
 			</div>
 		</div>
-		<div class="px-10 mx-auto lg:w-3/4 lg:flex md:justify-between md:px-0 xl:px-30 xl:justify-around">
+		<div class="px-10 mx-auto lg:flex lg:justify-between lg:w-full xl:justify-around">
 			<slot />
 		</div>
 	</div>
