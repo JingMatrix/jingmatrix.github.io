@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<VueUtterances repo="JingMatrix/jingmatrix.github.io" :theme="isDark ? 'github-dark' : 'github-light'"
+		<Utterances repo="JingMatrix/jingmatrix.github.io" :theme="isDark ? 'github-dark' : 'github-light'"
 			issue-term="title" label="Comment" v-if="showComment" />
 	</div>
 </template>
 
 <script lang="ts" setup>
-import VueUtterances from "vue-utterances";
+import * as Utterances from "vue-utterances";
 import { useData, useRouter } from "vitepress";
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
