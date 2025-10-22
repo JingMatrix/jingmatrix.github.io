@@ -9,8 +9,18 @@ import CardDate from "../../components/card/date.vue";
 const features = {
   title: "思考者",
   description:
-    "倘若我能够放下所有虚荣与自负，该会有一双更加清澈的眼睛来眺望远方吧。亦余心之所善兮，虽九死其犹未悔。",
+    "热爱生命，丰盈存在；手托日月，直面命运。",
   content: [
+    {
+      title: "苦涩的歌",
+      excerpt:
+        "生命何为呀？但见痴妄否定短暂，欲望亲吻着颓堕。是纷繁为消亡而存在，绽放的意志才成就了绚烂。",
+      date: "2025-04-10",
+      link: "/zh/blog/2025-04-10-song-of-life",
+      author: "Jianyu MA",
+      tag: "情感创作",
+      img: "/img/profile/jm_profile_bw.jpg",
+    },
     {
       title: "论顾影自怜",
       excerpt:
