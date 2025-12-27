@@ -1,14 +1,17 @@
 <template>
-	<div>
+	<ClientOnly>
 		<Utterances repo="JingMatrix/jingmatrix.github.io" :theme="isDark ? 'github-dark' : 'github-light'"
 			issue-term="title" label="Comment" v-if="showComment" />
-	</div>
+	</ClientOnly>
 </template>
 
 <script lang="ts" setup>
-import * as Utterances from "vue-utterances";
 import { useData, useRouter } from "vitepress";
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { defineAsyncComponent, ref, onMounted, onBeforeUnmount } from "vue";
+
+const Utterances = defineAsyncComponent(() =>
+	import('vue-utterances').then((module) => module.Utterances)
+);
 
 const showComment = ref(useData().frontmatter.value.header);
 const isDark = ref(false);

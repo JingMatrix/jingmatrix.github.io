@@ -15,15 +15,15 @@
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/vue-fontawesome": "^3.1.2",
     "@mdit-vue/types": "^3.0.2",
-    "@tailwindcss/postcss": "^4.1.15",
+    "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/chrome": "^0.1.24",
+    "@types/chrome": "^0.1.32",
     "@types/katex": "^0.16.7",
     "@types/markdown-it": "^14.1.2",
     "@types/markdown-it-footnote": "^3.0.4",
-    "@types/node": "^24.9.1",
-    "@vite-pwa/vitepress": "^1.0.1",
-    "cssnano": "^7.1.1",
+    "@types/node": "^25.0.3",
+    "@vite-pwa/vitepress": "^1.1.0",
+    "cssnano": "^7.1.2",
     "filesize": "^11.0.13",
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0",
@@ -31,19 +31,20 @@
     "markdown-it-footnote": "^4.0.0",
     "markdown-it-texmath": "^1.0.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.15",
-    "vite-plugin-pwa": "^1.1.0",
+    "tailwindcss": "^4.1.18",
+    "vite-plugin-pwa": "^1.2.0",
     "vite-plugin-rss": "^0.0.6",
     "vitepress": "1.6.4",
-    "vue": "^3.5.22",
-    "vue-utterances": "^3.0.0",
-    "workbox-window": "^7.3.0"
+    "vue": "^3.5.26",
+    "workbox-build": "^7.4.0",
+    "workbox-window": "^7.4.0"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/free-regular-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
-    "katex": "^0.16.25",
-    "socket.io-client": "^4.8.1"
+    "katex": "^0.16.27",
+    "socket.io-client": "^4.8.3",
+    "vue-utterances": "^3.0.0"
   }
 }
