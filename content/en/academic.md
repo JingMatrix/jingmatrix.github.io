@@ -5,16 +5,15 @@ title: 'Academic'
 
 # Works on mathematics
 
+## Published
+
+- [Absolute continuity of Wasserstein barycenters on manifolds with a lower Ricci curvature bound](/pdf/absolute_continuity.pdf), **Calculus of Variations and Partial Differential Equations**, [65, 9 (2026)](https://doi.org/10.1007/s00526-025-03183-3). 
+
 ## Thesis
 
 - [Regularity of Wasserstein barycenters](/pdf/thesis.pdf)
 
 - [Defended on 26/10/2025](/pdf/presentation.pdf)
-
-## Preprints
-
-- [Absolute continuity of Wasserstein barycenters on manifolds with a lower Ricci curvature bound](/pdf/absolute_continuity.pdf)
-<!-- https://arxiv.org/abs/2310.13832 -->
 
 ## Presentations
 
