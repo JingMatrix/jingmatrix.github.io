@@ -144,7 +144,7 @@ To do so, we need the page numbers corresponding to chapters or sections.
 This is usually presented in the document, precisely in the pages for _Table of Content_.
 Hence, we should first extract those page numbers data.
 ^[The extraction could be complicated
-in some cases, see my [comments](https://github.com/JingMatrix/Shell/blob/master/toc/README.md).]
+in some cases, see my [comments](https://github.com/JingMatrix/Shell/blob/master/bookmark/README.md).]
 Then we edit them to a form that programs can easily process
 and we should add reasonable extra data, such as page offsets since
 the page 1 in the _table of content_ of a book is
@@ -161,14 +161,13 @@ pdftotext -pages=8-9 this-document-also-need-bookmarks.djvu toc-raw
 ```
 
 I have processed many raw data of table of contents extracted from books,
-please use [this file](https://github.com/JingMatrix/Shell/blob/master/toc/tocAIMordenApproach) as a standard example,
+please use [this file](https://github.com/JingMatrix/Shell/blob/master/bookmark/toc/AIMordenApproach) as a standard example,
 where I used `\t` indent for bookmark levels and `d=13` to indicate the page offsets,
 i.e., shifting 13 pages.
-I also made scripts `add_bkmk` and `export_bkmk` to embed or export bookmarks,
-one can find them [here](https://github.com/JingMatrix/Shell/tree/master/scripts).
+I also made a script [bookmark](https://github.com/JingMatrix/Shell/tree/master/scripts/bookmark) to embed or export bookmarks.
 
 ```sh
-./add_bkmk this-document-will-get-bookmarks.pdf toc-processed
+./bookmark import this-document-will-get-bookmarks.pdf toc-processed
 ```
 
 As for EPUB documents, use `Sigil` in the [section for EPUB](#epub-documents).
@@ -215,12 +214,4 @@ or the open source project [LaTex-OCR](https://github.com/lukas-blecher/LaTeX-OC
 Usually, I use [Library Genesis](http://libgen.is/) and [ZLibary](https://en.1lib.fr/) for English books.
 For Chinese books, I rely on direct searches with Google or search engines for shared files
 on [阿里云盘](https://www.aliyundrive.com/), such as [UP云搜](https://www.upyunso.com/).
-To download shared files on 阿里云盘, I wrote the script [aliyun-share](https://github.com/JingMatrix/Shell/blob/master/scripts/aliyun-share) to store shared files data or download a file via its id.
-
-```sh
-# Download folder files metadata from a share URL
-./aliyun-share https://www.aliyundrive.com/s/9y1gY9mbhfk/folder/625538b114ca25f59c1643ea9f2ecde089f32271
-
-# Download a specific file with id
-aliyun-share 625538b9b3e1a10642784adb8c7443d4e6dd9aaf
-```
+To download shared files on 阿里云盘, please refer to [Alibrary](https://github.com/JingMatrix/Alibrary)
