@@ -5,20 +5,22 @@
 	</p>
 	<div v-else>
 		<Meta v-if="toggle_details && script_meta != ''" :meta="script_meta" @exit="$emit('toggle_details')" />
-		<div v-else v-for="script in scripts" :key="script" class="pb-4 pl-2 flex flex-row max-h-10">
-			<font-awesome-icon icon="fa-regular fa-trash-can" class="basis-1/8 my-auto" @click="
+		<div v-else v-for="script in scripts" :key="script" class="flex flex-row items-center gap-3 px-2 py-2">
+			<button class="shrink-0 p-2" :aria-label="'Delete ' + getName(script)" @click="
 				deleteScript([script]);
 			$emit('refresh');
-			" />
-			<button class="basis-5/8 flex-1 text-left indent-3 overflow-hidden" @click="
+			">
+				<font-awesome-icon icon="fa-regular fa-trash-can" />
+			</button>
+			<button class="min-w-0 flex-1 text-left" @click="
 				$emit('toggle_details');
 			getMeta([script]);
 			">
-				{{ getName(script) }}
+				<span class="block truncate">{{ getName(script) }}</span>
+				<span class="block truncate text-xs text-gray-500 dark:text-gray-400">
+					{{ getSimpleNameSpace(script) }}
+				</span>
 			</button>
-			<div class="basis-1/4 text-xs px-2 break-all overflow-y-auto text-gray-200 dark:text-gray-700">
-				{{ getSimpleNameSpace(script) }}
-			</div>
 		</div>
 	</div>
 </template>
