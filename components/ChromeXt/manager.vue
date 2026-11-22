@@ -43,39 +43,49 @@ if (
 	globalThis.ChromeXt.addEventListener = window.addEventListener.bind(window);
 }
 
+function init() {
+	header.value = translation.installed;
+	globalThis.ChromeXt.addEventListener("userscript", (e: CustomEvent) => {
+		if (e.detail.type == "init") {
+			scripts.value = e.detail.ids.filter((id: string) => id.includes(":"));
+		}
+	});
+	globalThis.ChromeXt.addEventListener("inspect_pages", (e: CustomEvent) => {
+		if (!inspecting.value) {
+			window.addEventListener("visibilitychange", (_e) => {
+				if (document.visibilityState === "visible") {
+					setTimeout(() => globalThis.ChromeXt.dispatch("inspectPages"), 0);
+				}
+			});
+		}
+		inspecting.value = true;
+		inspect_pages.value = e.detail.filter(
+			(it: DevInfo) =>
+				!it.url.startsWith("https://chrome-devtools-frontend.appspot.com") &&
+				it.type == "page" &&
+				!it.url.endsWith("ChromeXt/") &&
+				(it.description == "" || !JSON.parse(it.description).never_attached)
+		);
+	});
+	globalThis.ChromeXt.addEventListener("extension", (e: CustomEvent) => {
+		toggle_extensions.value = !toggle_extensions.value;
+		if (e.detail.type == "init") {
+			extensions.value = e.detail.manifests;
+		}
+	});
+	refresh();
+}
+
 onMounted(() => {
-	if (typeof globalThis.ChromeXt !== "undefined") {
-		header.value = translation.installed;
-		globalThis.ChromeXt.addEventListener("userscript", (e: CustomEvent) => {
-			if (e.detail.type == "init") {
-				scripts.value = e.detail.ids.filter((id: string) => id.includes(":"));
-			}
-		});
-		globalThis.ChromeXt.addEventListener("inspect_pages", (e: CustomEvent) => {
-			if (!inspecting.value) {
-				window.addEventListener("visibilitychange", (_e) => {
-					if (document.visibilityState === "visible") {
-						setTimeout(() => globalThis.ChromeXt.dispatch("inspectPages"), 0);
-					}
-				});
-			}
-			inspecting.value = true;
-			inspect_pages.value = e.detail.filter(
-				(it: DevInfo) =>
-					!it.url.startsWith("https://chrome-devtools-frontend.appspot.com") &&
-					it.type == "page" &&
-					!it.url.endsWith("ChromeXt/") &&
-					(it.description == "" || !JSON.parse(it.description).never_attached)
-			);
-		});
-		globalThis.ChromeXt.addEventListener("extension", (e: CustomEvent) => {
-			toggle_extensions.value = !toggle_extensions.value;
-			if (e.detail.type == "init") {
-				extensions.value = e.detail.manifests;
-			}
-		});
-		refresh();
-	}
+	// ChromeXt injects globalThis.ChromeXt once the page has loaded, which may happen only after
+	// this component is mounted. Checking a single time then reports ChromeXt as not installed
+	// until the page is reloaded, so keep looking for it for a while.
+	let attempts = 0;
+	const waitForChromeXt = () => {
+		if (typeof globalThis.ChromeXt !== "undefined") init();
+		else if (++attempts < 100) setTimeout(waitForChromeXt, 100);
+	};
+	waitForChromeXt();
 });
 </script>
 
